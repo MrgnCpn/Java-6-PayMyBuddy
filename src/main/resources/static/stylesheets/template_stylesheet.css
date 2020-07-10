@@ -1,0 +1,56 @@
+/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}
+/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+
+:root {
+	--green: #19A419;
+	--blue: #0080FF;
+	--red: #CC0000;
+	--yellow: #FFD700;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	font-family: 'Open Sans', 'Catamaran',  sans-serif;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.feather {
+	width: 24px;
+	height: 24px;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
+
+textarea, input {
+	border: none;
+	background: none;
+	font-family: 'Open Sans', 'Catamaran',  sans-serif;
+}
+
+textarea:focus, input:focus{
+	outline: none;
+}
+
+body {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.disable {
+	display: none;
+}
+
+.enable {
+	display: flex;
+}

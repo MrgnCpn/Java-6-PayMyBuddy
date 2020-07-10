@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="50"
+   height="41.716064"
+   version="1.1"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   viewBox="0 0 1322.9166 1103.7376"
+   id="svg13"
+   sodipodi:docname="logo_twitter.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2456"
+     inkscape:window-height="1875"
+     id="namedview15"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="15.451592"
+     inkscape:cx="-1.3393858"
+     inkscape:cy="27.043242"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg13"
+     units="px" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2">  .fil0 {fill:#F0F0F0} .fil1 {fill:#011627;fill-rule:nonzero}  </style>
+  </defs>
+  <polygon
+     class="fil0"
+     points="9144,0 9144,9144 0,9144 0,0 "
+     id="polygon7"
+     style="fill:none"
+     transform="translate(-2085,-5584.8733)" />
+  <path
+     class="fil1"
+     d="M 528.18211,345.35952 H 638.81844 C 625.25485,277.82905 632.43557,214.99181 655.04155,162.06252 676.31777,111.74057 711.15758,70.544379 754.77382,42.124219 798.39007,13.704059 850.78276,-1.6793308 906.63283,0.14580924 964.61052,1.9709592 1026.5775,22.569059 1086.1509,66.372609 c 11.17,5.47545 27.3931,9.12574 53.4565,9.38648 30.0527,0.26074 72.0732,-4.4325 132.1785,-15.90486 v 0.26073 c 5.851,-1.30367 12.2338,-0.26073 17.8188,3.12883 11.702,7.30059 15.1594,22.16251 7.7127,33.63487 l -47.0737,73.005921 h 46.5418 c 6.1169,-0.26074 12.4997,1.56441 17.5529,5.73618 10.3721,8.865 11.4359,24.24839 2.6595,34.41708 -21.0103,23.98766 -37.4994,41.71766 -51.0629,56.05812 -49.4673,52.66856 -55.3182,58.9262 -79.254,184.07921 -19.6805,104.03344 -54.7862,197.37673 -101.5939,278.72618 -81.6475,141.84002 -199.46454,246.91642 -337.22805,308.97145 -137.49755,62.3158 -294.94156,81.871 -455.84296,52.4079 -92.2856,-16.9479 -185.635,-50.0612 -277.122738,-100.38323 C 6.1169126,986.24717 0,977.64287 0,967.73497 c 0,-13.5583 11.170014,-24.5091 24.733603,-24.5091 40.424814,0 94.413217,-0.7822 149.997337,-10.6902 47.60554,-8.6043 97.07274,-23.9877 141.48685,-51.3648 -38.2972,-23.4662 -90.95583,-61.7943 -131.38065,-101.68684 -36.70147,-35.98149 -64.36056,-74.57033 -65.95627,-107.94447 -0.26596,-2.60735 0,-5.47545 0.79785,-8.34354 3.45739,-13.03677 17.02098,-20.85883 30.05266,-17.46926 5.58501,1.56441 12.76573,2.60735 20.74431,3.12882 C 138.56137,619.65321 111.16824,587.84348 89.626067,555.25155 59.839362,510.14433 40.690766,463.21194 33.775996,417.3225 c -0.531906,-3.91103 -0.265953,-8.34353 1.329763,-12.5153 5.053102,-12.25456 19.680502,-18.51221 32.18028,-13.55824 8.510487,3.38957 18.350737,5.21471 28.456941,5.73618 2.659527,0 5.31905,0.26074 7.97858,0.26074 C 75.530573,349.27056 60.903173,301.81671 55.052213,259.31683 46.275774,195.43665 57.711741,141.20368 74.200809,112.78352 78.1901,105.22219 85.902729,100.00748 94.945122,99.225279 108.77466,98.443069 120.47658,108.61175 121.27444,122.17 c 0.53191,6.77912 73.6689,82.39239 187.23072,147.31551 63.29674,35.98149 138.29541,66.48754 219.67695,75.87401 z"
+     id="path9"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:34.83651733;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="cccscccccccccccccccccssccccccccccccccccccc" />
+</svg>
