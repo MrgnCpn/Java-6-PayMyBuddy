@@ -16,7 +16,7 @@ public class Currency {
      */
     public Currency(String code) throws IOException {
         this.code = code.toUpperCase();
-        this.getInfoCountry(code.toUpperCase());
+        this.getInfoCurrency(code.toUpperCase());
     }
 
     public String getCode() {
@@ -25,7 +25,7 @@ public class Currency {
 
     public void setCode(String code) throws IOException {
         this.code = code.toUpperCase();
-        this.getInfoCountry(code.toUpperCase());
+        this.getInfoCurrency(code.toUpperCase());
     }
 
     public Double getRatebasedUSD() {
@@ -41,7 +41,7 @@ public class Currency {
      * @param code
      * @throws IOException
      */
-    private void getInfoCountry(String code) throws IOException {
+    private void getInfoCurrency(String code) throws IOException {
         JSONObject data = new HTTPRequestService().getReq("https://api.exchangeratesapi.io/latest?base=USD", null);
         Integer status = data.getInt("status");
         if (status < 299) {

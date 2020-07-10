@@ -3,6 +3,7 @@ package com.paymybuddy.PayMyBuddyWeb.models;
 public class BankAccount {
     private Integer userId;
     private String type;
+    private String cardType;
     private Long cardNumber;
     private Integer cardCryptogramme;
     private String iban;
@@ -33,6 +34,14 @@ public class BankAccount {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     public Long getCardNumber() {

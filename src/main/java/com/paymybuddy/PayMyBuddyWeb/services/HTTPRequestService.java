@@ -1,5 +1,6 @@
 package com.paymybuddy.PayMyBuddyWeb.services;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.HTTPRequestServiceI;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -11,17 +12,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class HTTPRequestService {
+public class HTTPRequestService implements HTTPRequestServiceI {
 
     public HTTPRequestService() { }
 
     /**
-     * API reader, HTTP GET request
-     * @param url
-     * @param params
-     * @return Content of API GET request
-     * @throws IOException
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.HTTPRequestServiceI {@link #getReq(String, Map)}
      */
+    @Override
     public JSONObject getReq(String url, Map<String, String> params) throws IOException {
         StringBuffer urlWithParams = new StringBuffer();
         urlWithParams.append(url).append(this.getURLParamsString(params));

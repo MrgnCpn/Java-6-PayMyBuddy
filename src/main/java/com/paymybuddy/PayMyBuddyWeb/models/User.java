@@ -2,6 +2,7 @@ package com.paymybuddy.PayMyBuddyWeb.models;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 public class User {
     private Integer id;
@@ -11,6 +12,7 @@ public class User {
     private String phone;
     private String email;
     private Country country;
+    private List<Integer> friends;
 
     /**
      * Constructor
@@ -86,6 +88,14 @@ public class User {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public List<Integer> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<Integer> friends) {
+        this.friends = friends;
     }
 
     public int getAge(){

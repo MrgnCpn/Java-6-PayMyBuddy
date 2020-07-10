@@ -2,10 +2,10 @@ package com.paymybuddy.PayMyBuddyWeb.models;
 
 public class BuddyAccount {
     private Integer userId;
-    private Integer amount;
+    private Double amount;
     private Currency currency;
 
-    public BuddyAccount(Integer userId, Integer amount, Currency currency) {
+    public BuddyAccount(Integer userId, Double amount, Currency currency) {
         this.userId = userId;
         this.amount = amount;
         this.currency = currency;
@@ -19,11 +19,11 @@ public class BuddyAccount {
         this.userId = userId;
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
