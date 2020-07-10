@@ -66,6 +66,17 @@
         ) ENGINE=INNODB
         AUTO_INCREMENT=0;
 
+    -- Friends Table
+        CREATE TABLE friends (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            user_id INT NOT NULL,
+            friend_id INT NOT NULL
+            CONSTRAINT FK_user_id_friend FOREIGN KEY (user_id) REFERENCES users(id),
+            CONSTRAINT FK_friend_id_friend FOREIGN KEY (friend_id) REFERENCES users(id)
+        )
+        ENGINE=INNODB
+        AUTO_INCREMENT=0;
+
 -- INSERT data
     LOCK TABLES users WRITE;
         -- INSERT
