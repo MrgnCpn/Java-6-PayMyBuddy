@@ -28,11 +28,14 @@
     -- Transactions Table
         CREATE TABLE transactions (
             id INT PRIMARY KEY AUTO_INCREMENT,
+            from_type CHAR(4) NOT NULL,
             from_id INT NOT NULL,
             to_id INT NOT NULL,
             date DATETIME NOT NULL,
             description TEXT,
-            amount INT NOT NULL,
+            amount DOUBLE(10, 2) NOT NULL,
+            fee DOUBLE(10, 2) NOT NULL,
+            final_amount DOUBLE(10, 2) NOT NULL,
             currency CHAR(3) NOT NULL,
             CONSTRAINT FK_from_id FOREIGN KEY (from_id) REFERENCES users(id),
             CONSTRAINT FK_to_id FOREIGN KEY (to_id) REFERENCES users(id)
@@ -60,7 +63,7 @@
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
             type CHAR(1) NOT NULL,
-            ammount INT NOT NULL,
+            ammount DOUBLE(10, 2) NOT NULL,
             currency CHAR(3),
             CONSTRAINT FK_userId_id_buddyAccount FOREIGN KEY (user_id) REFERENCES users(id)
         ) ENGINE=INNODB
