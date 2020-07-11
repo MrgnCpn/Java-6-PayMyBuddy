@@ -1,0 +1,13 @@
+.main_content {
+	align-items: flex-start;
+}
+
+#login_ctn {
+	margin-top: 80px;
+	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_TB)));
+}
+
+#login_ctn .form {
+	width: 75%;
+	margin-top: 45px;
+}

@@ -1,14 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>PayMyBuddy</title>
-        <link th:href="@{/stylesheets/template_stylesheet.css}" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Catamaran|Open+Sans:400,700&display=swap" rel="stylesheet">
-        <script src="/scripts/jquery-3.4.1.min.js"></script>
-    </head>
-    <body>
-        <h1>PayMyBuddy</h1>
-        <svg class="feather"><use th:href="@{/assets/icons/feather-sprite.svg#x}"/></svg>
-    </body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>PayMyBuddy</title>
+		<link th:href="@{/stylesheets/template_stylesheet.css}" rel="stylesheet"/>
+		<link th:href="@{stylesheets/main_stylesheet.css}" rel="stylesheet"/>
+		<link th:href="@{stylesheets/login_stylesheet.css}" rel="stylesheet"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" th:src="@{scripts/main_script.js}"></script>
+		<script type="text/javascript" th:src="@{scripts/login_script.js}"></script>
+
+
+<!-- REMOVE --> <link href="../static/stylesheets/template_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/main_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/login_stylesheet.css" rel="stylesheet"/>		
+<!-- REMOVE --> <script type="text/javascript" src="../static/scripts/main_script.js"></script>
+<!-- REMOVE --> <script type="text/javascript" src="../static/scripts/login_script.js"></script>
+
+
+
+
+	</head>
+	<body>
+		<header class="main_header">
+			<a href="#" class="logo">
+				<img th:src="@{/assets/logo.svg}">
+<!-- REMOVE --> <img src="../static/assets/logo.svg">
+			</a>
+			<a href="#" class="btn circle logout">
+				<div class="subContainer">
+					<svg class="feather f_black" style="display: none;">
+						<use th:href="@{/assets/icons/feather-sprite.svg#log-out}"/>
+					</svg>
+<!-- REMOVE --> <img src="../static/assets/icons/feather/log-out.svg" class="feather" />
+					<span class="label">Log-out</span>  
+				</div>
+			</a>
+		</header>
+		<main class="main_content">
+			
+		
+			<section id="login_ctn" class="block_ctn">
+				<h1 class="title_ctn">Login</h1>
+				<form class="form">
+					<div class="input_ctn">
+						<label for="email" class="input_label">Username</label>
+						<input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
+					</div>
+					<div class="input_ctn">
+						<label for="password" class="input_label">Password</label>
+						<input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
+						<a href="#" class="input_link">Forgot password ?</a>
+					</div>
+					<div class="input_ctn chk">
+						<input type="checkbox" name="remember" id="remember_chk_field" class="disable" value="on">
+						<div class="input_chk on" id="remember_chk_btn"><span>O</span><span>I</span><span class="chk_btn"></span></div>
+						<label for="remember" class="label_chk">Remember me</label>
+					</div>
+				</form>
+			</section>
+
+
+		</main>
+		<footer class="main_footer">© PayMyBuddy - 2020</footer>
+	</body>
 </html>

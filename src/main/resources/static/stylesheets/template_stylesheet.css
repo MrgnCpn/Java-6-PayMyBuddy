@@ -7,44 +7,59 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
 	--blue: #0080FF;
 	--red: #CC0000;
 	--yellow: #FFD700;
+	--grey1E: #1E1E1E;
+	--grey3C: #3C3C3C;
+	--grey69: #696969;
+	--grey96: #969696;
+	--greyCA: #CACACA;
+	--greyE1: #E1E1E1;
+	--appBlue: #3B6D78;
+	--appPurple: #9812AC;
+	--shadow_lv2: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	--mainHeaderHeigth: 80px;
+	--mainFooterHeight: 40px;
+	--transition: all 0.3s cubic-bezier(.52,.08,.38,.91);
+	--mainPadding: 0 25px 0 25px;
+	--blockCtnPadding_TB: 30px;
+	--blockCtnPadding_LR:50px;
+	--blockCtnPadding: var(--blockCtnPadding_TB) var(--blockCtnPadding_LR);
+	--sectionWidth_S: 500px;
+	--sectionWidth_M: 650px;
+	--sectionWidth_L: 800px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@900&family=Open+Sans:ital,wght@1,400;1,600&display=swap');
 
 html, body {
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
-	font-family: 'Open Sans', 'Catamaran',  sans-serif;
+	font-family: 'Open Sans',  sans-serif;
+}
+
+body {
+	display: flex;
+	position: relative;
 }
 
 a {
 	cursor: pointer;
 	text-decoration: none;
-}
-
-.feather {
-	width: 24px;
-	height: 24px;
-	stroke: currentColor;
-	stroke-width: 2;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	fill: none;
+	color: #000;
 }
 
 textarea, input {
 	border: none;
 	background: none;
-	font-family: 'Open Sans', 'Catamaran',  sans-serif;
+	font-family: 'Open Sans',  sans-serif;
 }
 
 textarea:focus, input:focus{
 	outline: none;
 }
 
-body {
-	display: flex;
-	flex-direction: row;
-	position: relative;
+::placeholder {
+	color: var(--greyE1);
 }
 
 .disable {
@@ -54,3 +69,255 @@ body {
 .enable {
 	display: flex;
 }
+
+/* COLOR ----------------------------------------------- */
+	
+	.c_white {
+		color: #FFF;
+	}
+
+	.c_black {
+		color: #000;
+	}
+
+	.c_red {
+		color: var(--red);
+	}
+
+	.c_blue {
+		color: var(--blue);
+	}
+
+	.c_green {
+		color: var(--green);
+	}
+
+	.c_blueApp {
+		color: var(--appBlue);
+	}
+
+	.c_purpleApp {
+		color: var(--appPurple);
+	}
+
+/* BACKGROUND ----------------------------------------------- */
+
+	.b_white {
+		background: #FFF;
+	}
+
+	.b_black {
+		background: #000;
+	}
+
+	.b_red {
+		background: var(--red);
+	}
+
+	.b_blue {
+		background: var(--blue);
+	}
+
+	.b_green {
+		background: var(--green);
+	}
+
+	.b_blueApp {
+		background: var(--appBlue);
+	}
+
+	.b_purpleApp {
+		background: var(--appPurple);
+	}
+
+/* BUTTONS ----------------------------------------------- */
+	
+	.btn {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		height: 45px;
+	}
+
+	.circle {
+		border-radius: 45px;
+	}
+
+	.round {
+		border-radius: 15px;
+	}
+
+/* FEATHER ICONS ----------------------------------------- */
+	
+	.feather {
+		width: 24px;
+		height: 24px;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		fill: none;
+	}
+
+	.f_white {
+		stroke: #FFF;
+	}
+
+	.f_black {
+		stroke: #000;
+	}
+
+	.f_red {
+		stroke: var(--red);
+	}
+
+	.f_blue {
+		stroke: var(--blue);
+	}
+
+	.f_green {
+		stroke: var(--green);
+	}
+
+	.f_blueApp {
+		stroke: var(--appBlue);
+	}
+
+	.f_purpleApp {
+		stroke: var(--appPurple);
+	}
+
+/* BLOCK SECTION ----------------------------------------- */
+	
+	.block_ctn {
+		display: flex;
+		flex-direction: column;
+		background: #FFF;
+		border-radius: 25px;
+		box-shadow: var(--shadow_lv2);
+		padding: var(--blockCtnPadding);	
+	}
+
+	.title_ctn {
+		text-transform: uppercase;
+		font-weight: bold;
+		font-family: 'Catamaran', sans-serif;
+		letter-spacing: 5px;
+		font-size: 20px;
+		margin: auto;
+	}
+
+/* FORM ------------------------------------------------- */
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: auto;
+	}
+
+	/* CONTAINER ------------------------------------------------- */
+
+		div.input_ctn {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			margin-bottom: 45px;
+			width: 100%;
+		}
+
+		div.input_ctn.chk {
+			flex-direction: row;
+			align-items: center;
+		}
+
+		div.input_ctn label.input_label {
+			text-transform: uppercase;
+			font-size: 13px;
+			letter-spacing: 4px;
+			margin-bottom: 15px;
+		}
+
+		div.input_ctn .input_link {
+			text-align: right;
+			margin: 15px 0;
+			font-size: 13px;
+			color: var(--appPurple);
+			letter-spacing: 1.5px;
+		}
+
+		/* TEXT ------------------------------------------------- */
+
+			div.input_ctn input.input_text {
+				border: 1.5px solid var(--greyE1);
+				border-radius: 7px;
+				height: 45px;
+				padding: 0 20px;
+				letter-spacing: 2px;
+				font-size: 15px;
+				font-weight: normal;
+			}
+
+		/* CHECKBOX ------------------------------------------------- */
+
+			div.input_ctn div.input_chk {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				width: 56px;
+				height: 26px;
+				padding: 1.5px;
+				border-radius: 30px;
+				position: relative;
+			}
+
+			div.input_ctn div.input_chk.off {
+				background: var(--greyE1);
+				border: 1.5px solid var(--greyE1);
+			}
+
+			div.input_ctn div.input_chk.on {
+				background: var(--green);
+				border: 1.5px solid var(--green);
+			}
+
+			div.input_ctn div.input_chk span:not(div.input_ctn div.input_chk span.chk_btn) {
+				font-weight: bold;
+				color: #FFF;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 50%;
+			}
+
+			div.input_ctn div.input_chk span.chk_btn {
+				position: absolute;
+				background: #FFF;
+				z-index: 1;
+				display: block;
+				width: 26px;
+				height: 26px;
+				border-radius: 30px;
+				transition: var(--transition);
+			}
+
+			div.input_ctn div.input_chk.off span.chk_btn {
+				right: 1.5px;
+			}
+
+			div.input_ctn div.input_chk.on span.chk_btn {
+				left: 1.5px;
+			}
+
+			div.input_ctn .label_chk {
+				margin-left: 15px;
+				letter-spacing: 2px;
+				font-size: 13px;
+			}
+
+
+
+
+
