@@ -1,0 +1,25 @@
+.main_content {
+	align-items: center;
+}
+
+#signup_ctn {
+	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+	padding: 30px var(--blockCtnPadding_LR);
+}
+
+#signup_ctn .form {
+	width: 75%;
+	margin-top: 30px;
+}
+
+div.input_ctn {
+	margin-bottom: 25px;
+}
+
+div.input_ctn label.input_label {
+	margin-bottom: 10px;
+}
+
+div.comp_input_ctn {
+	align-items: center;
+}

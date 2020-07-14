@@ -5,26 +5,39 @@
 		<title>PayMyBuddy</title>
 		<link th:href="@{/stylesheets/template_stylesheet.css}" rel="stylesheet"/>
 		<link th:href="@{stylesheets/main_stylesheet.css}" rel="stylesheet"/>
-		<link th:href="@{stylesheets/login_stylesheet.css}" rel="stylesheet"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript" th:src="@{scripts/main_script.js}"></script>
+
+		<!-- LOGIN -->
+		<link th:href="@{stylesheets/login_stylesheet.css}" rel="stylesheet"/>
 		<script type="text/javascript" th:src="@{scripts/login_script.js}"></script>
+
+		<!-- SIGN UP -->
+		<link th:href="@{stylesheets/signup_stylesheet.css}" rel="stylesheet"/>
+		<script type="text/javascript" th:src="@{scripts/signup_script.js}"></script>
+
+		<!-- PASSWORD CHECK -->
+		<link th:href="@{stylesheets/passwordCheck_stylesheet.css}" rel="stylesheet"/>
+
+		<!-- CHANGE PASSWORD -->
+		<link th:href="@{stylesheets/changePassword_stylesheet.css}" rel="stylesheet"/>
 
 
 <!-- REMOVE --> <link href="../static/stylesheets/template_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/main_stylesheet.css" rel="stylesheet"/>
-<!-- REMOVE --> <link href="../static/stylesheets/login_stylesheet.css" rel="stylesheet"/>		
+<!-- REMOVE --> <link href="../static/stylesheets/login_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/signup_stylesheet.css" rel="stylesheet"/>	
+<!-- REMOVE --> <link href="../static/stylesheets/passwordCheck_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/changePassword_stylesheet.css" rel="stylesheet"/>	
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/main_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/login_script.js"></script>
-
-
-
+<!-- REMOVE --> <script type="text/javascript" src="../static/scripts/signup_script.js"></script>
 
 	</head>
 	<body>
 		<header class="main_header">
 			<a href="#" class="logo">
-				<img th:src="@{/assets/logo.svg}">
+				<img th:src="@{/assets/logo.svg}" style="display: none;">
 <!-- REMOVE --> <img src="../static/assets/logo.svg">
 			</a>
 			<a href="#" class="btn circle logout">
@@ -39,27 +52,174 @@
 		</header>
 		<main class="main_content">
 			
-		
+<!-- LOGIN		
 			<section id="login_ctn" class="block_ctn">
 				<h1 class="title_ctn">Login</h1>
-				<form class="form">
-					<div class="input_ctn">
+				<form class="form" action="#" method="POST">
+					<div class="input_ctn text">
 						<label for="email" class="input_label">Username</label>
 						<input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
-					</div>
-					<div class="input_ctn">
+					 </div>
+					<div class="input_ctn text">
 						<label for="password" class="input_label">Password</label>
 						<input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
 						<a href="#" class="input_link">Forgot password ?</a>
 					</div>
 					<div class="input_ctn chk">
-						<input type="checkbox" name="remember" id="remember_chk_field" class="disable" value="on">
-						<div class="input_chk on" id="remember_chk_btn"><span>O</span><span>I</span><span class="chk_btn"></span></div>
+						<input type="checkbox" name="remember" id="input_chk_field" class="disable" value="on">
+						<div class="input_chk on" id="input_chk_btn"><span>O</span><span>I</span><span class="chk_btn"></span></div>
 						<label for="remember" class="label_chk">Remember me</label>
+					</div>
+					<div class="input_ctn btns">
+						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_blueApp c_white" value="login">
+					</div>
+					<div class="input_ctn centerText">
+						<p>Don't have an account ? <a href="#" class="c_purpleApp">Create Now</a></p>
+					</div>
+				</form>
+				<div class="otherLoginsCtn">
+					<div class="title">
+						<span class="dash"></span>
+						<span class="label">Or login with</span>
+						<span class="dash"></span>
+					</div>
+					<div class="login_btns_ctn">
+						<a href="#" class="btn btn_label circle b_facebook">
+							<img class="feather" th:src="@{../static/assets/icons/facebook.svg}" style="display: none;">
+### REMOVE ### <img class="feather" src="../static/assets/icons/facebook.svg">
+						</a>
+						<a href="#" class="btn btn_label circle b_twitter">
+							<img class="feather" th:src="@{../static/assets/icons/twitter.svg}" style="display: none;">
+### REMOVE ### <img class="feather" src="../static/assets/icons/twitter.svg">
+						</a>
+						<a href="#" class="btn btn_label circle b_white">
+							<img class="feather" th:src="@{../static/assets/icons/google.svg}" style="display: none;">
+### REMOVE ### <img class="feather" src="../static/assets/icons/google.svg">
+						</a>
+						<a href="#" class="btn btn_label circle b_black">
+							<img class="feather" th:src="@{../static/assets/icons/apple.svg}" style="display: none;">
+### REMOVE ### <img class="feather" src="../static/assets/icons/apple.svg">
+						</a>
+					</div>
+				</div>
+			</section>
+LOGIN -->
+			
+<!-- SIGN UP
+			<section id="signup_ctn" class="block_ctn">
+				<h1 class="title_ctn">Sign Up</h1>
+				<form class="form" action="#" method="POST">
+					<div class="comp_input_ctn">
+						<div class="input_ctn text">
+							<label for="firstname" class="input_label">Firstname</label>
+							<input type="text" name="firstname" id="firstname" placeholder="John" class="input_text">
+						</div>
+						<div class="input_ctn text">
+							<label for="lastname" class="input_label">Lastname</label>
+							<input type="text" name="lastname" id="lastname" placeholder="Smith" class="input_text">
+						</div>
+					</div>
+					<div class="input_ctn text">
+						<label for="email" class="input_label">Email</label>
+						<input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
+					 </div>
+					 <div class="input_ctn text">
+						<label for="phone" class="input_label">Phone</label>
+						<input type="text" name="phone" id="phone" placeholder="+1 555 - 123 - 456" class="input_text">
+					 </div>
+					<div class="comp_input_ctn">
+						<div class="input_ctn text">
+							<label for="age_day" class="input_label">Age</label>
+							<input type="text" name="age_day" id="age_day" placeholder="DD" class="input_text">
+						</div>
+						<span class="dash">/</span>
+						<div class="input_ctn text">
+							<label for="age_month" class="input_label c_white">Age</label>
+							<input type="text" name="age_month" id="age_month" placeholder="MM" class="input_text">
+						</div>
+						<span class="dash">/</span>
+						<div class="input_ctn text">
+							<label for="age_year" class="input_label c_white">Age</label>
+							<input type="text" name="age_year" id="age_year" placeholder="YYYY" class="input_text">
+						</div>
+					</div>
+					<div class="input_ctn text">
+						<label for="password" class="input_label">Password</label>
+						<input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="input_ctn text">
+						<label for="chk_password" class="input_label">Verified Password</label>
+						<input type="password" name="chk_password" id="chk_password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="comp_input_ctn">
+						<div class="input_ctn select">
+							<label for="country" class="input_label">Country</label>
+							<div class="input_select">
+								<span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
+								<svg class="feather f_greyE1" style="display: none;">
+									<use th:href="@{/assets/icons/feather-sprite.svg#chevron-down.svg}"/>
+								</svg>
+### REMOVE ### <img class="feather f_greyE1" src="../static/assets/icons/feather/chevron-down.svg">
+							</div>
+							<input type="text" name="country" id="country" class="disable">
+						</div>
+						<div class="input_ctn radio">
+							<label for="currency" class="input_label">Currency</label>
+							<input type="text" name="currency" id="currency" class="disable">
+							<div class="input_radio_ctn">
+								<span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="input_ctn btns">
+						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_purpleApp c_white" value="sign up">
 					</div>
 				</form>
 			</section>
+-->
 
+<!-- PASSWORD CHECK
+			<section id="passwordCheck_ctn" class="block_ctn">
+				<h1 class="title_ctn">Password Check</h1>
+				<form class="form" action="#" method="POST">
+					<div class="input_ctn text">
+						<label for="chk_password" class="input_label">Your Password</label>
+						<input type="password" name="chk_password" id="chk_password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="input_ctn btns">
+						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Validate transfert">
+					</div>
+				</form>
+			</section>
+-->
+
+<!-- CHANGE PASSWORD
+			<section id="changePassword_ctn" class="block_ctn">
+				<h1 class="title_ctn">Change Password</h1>
+				<form class="form" action="#" method="POST">
+					<div class="input_ctn text">
+						<label for="old_password" class="input_label">Old password</label>
+						<input type="password" name="old_password" id="old_password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="input_ctn text">
+						<label for="new_password" class="input_label">New password</label>
+						<input type="password" name="new_password" id="new_password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="input_ctn text">
+						<label for="new_chk_password" class="input_label">Verified new password</label>
+						<input type="password" name="new_chk_password" id="new_chk_password" placeholder="●●●●●●●●" class="input_text">
+					</div>
+					<div class="input_ctn btns">
+						<input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
+						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Change password">
+					</div>
+				</form>
+			</section>
+-->
 
 		</main>
 		<footer class="main_footer">© PayMyBuddy - 2020</footer>

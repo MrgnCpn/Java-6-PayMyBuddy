@@ -39,7 +39,7 @@ body::before {
 		background: #FFF;
 		width: 45px;
 		box-shadow: var(--shadow_lv2);
-		transition: var(--transition);
+		transition: var(--mainTransition);
 	}
 
 	.main_header .logout:hover {

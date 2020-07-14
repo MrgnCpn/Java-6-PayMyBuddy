@@ -15,13 +15,16 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
 	--greyE1: #E1E1E1;
 	--appBlue: #3B6D78;
 	--appPurple: #9812AC;
+	--facebookColor: #4267B2;
+	--twitterColor: #1DA1F2;
+	--shadow_lv1: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	--shadow_lv2: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	--mainHeaderHeigth: 80px;
 	--mainFooterHeight: 40px;
-	--transition: all 0.3s cubic-bezier(.52,.08,.38,.91);
+	--mainTransition: all 0.3s cubic-bezier(.52,.08,.38,.91);
 	--mainPadding: 0 25px 0 25px;
 	--blockCtnPadding_TB: 30px;
-	--blockCtnPadding_LR:50px;
+	--blockCtnPadding_LR: 50px;
 	--blockCtnPadding: var(--blockCtnPadding_TB) var(--blockCtnPadding_LR);
 	--sectionWidth_S: 500px;
 	--sectionWidth_M: 650px;
@@ -100,6 +103,38 @@ textarea:focus, input:focus{
 		color: var(--appPurple);
 	}
 
+	.c_facebook {
+		color: var(--facebookColor);
+	}
+
+	.c_twitter {
+		color: var(--twitterColor);
+	}
+
+	.c_greyE1 {
+		color: var(--greyE1);
+	}
+
+	.c_grey1E {
+		color: var(--grey1E);
+	}
+
+	.c_grey3C {
+		color: var(--grey3C);
+	}
+
+	.c_greyCA {
+		color: var(--greyCA);
+	}
+
+	.c_grey69 {
+		color: var(--grey69);
+	}
+
+	.c_grey96 {
+		color: var(--grey96);
+	}
+
 /* BACKGROUND ----------------------------------------------- */
 
 	.b_white {
@@ -130,6 +165,38 @@ textarea:focus, input:focus{
 		background: var(--appPurple);
 	}
 
+	.b_facebook {
+		background: var(--facebookColor);
+	}
+
+	.b_twitter {
+		background: var(--twitterColor);
+	}
+
+	.b_greyE1 {
+		background: var(--greyE1);
+	}
+
+	.b_grey1E {
+		background: var(--grey1E);
+	}
+
+	.b_grey3C {
+		background: var(--grey3C);
+	}
+
+	.b_greyCA {
+		background: var(--greyCA);
+	}
+
+	.b_grey69 {
+		background: var(--grey69);
+	}
+
+	.b_grey96 {
+		background: var(--grey96);
+	}
+
 /* BUTTONS ----------------------------------------------- */
 	
 	.btn {
@@ -138,11 +205,19 @@ textarea:focus, input:focus{
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
+	}
+
+	.btn_label {
 		height: 45px;
+		font-size: 13px;
+		font-weight: bold;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		padding: 0 20px;
 	}
 
 	.circle {
-		border-radius: 45px;
+		border-radius: 100px;
 	}
 
 	.round {
@@ -189,6 +264,30 @@ textarea:focus, input:focus{
 		stroke: var(--appPurple);
 	}
 
+	.f_greyE1 {
+		stroke: var(--greyE1);
+	}
+
+	.f_grey1E {
+		stroke: var(--grey1E);
+	}
+
+	.f_grey3C {
+		stroke: var(--grey3C);
+	}
+
+	.f_greyCA {
+		stroke: var(--greyCA);
+	}
+
+	.f_grey69 {
+		stroke: var(--grey69);
+	}
+
+	.f_grey96 {
+		stroke: var(--grey96);
+	}
+
 /* BLOCK SECTION ----------------------------------------- */
 	
 	.block_ctn {
@@ -220,17 +319,35 @@ textarea:focus, input:focus{
 
 	/* CONTAINER ------------------------------------------------- */
 
+		div.comp_input_ctn {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+		}
+
 		div.input_ctn {
 			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
 			margin-bottom: 45px;
 			width: 100%;
 		}
 
+		div.input_ctn.text, div.input_ctn.radio, div.input_ctn.select {
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+
 		div.input_ctn.chk {
 			flex-direction: row;
+			justify-content: flex-start;
 			align-items: center;
+		}
+
+		div.input_ctn.btns {
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			margin-bottom: 0;
 		}
 
 		div.input_ctn label.input_label {
@@ -248,13 +365,21 @@ textarea:focus, input:focus{
 			letter-spacing: 1.5px;
 		}
 
+		div.input_ctn.centerText {
+			justify-content: center;
+			align-items: center;
+			font-size: 13px;
+			margin: 10px 0;
+			letter-spacing: 1.5px;
+		}
+
 		/* TEXT ------------------------------------------------- */
 
-			div.input_ctn input.input_text {
+			div.input_ctn.text input.input_text {
 				border: 1.5px solid var(--greyE1);
 				border-radius: 7px;
 				height: 45px;
-				padding: 0 20px;
+				padding: 0 15px;
 				letter-spacing: 2px;
 				font-size: 15px;
 				font-weight: normal;
@@ -262,7 +387,7 @@ textarea:focus, input:focus{
 
 		/* CHECKBOX ------------------------------------------------- */
 
-			div.input_ctn div.input_chk {
+			div.input_ctn.chk div.input_chk {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
@@ -273,17 +398,17 @@ textarea:focus, input:focus{
 				position: relative;
 			}
 
-			div.input_ctn div.input_chk.off {
+			div.input_ctn.chk div.input_chk.off {
 				background: var(--greyE1);
 				border: 1.5px solid var(--greyE1);
 			}
 
-			div.input_ctn div.input_chk.on {
+			div.input_ctn.chk div.input_chk.on {
 				background: var(--green);
 				border: 1.5px solid var(--green);
 			}
 
-			div.input_ctn div.input_chk span:not(div.input_ctn div.input_chk span.chk_btn) {
+			div.input_ctn.chk div.input_chk span:not(div.input_ctn.chk div.input_chk span.chk_btn) {
 				font-weight: bold;
 				color: #FFF;
 				display: flex;
@@ -292,7 +417,7 @@ textarea:focus, input:focus{
 				width: 50%;
 			}
 
-			div.input_ctn div.input_chk span.chk_btn {
+			div.input_ctn.chk div.input_chk span.chk_btn {
 				position: absolute;
 				background: #FFF;
 				z-index: 1;
@@ -300,24 +425,78 @@ textarea:focus, input:focus{
 				width: 26px;
 				height: 26px;
 				border-radius: 30px;
-				transition: var(--transition);
+				transition: var(--mainTransition);
 			}
 
-			div.input_ctn div.input_chk.off span.chk_btn {
+			div.input_ctn.chk div.input_chk.off span.chk_btn {
 				right: 1.5px;
 			}
 
-			div.input_ctn div.input_chk.on span.chk_btn {
+			div.input_ctn.chk div.input_chk.on span.chk_btn {
 				left: 1.5px;
 			}
 
-			div.input_ctn .label_chk {
+			div.input_ctn.chk .label_chk {
 				margin-left: 15px;
 				letter-spacing: 2px;
 				font-size: 13px;
 			}
 
+		/* BUTTONS ------------------------------------------------- */
 
+			div.input_ctn.btns .btn {
+				width: 200px;
+				cursor: pointer;
+				transition: var(--mainTransition);
+			}
 
+			div.input_ctn.btns .btn:hover {
+				transform: translateY(-5px);
+				box-shadow: var(--shadow_lv1);
+			}
 
+		/* RADIO ---------------------------------------------------- */
 
+			div.input_radio_ctn {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.radio_btn {
+				width: 45px;
+				height: 35px;
+				background: var(--greyCA);
+				border-radius: 12.5px;
+				margin: 0 5px;
+				cursor: pointer;
+				transition: var(--mainTransition);
+			}
+
+			.radio_btn.selected, .radio_btn:hover {
+				background: #000;
+			}
+
+		/* SELECT --------------------------------------------------- */
+
+			div.input_ctn.select div.input_select {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border: 1.5px solid var(--greyE1);
+				border-radius: 7px;
+				height: 45px;
+				padding: 0 15px;
+				letter-spacing: 2px;
+				font-size: 15px;
+				font-weight: normal;
+				position: relative;
+			}
+
+			div.input_ctn.select div.input_select .feather {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: 5px;
+			}

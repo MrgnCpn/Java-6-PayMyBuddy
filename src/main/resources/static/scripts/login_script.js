@@ -1,3 +1,3 @@
 $(() => {
-	template.toggleCheckbox('#remember_chk_field', '#remember_chk_btn');
+	template.toggleCheckbox('#input_chk_field', '#input_chk_btn');
 })

@@ -1,13 +1,58 @@
 .main_content {
-	align-items: flex-start;
+	align-items: center;
 }
 
 #login_ctn {
-	margin-top: 80px;
-	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_TB)));
+	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+	padding: 45px var(--blockCtnPadding_LR);
 }
 
 #login_ctn .form {
 	width: 75%;
 	margin-top: 45px;
+}
+
+.otherLoginsCtn {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.otherLoginsCtn .title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 20px 0;
+}
+
+.otherLoginsCtn .title .label {
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 2px;
+	font-size: 13px;
+	width: 200px;
+}
+
+.otherLoginsCtn .title .dash {
+	height: 1.5px;
+	width: calc(50% - (200px / 2));
+	background: #000;
+}
+
+.login_btns_ctn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	margin: 20px 0;
+}
+
+.login_btns_ctn .btn {
+	width: 80px;
+	height: 40px;
+	box-shadow: var(--shadow_lv1);
+}
+
+.login_btns_ctn .btn .feather {
+	height: 20px;
 }
