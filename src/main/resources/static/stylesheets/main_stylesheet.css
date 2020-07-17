@@ -19,6 +19,8 @@ body::before {
 	opacity: 0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
 /* HEADER --------------------------------------------------- */
 	.main_header {
 		display: flex;
@@ -67,6 +69,30 @@ body::before {
 		letter-spacing: 2px;
 		font-size: 13px;
 		font-weight: bold;
+	}
+
+/* NAVIGATION ------------------------------------------------ */
+
+	.main_nav {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.main_nav_element {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 200px;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		font-size: 13px;
+		color: var(--greyE1);
+	}
+
+	.main_nav_element.selected, .main_nav_element:hover {
+		color: #000;
 	}
 
 /* CONTENT --------------------------------------------------- */

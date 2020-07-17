@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
+.main_content {
+	align-items: center;
+}
+
+#usrProfile_ctn {
+	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+	padding: 30px var(--blockCtnPadding_LR);
+	transform: scale(0.9);
+	position: relative;
+}
+
+#usrProfile_ctn .usrProfilePicture {
+	width: 120px;
+	height: 120px;
+	margin: auto;
+	border-radius: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	box-shadow: var(--shadow_lv2);
+}
+
+#usrProfile_ctn .usrProfilePicture img {
+	width: 100%;
+}
+
+#usrProfile_ctn .form {
+	width: 75%;
+	margin-top: 60px;
+}
+
+#usrProfile_ctn .input_btn {
+	width: 250px;
+	margin-top: 30px;
+}
+
+.backBtn {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}

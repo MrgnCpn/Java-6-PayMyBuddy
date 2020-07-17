@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
+.main_content {
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#accountInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 55px 0 60px 0;
+}
+
+#accountInfo h3 {
+	letter-spacing: 3px;
+	font-size: 15px;
+}
+
+#accountInfo h1 {
+	font-size: 80px;
+	margin: 15px 0 30px 0;
+	letter-spacing: 5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#feedAccount_btn {
+	min-height: 50px;
+	width: 300px;
+	font-size: 13px;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+}
+
+#feedAccount_btn:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow_lv1);
+}
+
+#accountInfo_details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: calc(var(--sectionWidth_XL) - (2 * var(--blockCtnPadding_LR)));
+	padding: 30px var(--blockCtnPadding_LR);
+	height: 350px;
+}
+
+#accountInfo_details .accountInfo_details_header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+#accountInfo_details .accountInfo_details_header .section_btn {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	opacity: 0.35;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+#accountInfo_details .accountInfo_details_header .section_btn.active, 
+#accountInfo_details .accountInfo_details_header .section_btn:hover {
+	opacity: 1;
+}
+
+#accountInfo_details .accountInfo_details_header .section_btn .feather {
+	margin-right: 15px;
+}
+
+#accountInfo_details .accountInfo_details_header .middle_dash {
+	height: 20px;
+	width: 2px;
+	background: #000;
+}
+
+
+#accountInfo_details .subSection_ctn .subSection {
+	display: none;
+}
+
+#accountInfo_details .subSection_ctn .subSection.active {
+	display: flex;
+}
+
+
