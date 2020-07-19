@@ -96,6 +96,16 @@ class Template {
 			$(this).parent().addClass('disable');
 		})
 	}
+
+	openElement(element, open_btn, close_btn, open_class, close_class){
+		$(open_btn).on('click', function(){
+			$(element).addClass(open_class).removeClass(close_class);
+		});
+
+		$(close_btn).on('click', function(){
+			$(element).removeClass(open_class).addClass(close_class);
+		});
+	}
 }
 
 const template = new Template();

@@ -32,7 +32,10 @@
 
 		<!-- TRANSFER -->
 		<link th:href="@{stylesheets/transfer_stylesheet.css}" rel="stylesheet"/>
+		<script type="text/javascript" th:src="@{scripts/transfer_script.js}"></script>
 
+		<!-- CONTACT -->
+		<link th:href="@{stylesheets/contact_stylesheet.css}" rel="stylesheet"/>
 
 <!-- REMOVE --> <link href="../static/stylesheets/template_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/main_stylesheet.css" rel="stylesheet"/>
@@ -43,23 +46,31 @@
 <!-- REMOVE  <link href="../static/stylesheets/myAccount_stylesheet.css" rel="stylesheet"/>	 -->
 <!-- REMOVE --> <link href="../static/stylesheets/profile_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/transfer_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/contact_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/main_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/login_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/signup_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/myAccount_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/profile_script.js"></script>
+<!-- REMOVE --> <script type="text/javascript" src="../static/scripts/transfer_script.js"></script>
 
 	</head>
 	<body>
 
-<!-- MAIN HEADER -->
-		<div class="main_alerts">
+<!-- MAIN ALERTS
+		<div class="main_alerts disable">
 			<div class="alert block_ctn" id="selectAlert">
+				<span class="alert_closeBtn btn circle b_white">
+					<svg class="feather f_black" style="display: none;">
+						<use th:href="@{/assets/icons/feather-sprite.svg#x}"/>
+					</svg>
+### REMOVE ### <img src="../static/assets/icons/feather/x.svg" class="feather"/>
+				</span>
 				<div class="input_ctn text_icon">
 					<svg class="feather f_black" style="display: none;">
 						<use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
 					</svg>
-<!-- REMOVE --> <img src="../static/assets/icons/feather/search.svg" class="feather"/>
+### REMOVE ### <img src="../static/assets/icons/feather/search.svg" class="feather"/>
 					<input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
 				</div>
 
@@ -67,53 +78,92 @@
 					<h1 class="resultSet_sectionTitle">Accounts</h1>
 					<div class="result_option">
 						<span class="option_icon">
-							<img src="../static/assets/icons/visa.svg" alt="visa_logo">
+### REMOVE ### <img src="../static/assets/icons/visa.svg" alt="visa_logo">
 						</span>
 						<div class="option_info">
 							<h2>BANK ACCOUNT - MORGAN STANLEY</h2>
 							<h3>**** **** **** 1234</h3>
 						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
 					</div>
 					<div class="result_option">
 						<span class="option_icon">
-							<img src="../static/assets/icons/buddy_account.png" alt="visa_logo">
+### REMOVE ### <img src="../static/assets/icons/buddy_account.png" alt="visa_logo">
 						</span>
 						<div class="option_info">
 							<h2>MY BUDDY ACCOUNT</h2>
 						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
 					</div>
 					<h1 class="resultSet_sectionTitle">Friends</h1>
 					<div class="result_option">
 						<span class="option_icon">
-							<img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="profile_pct">
+### REMOVE ### <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="profile_pct">
 						</span>
 						<div class="option_info">
 							<h2>Juanita EMARD</h2>
 							<h3>juanita.emard@email.com</h3>
 						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
 					</div>
 					<div class="result_option">
 						<span class="option_icon">
-							<img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
+### REMOVE ### <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
 						</span>
 						<div class="option_info">
 							<h2>Alexane COLLINS</h2>
 							<h3>alexane.collins@email.com</h3>
 						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
 					</div>
 					<div class="result_option">
 						<span class="option_icon">
-							<img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
+### REMOVE ### <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
 						</span>
 						<div class="option_info">
 							<h2>Ford BASHIRIAN</h2>
 							<h3>ford.bashirian@email.com</h3>
 						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
+					</div>
+					<div class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Alexane COLLINS</h2>
+							<h3>alexane.collins@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
+					</div>
+					<div class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Ford BASHIRIAN</h2>
+							<h3>ford.bashirian@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/check.svg" class="feather">
+						</span>
 					</div>
 				</div>
 			</div>
 		</div>
-
+-->
 
 
 
@@ -183,7 +233,7 @@
 					</div>
 					<div class="login_btns_ctn">
 						<a href="#" class="btn btn_label circle b_facebook">
-							<img class="feather" th:src="@{../static/assets/icons/facebook.svg}" style="display: none;">
+						<img class="feather" th:src="@{../static/assets/icons/facebook.svg}" style="display: none;">
 ### REMOVE ### <img class="feather" src="../static/assets/icons/facebook.svg">
 						</a>
 						<a href="#" class="btn btn_label circle b_twitter">
@@ -417,7 +467,7 @@
 			</section>
  -->
 
-<!-- TRANSFER -->
+<!-- TRANSFER
  			<section id="transfer_ctn" class="block_ctn">
 				<form>
 					<div class="input_ctn select">
@@ -435,7 +485,7 @@
 							<svg class="feather f_greyE1" style="display: none;">
 								<use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
 							</svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
+### REMOVE ### <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
 						</div>
 						<input type="text" name="from" id="from" class="disable">
 					</div>
@@ -454,7 +504,7 @@
 							<svg class="feather f_greyE1" style="display: none;">
 								<use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
 							</svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
+### REMOVE ### <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
 						</div>
 						<input type="text" name="to" id="to" class="disable">
 					</div>
@@ -483,8 +533,83 @@
 					</div>
 				</form>
  			</section>
+-->
 
+<!-- MAIN FOOTER
+			<div class="block_ctn" id="contact_ctn">
+				<div class="input_ctn text_icon">
+					<svg class="feather f_black" style="display: none;">
+						<use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
+					</svg>
+### REMOVE ### <img src="../static/assets/icons/feather/search.svg" class="feather"/>
+					<input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
+				</div>
 
+				<div class="resultSet_ctn">
+					<a href="#" class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Juanita EMARD</h2>
+							<h3>juanita.emard@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/user-minus.svg" class="feather">
+						</span>
+					</a>
+					<a href="#" class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Alexane COLLINS</h2>
+							<h3>alexane.collins@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/user-minus.svg" class="feather">
+						</span>
+					</a>
+					<a href="#" class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Ford BASHIRIAN</h2>
+							<h3>ford.bashirian@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/user-minus.svg" class="feather">
+						</span>
+					</a>
+					<a href="#" class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Alexane COLLINS</h2>
+							<h3>alexane.collins@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/user-minus.svg" class="feather">
+						</span>
+					</a>
+					<a href="#" class="result_option">
+						<span class="option_icon">
+### REMOVE ### <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Ford BASHIRIAN</h2>
+							<h3>ford.bashirian@email.com</h3>
+						</div>
+						<span class="option_btn">
+### REMOVE ### <img src="../static/assets/icons/feather/user-plus.svg" class="feather">
+						</span>
+					</a>
+				</div>
+			</div>
+
+-->
 		</main>
 
 <!-- MAIN FOOTER -->

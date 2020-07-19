@@ -1,0 +1,69 @@
+.main_content {
+    align-items: center;
+}
+
+#contact_ctn {
+    width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+    padding: 30px var(--blockCtnPadding_LR);
+    height: 500px;
+    position: relative;
+    padding-bottom: 0;
+}
+
+#contact_ctn .alert_closeBtn {
+    position: absolute;
+    top : -15px;
+    right: -15px;
+    z-index: 1001;
+    height: 40px;
+    width: 40px;
+    box-shadow: var(--shadow_lv2);
+}
+
+#contact_ctn .resultSet_ctn {
+    height: calc(100% - 65px);
+    overflow: scroll;
+}
+
+#contact_ctn .resultSet_ctn .result_option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 30px;
+    height: 45px;
+}
+
+#contact_ctn .resultSet_ctn .result_option .option_icon, #contact_ctn .resultSet_ctn .result_option .option_btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact_ctn .resultSet_ctn .result_option .option_icon img, #contact_ctn .resultSet_ctn .result_option .option_btn img {
+    width: 100%;
+}
+
+#contact_ctn .resultSet_ctn .result_option .option_info {
+    width: calc(100% - 80px - 60px);
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact_ctn .resultSet_ctn .result_option .option_info h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+#contact_ctn .resultSet_ctn .result_option .option_info h3 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--greyCA);
+}
