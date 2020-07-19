@@ -8,7 +8,6 @@
 	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
 	padding: 30px var(--blockCtnPadding_LR);
 	transform: scale(0.9);
-	position: relative;
 }
 
 #usrProfile_ctn .usrProfilePicture {
@@ -35,10 +34,4 @@
 #usrProfile_ctn .input_btn {
 	width: 250px;
 	margin-top: 30px;
-}
-
-.backBtn {
-	position: absolute;
-	top: 30px;
-	left: 30px;
 }

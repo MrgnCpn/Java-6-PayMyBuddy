@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
 body {
-	background: url('../assets/background.png') no-repeat;
-	background-position: center;
+	background: url('../assets/background.png') no-repeat center;
 	background-size: 100% auto;
 	flex-direction: column;
 	align-items: center;
@@ -19,7 +20,74 @@ body::before {
 	opacity: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+/* ALERT ---------------------------------------------------- */
+
+	.main_alerts {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.7);
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#selectAlert {
+		width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+		padding: 30px var(--blockCtnPadding_LR);
+	}
+
+	#selectAlert .resultSet_ctn h1.resultSet_sectionTitle {
+		font-size: 15px;
+		letter-spacing: 2px;
+		color: var(--greyCA);
+		margin-bottom: 20px;
+	}
+
+	#selectAlert .resultSet_ctn h1.resultSet_sectionTitle:not(#selectAlert .resultSet_ctn h1.resultSet_sectionTitle:nth-child(1)) {
+		margin-top: 40px;
+	}
+
+	#selectAlert .resultSet_ctn .result_option {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 20px 30px;
+	}
+
+	#selectAlert .resultSet_ctn .result_option .option_icon {
+		height: 40px;
+		width: 40px;
+		border-radius: 40px;
+		overflow: hidden;
+	}
+
+	#selectAlert .resultSet_ctn .result_option .option_icon img {
+		width: 100%;
+	}
+
+	#selectAlert .resultSet_ctn .result_option .option_info {
+		margin-left: 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	#selectAlert .resultSet_ctn .result_option .option_info h2 {
+		font-size: 15px;
+		letter-spacing: 2px;
+		margin-bottom: 5px;
+	}
+
+	#selectAlert .resultSet_ctn .result_option .option_info h3 {
+		font-size: 10px;
+		letter-spacing: 2px;
+		color: var(--greyCA);
+	}
 
 /* HEADER --------------------------------------------------- */
 	.main_header {
@@ -112,6 +180,8 @@ body::before {
 		align-items: center;
 		height: var(--mainFooterHeight);
 		width: calc(100% - 50px);
-		color: #CACACA;
+		color: var(--greyE1);
+		font-size: 12px;
 		padding: var(--mainPadding);
+		letter-spacing: 2px;
 	}

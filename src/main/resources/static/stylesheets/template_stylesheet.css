@@ -49,7 +49,7 @@ body {
 a {
 	cursor: pointer;
 	text-decoration: none;
-	color: #000;
+	color: #000000;
 }
 
 textarea, input {
@@ -340,7 +340,6 @@ input:disabled {
 
 		div.input_ctn {
 			display: flex;
-			margin-bottom: 45px;
 			width: 100%;
 		}
 
@@ -351,12 +350,21 @@ input:disabled {
 		div.input_ctn.text, div.input_ctn.radio, div.input_ctn.select {
 			flex-direction: column;
 			justify-content: flex-start;
+			margin-bottom: 45px;
 		}
 
-		div.input_ctn.chk {
+		div.input_ctn.chk, div.input_ctn.text_icon {
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
+		}
+
+		div.input_ctn.chk {
+			margin-bottom: 45px;
+		}
+
+		div.input_ctn.text_icon {
+			margin-bottom: 25px;
 		}
 
 		div.input_ctn.btns {
@@ -390,13 +398,11 @@ input:disabled {
 		}
 
 
-		/* TEXT ------------------------------------------------- */
+		/* TEXT / TEXTAREA --------------------------------------- */
 
-			div.input_ctn.text input.input_text {
+			div.input_ctn.text input.input_text, div.input_ctn.text textarea.input_textarea, div.input_ctn.text_icon input.input_text {
 				border: 1.5px solid var(--greyE1);
 				border-radius: 7px;
-				height: 45px;
-				padding: 0 15px;
 				letter-spacing: 2px;
 				font-size: 15px;
 				font-weight: normal;
@@ -404,6 +410,25 @@ input:disabled {
 
 			div.input_ctn.text input.input_text.center {
 				text-align: center;
+			}
+
+			div.input_ctn.text input.input_text, div.input_ctn.text_icon input.input_text {
+				height: 45px;
+				padding: 0 15px;
+			}
+
+			div.input_ctn.text textarea.input_textarea {
+				height: 100px;
+				padding: 15px;
+				resize: none;
+			}
+
+			div.input_ctn.text_icon .feather {
+				margin-right: 20px;
+			}
+
+			div.input_ctn.text_icon input.input_text  {
+				width: 100%;
 			}
 
 		/* CHECKBOX ------------------------------------------------- */
@@ -520,5 +545,6 @@ input:disabled {
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				right: 5px;
+				right: 10px;
+				height: 17px;
 			}

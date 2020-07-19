@@ -53,7 +53,7 @@ class Template {
 
 			if ($(form_selector).hasClass('disabled')) {
 				$(form_selector + ' input').each(function(){
-					$(this).attr('disabled', false)
+					$(this).attr('disabled', false);
 				})
 
 				$(form_selector + ' .input_select').each(function(){
@@ -61,17 +61,17 @@ class Template {
 				})
 
 				$(form_selector + ' .input_select span').each(function(){
-					$(this).toggleClass('c_greyE1').toggleClass('c_black')
+					$(this).toggleClass('c_greyE1').toggleClass('c_black');
 				})
 
 				$(form_selector + ' .input_select feather').each(function(){
-					$(this).toggleClass('f_greyE1').toggleClass('f_black')
+					$(this).toggleClass('f_greyE1').toggleClass('f_black');
 				})
 
-				$(form_selector).removeClass('disabled')
+				$(form_selector).removeClass('disabled');
 			} else {
 				$(form_selector + ' input').each(function(){
-					$(this).attr('disabled', true)
+					$(this).attr('disabled', true);
 				})
 
 				$(form_selector + ' .input_select').each(function(){
@@ -79,21 +79,21 @@ class Template {
 				})
 
 				$(form_selector + ' .input_select span').each(function(){
-					$(this).toggleClass('c_greyE1').toggleClass('c_black')
+					$(this).toggleClass('c_greyE1').toggleClass('c_black');
 				})
 
 				$(form_selector + ' .input_select feather').each(function(){
-					$(this).toggleClass('f_greyE1').toggleClass('f_black')
+					$(this).toggleClass('f_greyE1').toggleClass('f_black');
 				})
 
-				$(form_selector).addClass('disabled')
+				$(form_selector).addClass('disabled');
 			}
 
 			$(form_selector + ' .input_ctn.btns').each(function(){
-				$(this).removeClass('disable')
+				$(this).removeClass('disable');
 			})
 
-			$(this).parent().addClass('disable')
+			$(this).parent().addClass('disable');
 		})
 	}
 }

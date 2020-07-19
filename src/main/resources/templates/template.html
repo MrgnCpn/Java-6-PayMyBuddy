@@ -30,6 +30,9 @@
 		<link th:href="@{stylesheets/profile_stylesheet.css}" rel="stylesheet"/>
 		<script type="text/javascript" th:src="@{scripts/profile_script.js}"></script>
 
+		<!-- TRANSFER -->
+		<link th:href="@{stylesheets/transfer_stylesheet.css}" rel="stylesheet"/>
+
 
 <!-- REMOVE --> <link href="../static/stylesheets/template_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/main_stylesheet.css" rel="stylesheet"/>
@@ -38,7 +41,8 @@
 <!-- REMOVE --> <link href="../static/stylesheets/passwordCheck_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/changePassword_stylesheet.css" rel="stylesheet"/>	
 <!-- REMOVE  <link href="../static/stylesheets/myAccount_stylesheet.css" rel="stylesheet"/>	 -->
-<!-- REMOVE --> <link href="../static/stylesheets/profile_stylesheet.css" rel="stylesheet"/>	
+<!-- REMOVE --> <link href="../static/stylesheets/profile_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/transfer_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/main_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/login_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/signup_script.js"></script>
@@ -47,6 +51,74 @@
 
 	</head>
 	<body>
+
+<!-- MAIN HEADER -->
+		<div class="main_alerts">
+			<div class="alert block_ctn" id="selectAlert">
+				<div class="input_ctn text_icon">
+					<svg class="feather f_black" style="display: none;">
+						<use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
+					</svg>
+<!-- REMOVE --> <img src="../static/assets/icons/feather/search.svg" class="feather"/>
+					<input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
+				</div>
+
+				<div class="resultSet_ctn">
+					<h1 class="resultSet_sectionTitle">Accounts</h1>
+					<div class="result_option">
+						<span class="option_icon">
+							<img src="../static/assets/icons/visa.svg" alt="visa_logo">
+						</span>
+						<div class="option_info">
+							<h2>BANK ACCOUNT - MORGAN STANLEY</h2>
+							<h3>**** **** **** 1234</h3>
+						</div>
+					</div>
+					<div class="result_option">
+						<span class="option_icon">
+							<img src="../static/assets/icons/buddy_account.png" alt="visa_logo">
+						</span>
+						<div class="option_info">
+							<h2>MY BUDDY ACCOUNT</h2>
+						</div>
+					</div>
+					<h1 class="resultSet_sectionTitle">Friends</h1>
+					<div class="result_option">
+						<span class="option_icon">
+							<img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Juanita EMARD</h2>
+							<h3>juanita.emard@email.com</h3>
+						</div>
+					</div>
+					<div class="result_option">
+						<span class="option_icon">
+							<img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Alexane COLLINS</h2>
+							<h3>alexane.collins@email.com</h3>
+						</div>
+					</div>
+					<div class="result_option">
+						<span class="option_icon">
+							<img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
+						</span>
+						<div class="option_info">
+							<h2>Ford BASHIRIAN</h2>
+							<h3>ford.bashirian@email.com</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+<!-- MAIN HEADER -->
 		<header class="main_header">
 			<a href="#" class="logo">
 				<img th:src="@{/assets/logo.svg}" style="display: none;">
@@ -62,12 +134,21 @@
 				</div>
 			</a>
 		</header>
+
+
+
+<!-- MAIN NAV -->
 		<nav class="main_nav">
 			<a href="#" class="main_nav_element selected">My account</a>
-			<a href="#" class="main_nav_element">Transfert</a>
+			<a href="#" class="main_nav_element">Transfer</a>
 			<a href="#" class="main_nav_element">Profile</a>
 			<a href="#" class="main_nav_element">Contact</a>
 		</nav>
+
+
+
+
+<!-- MAIN CONTENT -->
 		<main class="main_content">
 <!-- LOGIN		
 			<section id="login_ctn" class="block_ctn">
@@ -120,7 +201,7 @@
 					</div>
 				</div>
 			</section>
-LOGIN -->
+ -->
 			
 <!-- SIGN UP
 			<section id="signup_ctn" class="block_ctn">
@@ -273,15 +354,8 @@ LOGIN -->
 			</section>
 -->
 
-<!-- PROFILE -->
-
+<!-- PROFILE
 			<section id="usrProfile_ctn" class="block_ctn">
-				<a href="#" class="backBtn">
-					<svg class="feather f_black" style="display: none;">
-						<use th:href="@{/assets/icons/feather-sprite.svg#chevron-left.svg}"/>
-					</svg>
-<!-- REMOVE --> <img class="feather" src="../static/assets/icons/feather/chevron-left.svg">
-				</a>
 				<div class="usrProfilePicture">
 					<img src="../static/assets/profilePicture/jack-finnigan-rriAI0nhcbc-unsplash.jpg">
 				</div>
@@ -321,18 +395,16 @@ LOGIN -->
 						</div>
 					</div>
 					<div class="input_ctn select">
-							<label for="country" class="input_label">Country</label>
-							<div class="input_select disabled">
-								<span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
-								<svg class="feather f_greyE1" style="display: none;">
-									<use th:href="@{/assets/icons/feather-sprite.svg#chevron-down.svg}"/>
-								</svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/chevron-down.svg">
-							</div>
-							<input type="text" name="country" id="country" class="disable">
+						<label for="country" class="input_label">Country</label>
+						<div class="input_select disabled">
+							<span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
+							<svg class="feather f_greyE1" style="display: none;">
+								<use th:href="@{/assets/icons/feather-sprite.svg#chevron-down.svg}"/>
+							</svg>
+### REMOVE ### <img class="feather f_greyE1" src="../static/assets/icons/feather/chevron-down.svg">
 						</div>
-
-
+						<input type="text" name="country" id="country" class="disable">
+					</div>
 					<div class="input_ctn btns disable">
 						<input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
 						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Update profile">
@@ -343,8 +415,79 @@ LOGIN -->
 					</div>
 				</form>
 			</section>
+ -->
+
+<!-- TRANSFER -->
+ 			<section id="transfer_ctn" class="block_ctn">
+				<form>
+					<div class="input_ctn select">
+						<label for="from" class="input_label">FROM</label>
+						<div class="input_select">
+							<div class="selected_option">
+								<span class="option_icon">
+									<img src="../static/assets/icons/visa.svg" alt="visa_logo">
+								</span>
+								<div class="option_info">
+									<h2>BANK ACCOUNT - MORGAN STANLEY</h2>
+									<h3>**** **** **** 1234</h3>
+								</div>
+							</div>
+							<svg class="feather f_greyE1" style="display: none;">
+								<use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
+							</svg>
+<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
+						</div>
+						<input type="text" name="from" id="from" class="disable">
+					</div>
+					<div class="input_ctn select">
+						<label for="to" class="input_label">TO</label>
+						<div class="input_select">
+							<div class="selected_option">
+								<span class="option_icon">
+									<img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="visa_logo">
+								</span>
+								<div class="option_info">
+									<h2>Juanita EMARD</h2>
+									<h3>juanita.emard@email.com</h3>
+								</div>
+							</div>
+							<svg class="feather f_greyE1" style="display: none;">
+								<use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
+							</svg>
+<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
+						</div>
+						<input type="text" name="to" id="to" class="disable">
+					</div>
+					<div class="comp_input_ctn">
+						<div class="input_ctn text">
+							<label for="amount" class="input_label">Amount</label>
+							<input type="text" name="amount" id="amount" placeholder="0.00" class="input_text">
+						</div>
+						<div class="input_ctn radio">
+							<label for="currency" class="input_label c_white">Currency</label>
+							<input type="text" name="currency" id="currency" class="disable">
+							<div class="input_radio_ctn">
+								<span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
+								<span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
+							</div>
+						</div>
+					</div>
+					<div class="input_ctn text">
+						<label for="description" class="input_label">Description</label>
+						<textarea type="text" name="description" id="description" placeholder="Descritpion ..." class="input_textarea"></textarea>
+					</div>
+					<div class="input_ctn btns">
+						<input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Validate with password">
+					</div>
+				</form>
+ 			</section>
+
 
 		</main>
+
+<!-- MAIN FOOTER -->
 		<footer class="main_footer">© PayMyBuddy - 2020</footer>
 	</body>
 </html>

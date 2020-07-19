@@ -65,6 +65,7 @@
             type CHAR(1) NOT NULL,
             ammount DOUBLE(10, 2) NOT NULL,
             currency CHAR(3),
+            date TIMESTAMP,
             CONSTRAINT FK_userId_id_buddyAccount FOREIGN KEY (user_id) REFERENCES users(id)
         ) ENGINE=INNODB
         AUTO_INCREMENT=0;
