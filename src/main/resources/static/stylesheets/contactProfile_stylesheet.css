@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
+.main_content {
+    align-items: center;
+}
+
+#contactProfile_ctn {
+    width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+    padding: 30px var(--blockCtnPadding_LR);
+    transform: scale(0.9);
+    position: relative;
+}
+
+#contactProfile_ctn .backBtn {
+    position: absolute;
+    top : -15px;
+    left : -15px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    box-shadow: var(--shadow_lv2);
+}
+
+#contactProfile_ctn .contactProfilePicture {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: var(--shadow_lv2);
+}
+
+#contactProfile_ctn .contactProfilePicture img {
+    width: 100%;
+}
+
+#contactProfile_ctn .contact_info_ctn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+#contactProfile_ctn .contact_info_ctn .contact_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#contactProfile_ctn .contact_info_ctn .contact_info .label {
+    width: 30%;
+    padding: 0 15px;
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--grey96);
+    letter-spacing: 3px;
+    font-size: 10px;
+}
+
+#contactProfile_ctn .contact_info_ctn .contact_info .info {
+    width: 70%;
+    padding: 0 15px;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+#contactProfile_ctn .input_btn {
+    width: 250px;
+    margin-top: 50px;
+}

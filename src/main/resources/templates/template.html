@@ -37,6 +37,9 @@
 		<!-- CONTACT -->
 		<link th:href="@{stylesheets/contact_stylesheet.css}" rel="stylesheet"/>
 
+		<!-- CONTACT PROFILE -->
+		<link th:href="@{stylesheets/contactProfile_stylesheet.css}" rel="stylesheet"/>
+
 <!-- REMOVE --> <link href="../static/stylesheets/template_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/main_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/login_stylesheet.css" rel="stylesheet"/>
@@ -47,6 +50,7 @@
 <!-- REMOVE --> <link href="../static/stylesheets/profile_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/transfer_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <link href="../static/stylesheets/contact_stylesheet.css" rel="stylesheet"/>
+<!-- REMOVE --> <link href="../static/stylesheets/contactProfile_stylesheet.css" rel="stylesheet"/>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/main_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/login_script.js"></script>
 <!-- REMOVE --> <script type="text/javascript" src="../static/scripts/signup_script.js"></script>
@@ -610,6 +614,51 @@
 			</div>
 
 -->
+
+<!-- CONTACT PROFILE -->
+			<section id="contactProfile_ctn" class="block_ctn">
+				<span class="backBtn btn circle b_white">
+					<svg class="feather f_black" style="display: none;">
+						<use th:href="@{/assets/icons/feather-sprite.svg#chevron-left}"/>
+					</svg>
+<!-- REMOVE --> <img src="../static/assets/icons/feather/chevron-left.svg" class="feather"/>
+				</span>
+				<div class="contactProfilePicture">
+<!-- REMOVE --> <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg">
+				</div>
+				<div class="contact_info_ctn">
+					<div class="contact_info">
+						<span class="label">Firstname</span>
+						<p class="info">Juanita</p>
+					</div>
+					<div class="contact_info">
+						<span class="label">lastname</span>
+						<p class="info">EMARD</p>
+					</div>
+					<div class="contact_info">
+						<span class="label">Email</span>
+						<p class="info">juanita.emard@email.com</p>
+					</div>
+					<div class="contact_info">
+						<span class="label">Phone</span>
+						<p class="info">+001 0123456789</p>
+					</div>
+					<div class="contact_info">
+						<span class="label">Age</span>
+						<p class="info">01 / 01 / 2000 (20 y)</p>
+					</div>
+					<div class="contact_info">
+						<span class="label">Country</span>
+						<p class="info">United Kingdom (GBR)</p>
+					</div>
+				</div>
+				<div class="input_ctn btns">
+					<a href="#" class="input_btn btn btn_label round b_red c_white">Remove from friends</a>
+					<a href="#" class="input_btn btn btn_label round b_blue c_white">Do transfer</a>
+				</div>
+			</section>
+
+
 		</main>
 
 <!-- MAIN FOOTER -->
