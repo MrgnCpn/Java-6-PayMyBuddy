@@ -1,0 +1,64 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <section th:fragment="profile" id="usrProfile_ctn" class="block_ctn">
+        <div class="usrProfilePicture">
+            <img src="../static/assets/profilePicture/jack-finnigan-rriAI0nhcbc-unsplash.jpg">
+        </div>
+        <form class="form disabled" id="usrProfileForm" method="POST">
+            <div class="comp_input_ctn">
+                <div class="input_ctn text">
+                    <label for="firstname" class="input_label">Firstname</label>
+                    <input type="text" name="firstname" id="firstname" value="John" class="input_text" disabled="true">
+                </div>
+                <div class="input_ctn text">
+                    <label for="lastname" class="input_label">Lastname</label>
+                    <input type="text" name="lastname" id="lastname" value="Smith" class="input_text" disabled="true">
+                </div>
+            </div>
+            <div class="input_ctn text">
+                <label for="email" class="input_label">Email</label>
+                <input type="text" name="email" id="email" value="john.smith@email.com" class="input_text" disabled="true">
+            </div>
+            <div class="input_ctn text">
+                <label for="phone" class="input_label">Phone</label>
+                <input type="text" name="phone" id="phone" value="+1 555 - 123 - 456" class="input_text" disabled="true">
+            </div>
+            <div class="comp_input_ctn">
+                <div class="input_ctn text">
+                    <label for="age_day" class="input_label">Age</label>
+                    <input type="text" name="age_day" id="age_day" value="01" class="input_text center" disabled="true">
+                </div>
+                <span class="dash">/</span>
+                <div class="input_ctn text">
+                    <label for="age_month" class="input_label c_white">Age</label>
+                    <input type="text" name="age_month" id="age_month" value="01" class="input_text center" disabled="true">
+                </div>
+                <span class="dash">/</span>
+                <div class="input_ctn text">
+                    <label for="age_year" class="input_label c_white">Age</label>
+                    <input type="text" name="age_year" id="age_year" value="2020" class="input_text center" disabled="true">
+                </div>
+            </div>
+            <div class="input_ctn select">
+                <label for="country" class="input_label">Country</label>
+                <div class="input_select disabled">
+                    <span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
+                    <svg class="feather f_greyE1" style="display: none;">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#chevron-down.svg}"/>
+                    </svg>
+<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/chevron-down.svg">
+                </div>
+                <input type="text" name="country" id="country" class="disable">
+            </div>
+            <div class="input_ctn btns disable">
+                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Update profile">
+            </div>
+            <div class="input_ctn btns">
+                <span id="input_btn_edit" class="input_btn btn btn_label round b_blue c_white">Edit</span>
+                <a href="#" class="input_btn btn btn_label round b_green c_white">Change password</a>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

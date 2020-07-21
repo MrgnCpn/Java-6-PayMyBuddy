@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <section th:fragment="login" id="login_ctn" class="block_ctn">
+        <h1 class="title_ctn">Login</h1>
+        <form class="form" action="#" method="POST">
+            <div class="input_ctn text">
+                <label for="email" class="input_label">Username</label>
+                <input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
+            </div>
+            <div class="input_ctn text">
+                <label for="password" class="input_label">Password</label>
+                <input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
+                <a href="#" class="input_link">Forgot password ?</a>
+            </div>
+            <div class="input_ctn chk">
+                <input type="checkbox" name="remember" id="input_chk_field" class="disable" value="on">
+                <div class="input_chk on" id="input_chk_btn"><span>O</span><span>I</span><span class="chk_btn"></span></div>
+                <label class="label_chk">Remember me</label>
+            </div>
+            <div class="input_ctn btns">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_blueApp c_white" value="login">
+            </div>
+            <div class="input_ctn centerText">
+                <p>Don't have an account ? <a href="#" class="c_purpleApp">Create Now</a></p>
+            </div>
+        </form>
+        <div class="otherLoginsCtn">
+            <div class="title">
+                <span class="dash"></span>
+                <span class="label">Or login with</span>
+                <span class="dash"></span>
+            </div>
+            <div class="login_btns_ctn">
+                <a href="#" class="btn btn_label circle b_facebook">
+                    <img class="feather" th:src="@{../static/assets/icons/facebook.svg}" style="display: none;">
+<!-- REMOVE --> <img class="feather" src="../static/assets/icons/facebook.svg">
+                </a>
+                <a href="#" class="btn btn_label circle b_twitter">
+                    <img class="feather" th:src="@{../static/assets/icons/twitter.svg}" style="display: none;">
+<!-- REMOVE --> <img class="feather" src="../static/assets/icons/twitter.svg">
+                </a>
+                <a href="#" class="btn btn_label circle b_white">
+                    <img class="feather" th:src="@{../static/assets/icons/google.svg}" style="display: none;">
+<!-- REMOVE --> <img class="feather" src="../static/assets/icons/google.svg">
+                </a>
+                <a href="#" class="btn btn_label circle b_black">
+                    <img class="feather" th:src="@{../static/assets/icons/apple.svg}" style="display: none;">
+<!-- REMOVE --> <img class="feather" src="../static/assets/icons/apple.svg">
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

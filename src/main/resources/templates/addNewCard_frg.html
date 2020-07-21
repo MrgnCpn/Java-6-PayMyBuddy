@@ -1,0 +1,67 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <section id="addBankAccount_ctn" class="block_ctn">
+        <h1 class="title_ctn">Add new credit card</h1>
+        <form class="form" action="#" method="POST">
+            <div id="bankCardLayer">
+<!-- REMOVE --> <img src="../static/assets/icons/mastercard_lib.svg" class="bankCardLayer_img mastercard_img"/>
+<!-- REMOVE --> <img src="../static/assets/icons/visa.svg" class="bankCardLayer_img visa_img disable"/>
+                <div class="bankCardLayer_nbr_ctn">
+                    <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_1">****</span>
+                    <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_2">****</span>
+                    <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_3">****</span>
+                    <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_4">1234</span>
+                </div>
+                <div class="bankCardLayer_info">
+                    <span id="bankCardLayer_lib">Card - Morgan Stanley</span>
+                    <span id="bankCardLayer_date">01/20</span>
+                </div>
+            </div>
+            <div class="input_ctn text">
+                <label for="account_wording" class="input_label">Card wording</label>
+                <input type="text" name="account_wording" id="account_wording" placeholder="My Bank Account" class="input_text">
+            </div>
+            <div class="comp_input_ctn">
+                <div class="input_ctn text">
+                    <label for="cardNumber_1" class="input_label">Number</label>
+                    <input type="text" name="cardNumber_1" id="cardNumber_1" placeholder="0000" class="input_text center" maxlength="4">
+                </div>
+                <div class="input_ctn text">
+                    <label for="cardNumber_2" class="input_label c_white">C2</label>
+                    <input type="text" name="cardNumber_2" id="cardNumber_2" placeholder="0000" class="input_text center" maxlength="4">
+                </div>
+                <div class="input_ctn text">
+                    <label for="cardNumber_3" class="input_label c_white">C3</label>
+                    <input type="text" name="cardNumber_3" id="cardNumber_3" placeholder="0000" class="input_text center" maxlength="4">
+                </div>
+                <div class="input_ctn text">
+                    <label for="cardNumber_4" class="input_label c_white">C4</label>
+                    <input type="text" name="cardNumber_4" id="cardNumber_4" placeholder="0000" class="input_text center" maxlength="4">
+                </div>
+            </div>
+            <div class="comp_input_ctn">
+                <div class="input_ctn text">
+                    <label for="date" class="input_label">Date</label>
+                    <input type="text" name="date" id="date" placeholder="01/20" class="input_text center" maxlength="5">
+                </div>
+                <div class="input_ctn radio">
+                    <label for="card_type" class="input_label">Type</label>
+                    <input type="text" name="card_type" id="card_type" class="disable">
+                    <div class="input_radio_ctn">
+                                        <span class="typeCardRadio btn c_white radio_btn selected" data-value="mastercard">
+<!-- REMOVE --> <img src="../static/assets/icons/mastercard_simply.svg"/>
+                                        </span>
+                        <span class="typeCardRadio btn c_white radio_btn" data-value="visa">
+<!-- REMOVE --> <img src="../static/assets/icons/visa.svg"/>
+                                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="input_ctn btns">
+                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Add credit card">
+            </div>
+        </form>
+    </section>
+</body>
+</html>

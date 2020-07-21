@@ -7,7 +7,7 @@
 -- CREATE Tables
     DROP TABLE IF EXISTS users;
     DROP TABLE IF EXISTS transactions;
-    DROP TABLE IF EXISTS bankAccount;
+    DROP TABLE IF EXISTS creditCard;
     DROP TABLE IF EXISTS buddyAccount;
 
     -- Users Table
@@ -43,17 +43,14 @@
         ENGINE=INNODB
         AUTO_INCREMENT=0;
 
-    -- BankAccount Table
-        CREATE TABLE bankAccount (
+    -- CreditCard Table
+        CREATE TABLE creditCard (
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
             type CHAR(1) NOT NULL,
             card_number LONG,
-            card_cryptogramme INT(3),
-            iban VARCHAR(34),
-            bic VARCHAR(11),
             wording VARCHAR(150),
-            CONSTRAINT FK_userId_id_bankAccount FOREIGN KEY (user_id) REFERENCES users(id)
+            CONSTRAINT FK_userId_id_creditCard FOREIGN KEY (user_id) REFERENCES users(id)
         )
         ENGINE=INNODB
         AUTO_INCREMENT=0;
@@ -90,7 +87,7 @@
         -- INSERT
     UNLOCK TABLES;
 
-    LOCK TABLES bankAccount WRITE;
+    LOCK TABLES creditCard WRITE;
         -- INSERT
     UNLOCK TABLES;
 

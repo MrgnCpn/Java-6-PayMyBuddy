@@ -1,0 +1,34 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <section th:fragment="accountInfo" id="accountInfo">
+        <h3 class="c_greyE1">Account Balance</h3>
+        <h1>€ 1,223.00</h1>
+        <div id="feedAccount_btn" class="btn round b_blue c_white">Feed Account</div>
+    </section>
+    <section th:fragment="accountDetails" id="accountInfo_details" class="block_ctn">
+        <header class="accountInfo_details_header">
+            <div class="section_btn active" data-targetID="historyInfoSection">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#clock}"/>
+                </svg>
+                <p>History</p>
+            </div>
+            <span class="middle_dash"></span>
+            <div class="section_btn" data-targetID="charInfoSection">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#bar-chart-2}"/>
+                </svg>
+                <p>Chart</p>
+            </div>
+        </header>
+        <div class="subSection_ctn">
+            <div id="historyInfoSection" class="subSection active">
+                HISTORY
+            </div>
+            <div id="charInfoSection" class="subSection">
+                CHARTS
+            </div>
+        </div>
+    </section>
+</body>
+</html>
