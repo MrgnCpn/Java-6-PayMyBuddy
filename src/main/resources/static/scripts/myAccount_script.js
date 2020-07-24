@@ -5,5 +5,5 @@ $(() => {
 					   'active'
 	);
 
-	$('#accountInfo_details').css('height', $('.main_content').outerHeight() - $('#accountInfo').outerHeight(true) + 'px');
+	$('#accountInfo_details').css('height', $('.main_content').outerHeight(true) - $('#accountInfo').outerHeight(true) - 100 + 'px');
 })

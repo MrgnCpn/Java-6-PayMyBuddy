@@ -7,7 +7,6 @@
 #usrProfile_ctn {
 	width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
 	padding: 30px var(--blockCtnPadding_LR);
-	transform: scale(0.9);
 }
 
 #usrProfile_ctn .usrProfilePicture {
@@ -31,7 +30,14 @@
 	margin-top: 60px;
 }
 
+#usrProfile_ctn .form  div.input_ctn {
+	margin-bottom: 30px;
+}
+
+#usrProfile_ctn .form  div.input_ctn.btns {
+	margin-bottom: 0;
+}
+
 #usrProfile_ctn .input_btn {
 	width: 250px;
-	margin-top: 30px;
 }

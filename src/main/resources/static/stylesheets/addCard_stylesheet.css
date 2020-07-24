@@ -4,13 +4,12 @@
     align-items: center;
 }
 
-#addBankAccount_ctn {
+#addCard_ctn {
     width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
     padding: 30px var(--blockCtnPadding_LR);
-    transform: scale(0.9);
 }
 
-#addBankAccount_ctn .form {
+#addCard_ctn .form {
     width: 75%;
     margin-top: 60px;
 }
@@ -76,4 +75,8 @@
     font-size: 12px;
     letter-spacing: 2px;
     justify-content: space-between;
+}
+
+#addCard_ctn .form .input_ctn.btns .input_btn {
+    width: 250px;
 }

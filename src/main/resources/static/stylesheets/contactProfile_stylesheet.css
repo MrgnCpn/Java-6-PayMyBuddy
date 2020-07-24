@@ -7,7 +7,6 @@
 #contactProfile_ctn {
     width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
     padding: 30px var(--blockCtnPadding_LR);
-    transform: scale(0.9);
     position: relative;
 }
 

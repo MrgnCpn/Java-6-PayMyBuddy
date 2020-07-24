@@ -6,18 +6,17 @@
                 <label for="from" class="input_label">FROM</label>
                 <div class="input_select">
                     <div class="selected_option">
-                                    <span class="option_icon">
-                                        <img src="../static/assets/icons/visa.svg" alt="visa_logo">
-                                    </span>
+                        <span class="option_icon">
+                            <img th:src="@{assets/icons/visa.svg}" alt="myCard_logo">
+                        </span>
                         <div class="option_info">
                             <h2>BANK ACCOUNT - MORGAN STANLEY</h2>
                             <h3>**** **** **** 1234</h3>
                         </div>
                     </div>
-                    <svg class="feather f_greyE1" style="display: none;">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
+                    <svg class="feather f_greyE1">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
                     </svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
                 </div>
                 <input type="text" name="from" id="from" class="disable">
             </div>
@@ -25,18 +24,17 @@
                 <label for="to" class="input_label">TO</label>
                 <div class="input_select">
                     <div class="selected_option">
-                                    <span class="option_icon">
-                                        <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="visa_logo">
-                                    </span>
+                        <span class="option_icon">
+                            <img th:src="@{assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
+                        </span>
                         <div class="option_info">
                             <h2>Juanita EMARD</h2>
                             <h3>juanita.emard@email.com</h3>
                         </div>
                     </div>
-                    <svg class="feather f_greyE1" style="display: none;">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3.svg}"/>
+                    <svg class="feather f_greyE1">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
                     </svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/edit-3.svg">
                 </div>
                 <input type="text" name="to" id="to" class="disable">
             </div>
@@ -61,113 +59,123 @@
                 <textarea type="text" name="description" id="description" placeholder="Descritpion ..." class="input_textarea"></textarea>
             </div>
             <div class="input_ctn btns">
-                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Validate with password">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Validate with password">
             </div>
         </form>
     </section>
 
-    <div th:fragment="tranfer_alert" class="main_alerts disable">
-        <div class="alert block_ctn" id="selectAlert">
-				<span class="alert_closeBtn btn circle b_white">
-					<svg class="feather f_black" style="display: none;">
-						<use th:href="@{/assets/icons/feather-sprite.svg#x}"/>
-					</svg>
-                    <!-- REMOVE --> <img src="../static/assets/icons/feather/x.svg" class="feather"/>
-				</span>
-            <div class="input_ctn text_icon">
-                <svg class="feather f_black" style="display: none;">
-                    <use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
+    <div th:fragment="tranferAlert" class="alert block_ctn" id="selectAlert">
+            <span class="alert_closeBtn btn circle b_white">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#x}"/>
                 </svg>
-                <!-- REMOVE --> <img src="../static/assets/icons/feather/search.svg" class="feather"/>
-                <input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
-            </div>
+            </span>
+        <div class="input_ctn text_icon">
+            <svg class="feather f_black">
+                <use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
+            </svg>
+            <input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
+        </div>
 
-            <div class="resultSet_ctn">
-                <h1 class="resultSet_sectionTitle">Accounts</h1>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/icons/visa.svg" alt="visa_logo">
-						</span>
-                    <div class="option_info">
-                        <h2>BANK ACCOUNT - MORGAN STANLEY</h2>
-                        <h3>**** **** **** 1234</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+        <div class="resultSet_ctn">
+            <h1 class="resultSet_sectionTitle">Accounts</h1>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/icons/visa.svg}" alt="visa_logo">
+                    </span>
+                <div class="option_info">
+                    <h2>BANK ACCOUNT - MORGAN STANLEY</h2>
+                    <h3>**** **** **** 1234</h3>
                 </div>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/icons/buddy_account.png" alt="visa_logo">
-						</span>
-                    <div class="option_info">
-                        <h2>MY BUDDY ACCOUNT</h2>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/icons/buddy_account.png}" alt="buddyAccount_logo">
+                    </span>
+                <div class="option_info">
+                    <h2>MY BUDDY ACCOUNT</h2>
                 </div>
-                <h1 class="resultSet_sectionTitle">Friends</h1>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg" alt="profile_pct">
-						</span>
-                    <div class="option_info">
-                        <h2>Juanita EMARD</h2>
-                        <h3>juanita.emard@email.com</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <h1 class="resultSet_sectionTitle">Friends</h1>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
+                    </span>
+                <div class="option_info">
+                    <h2>Juanita EMARD</h2>
+                    <h3>juanita.emard@email.com</h3>
                 </div>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
-						</span>
-                    <div class="option_info">
-                        <h2>Alexane COLLINS</h2>
-                        <h3>alexane.collins@email.com</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
+                    </span>
+                <div class="option_info">
+                    <h2>Alexane COLLINS</h2>
+                    <h3>alexane.collins@email.com</h3>
                 </div>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
-						</span>
-                    <div class="option_info">
-                        <h2>Ford BASHIRIAN</h2>
-                        <h3>ford.bashirian@email.com</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
+                    </span>
+                <div class="option_info">
+                    <h2>Ford BASHIRIAN</h2>
+                    <h3>ford.bashirian@email.com</h3>
                 </div>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="profile_pct">
-						</span>
-                    <div class="option_info">
-                        <h2>Alexane COLLINS</h2>
-                        <h3>alexane.collins@email.com</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
+                    </span>
+                <div class="option_info">
+                    <h2>Alexane COLLINS</h2>
+                    <h3>alexane.collins@email.com</h3>
                 </div>
-                <div class="result_option">
-						<span class="option_icon">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/ap-x-90-At__EKm5PGE-unsplash.jpg" alt="profile_pct">
-						</span>
-                    <div class="option_info">
-                        <h2>Ford BASHIRIAN</h2>
-                        <h3>ford.bashirian@email.com</h3>
-                    </div>
-                    <span class="option_btn">
-<!-- REMOVE --> <img src="../static/assets/icons/feather/check.svg" class="feather">
-						</span>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
+                    </span>
+                <div class="option_info">
+                    <h2>Ford BASHIRIAN</h2>
+                    <h3>ford.bashirian@email.com</h3>
                 </div>
+                <span class="option_btn">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#check}"/>
+                    </svg>
+                </span>
             </div>
         </div>
     </div>

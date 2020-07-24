@@ -2,8 +2,11 @@
 <body>
     <section th:fragment="accountInfo" id="accountInfo">
         <h3 class="c_greyE1">Account Balance</h3>
-        <h1>€ 1,223.00</h1>
-        <div id="feedAccount_btn" class="btn round b_blue c_white">Feed Account</div>
+        <h1 class="account_balance c_green">+ 1,223.00 €</h1>
+        <div class="account_btns">
+            <a th:href="@{/transfer}" class="btn btn_label round btn_anim b_grey69 c_white">Feed Account</a>
+            <a th:href="@{/account/manageCards/addNewCard}" class="btn btn_label btn_anim round b_black c_white">Manage your cards</a>
+        </div>
     </section>
     <section th:fragment="accountDetails" id="accountInfo_details" class="block_ctn">
         <header class="accountInfo_details_header">

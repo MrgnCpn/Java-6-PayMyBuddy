@@ -14,14 +14,14 @@
 	margin-top: 30px;
 }
 
-div.input_ctn {
-	margin-bottom: 25px;
+#signup_ctn .form  div.input_ctn {
+	margin-bottom: 30px;
 }
 
-div.input_ctn label.input_label {
+#signup_ctn .form  div.input_ctn label.input_label {
 	margin-bottom: 10px;
 }
 
-div.comp_input_ctn {
+#signup_ctn .form  div.comp_input_ctn {
 	align-items: center;
 }

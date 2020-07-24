@@ -1,11 +1,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-    <section id="addBankAccount_ctn" class="block_ctn">
+    <section th:fragment="addNewCard" id="addCard_ctn" class="block_ctn">
         <h1 class="title_ctn">Add new credit card</h1>
         <form class="form" action="#" method="POST">
             <div id="bankCardLayer">
-<!-- REMOVE --> <img src="../static/assets/icons/mastercard_lib.svg" class="bankCardLayer_img mastercard_img"/>
-<!-- REMOVE --> <img src="../static/assets/icons/visa.svg" class="bankCardLayer_img visa_img disable"/>
+                <img th:src="@{/assets/icons/mastercard_simply.svg}" class="bankCardLayer_img mastercard_img"/>
+                <img th:src="@{/assets/icons/visa.svg}" class="bankCardLayer_img visa_img disable"/>
                 <div class="bankCardLayer_nbr_ctn">
                     <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_1">****</span>
                     <span class="bankCardLayer_nbr" id="bankCardLayer_nbr_2">****</span>
@@ -48,18 +48,18 @@
                     <label for="card_type" class="input_label">Type</label>
                     <input type="text" name="card_type" id="card_type" class="disable">
                     <div class="input_radio_ctn">
-                                        <span class="typeCardRadio btn c_white radio_btn selected" data-value="mastercard">
-<!-- REMOVE --> <img src="../static/assets/icons/mastercard_simply.svg"/>
-                                        </span>
+                        <span class="typeCardRadio btn c_white radio_btn selected" data-value="mastercard">
+                            <img th:src="@{/assets/icons/mastercard_simply.svg}"/>
+                        </span>
                         <span class="typeCardRadio btn c_white radio_btn" data-value="visa">
-<!-- REMOVE --> <img src="../static/assets/icons/visa.svg"/>
-                                        </span>
+                            <img th:src="@{/assets/icons/visa.svg}"/>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="input_ctn btns">
-                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
-                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Add credit card">
+                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label btn_anim round b_red c_white" value="Cancel">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Add credit card">
             </div>
         </form>
     </section>

@@ -2,7 +2,7 @@
 <body>
     <section th:fragment="profile" id="usrProfile_ctn" class="block_ctn">
         <div class="usrProfilePicture">
-            <img src="../static/assets/profilePicture/jack-finnigan-rriAI0nhcbc-unsplash.jpg">
+            <img th:src="@{assets/profilePicture/john_smith.jpg}">
         </div>
         <form class="form disabled" id="usrProfileForm" method="POST">
             <div class="comp_input_ctn">
@@ -28,12 +28,10 @@
                     <label for="age_day" class="input_label">Age</label>
                     <input type="text" name="age_day" id="age_day" value="01" class="input_text center" disabled="true">
                 </div>
-                <span class="dash">/</span>
                 <div class="input_ctn text">
                     <label for="age_month" class="input_label c_white">Age</label>
                     <input type="text" name="age_month" id="age_month" value="01" class="input_text center" disabled="true">
                 </div>
-                <span class="dash">/</span>
                 <div class="input_ctn text">
                     <label for="age_year" class="input_label c_white">Age</label>
                     <input type="text" name="age_year" id="age_year" value="2020" class="input_text center" disabled="true">
@@ -43,20 +41,19 @@
                 <label for="country" class="input_label">Country</label>
                 <div class="input_select disabled">
                     <span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
-                    <svg class="feather f_greyE1" style="display: none;">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#chevron-down.svg}"/>
+                    <svg class="feather f_greyE1">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
                     </svg>
-<!-- REMOVE --> <img class="feather f_greyE1" src="../static/assets/icons/feather/chevron-down.svg">
                 </div>
                 <input type="text" name="country" id="country" class="disable">
             </div>
             <div class="input_ctn btns disable">
-                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label round b_red c_white" value="Cancel">
-                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label round b_green c_white" value="Update profile">
+                <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label btn_anim round b_red c_white" value="Cancel">
+                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Update profile">
             </div>
             <div class="input_ctn btns">
-                <span id="input_btn_edit" class="input_btn btn btn_label round b_blue c_white">Edit</span>
-                <a href="#" class="input_btn btn btn_label round b_green c_white">Change password</a>
+                <span id="input_btn_edit" class="input_btn btn btn_label round btn_anim b_blue c_white">Edit</span>
+                <a th:href="@{/profile/changePassword}" class="input_btn btn btn_label btn_anim round b_green c_white">Change password</a>
             </div>
         </form>
     </section>

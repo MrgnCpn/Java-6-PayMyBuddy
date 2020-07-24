@@ -1,14 +1,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
     <section id="contactProfile_ctn" class="block_ctn">
-        <a href="#" class="backBtn btn circle b_white">
-            <svg class="feather f_black" style="display: none;">
+        <a th:href="@{/contact}" class="backBtn btn circle b_white">
+            <svg class="feather f_black">
                 <use th:href="@{/assets/icons/feather-sprite.svg#chevron-left}"/>
             </svg>
-<!-- REMOVE --> <img src="../static/assets/icons/feather/chevron-left.svg" class="feather"/>
         </a>
         <div class="contactProfilePicture">
-<!-- REMOVE --> <img src="../static/assets/profilePicture/jessica-felicio-_cvwXhGqG-o-unsplash.jpg">
+            <img th:src="@{/assets/profilePicture/juanita_emard.jpg}">
         </div>
         <div class="contact_info_ctn">
             <div class="contact_info">
@@ -37,8 +36,9 @@
             </div>
         </div>
         <div class="input_ctn btns">
-            <a href="#" class="input_btn btn btn_label round b_red c_white">Remove from friends</a>
-            <a href="#" class="input_btn btn btn_label round b_blue c_white">Do transfer</a>
+            <a href="#" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
+            <!--<a href="#" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>-->
+            <a th:href="@{/transfer}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
         </div>
     </section>
 </body>

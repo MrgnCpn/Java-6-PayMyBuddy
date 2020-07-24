@@ -236,6 +236,11 @@ input:disabled {
 		border-radius: 15px;
 	}
 
+	.btn_anim:hover {
+		box-shadow: var(--shadow_lv1);
+		transform: translateY(-5px);
+	}
+
 /* FEATHER ICONS ----------------------------------------- */
 	
 	.feather {
@@ -335,6 +340,7 @@ input:disabled {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
+			align-items: center;
 			width: 100%;
 		}
 
@@ -350,7 +356,7 @@ input:disabled {
 		div.input_ctn.text, div.input_ctn.radio, div.input_ctn.select {
 			flex-direction: column;
 			justify-content: flex-start;
-			margin-bottom: 45px;
+			margin-bottom: 35px;
 		}
 
 		div.input_ctn.chk, div.input_ctn.text_icon {
@@ -360,7 +366,7 @@ input:disabled {
 		}
 
 		div.input_ctn.chk {
-			margin-bottom: 45px;
+			margin-bottom: 35px;
 		}
 
 		div.input_ctn.text_icon {
@@ -497,11 +503,6 @@ input:disabled {
 				margin: 0 10px;
 			}
 
-			div.input_ctn.btns .btn:hover {
-				transform: translateY(-5px);
-				box-shadow: var(--shadow_lv1);
-			}
-
 		/* RADIO ---------------------------------------------------- */
 
 			div.input_radio_ctn {
@@ -509,6 +510,7 @@ input:disabled {
 				flex-direction: row;
 				align-items: center;
 				justify-content: center;
+				height: 45px;
 			}
 
 			.radio_btn {
