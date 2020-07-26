@@ -1,6 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-    <section id="contactProfile_ctn" class="block_ctn">
+    <section th:fragment="contact-profile" id="contactProfile_ctn" class="block_ctn">
         <a th:href="@{/contact}" class="backBtn btn circle b_white">
             <svg class="feather f_black">
                 <use th:href="@{/assets/icons/feather-sprite.svg#chevron-left}"/>

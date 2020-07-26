@@ -7,36 +7,12 @@
 		<link th:href="@{/stylesheets/main_stylesheet.css}" rel="stylesheet"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript" th:src="@{/scripts/main_script.js}"></script>
-
-		<link th:if="${page == 'login'}" th:href="@{/stylesheets/login_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'login'}" type="text/javascript" th:src="@{/scripts/login_script.js}"></script>
-
-		<link th:if="${page == 'signup'}" th:href="@{/stylesheets/signup_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'signup'}" type="text/javascript" th:src="@{/scripts/signup_script.js}"></script>
-
-		<link th:if="${page == 'account'}" th:href="@{/stylesheets/myAccount_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'account'}" type="text/javascript" th:src="@{/scripts/myAccount_script.js}"></script>
-
-		<link th:if="${page == 'addNewCard'}" th:href="@{/stylesheets/addCard_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'addNewCard'}" type="text/javascript" th:src="@{/scripts/addCard_script.js}"></script>
-
-		<link th:if="${page == 'transfer'}" th:href="@{/stylesheets/transfer_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'transfer'}" type="text/javascript" th:src="@{/scripts/transfer_script.js}"></script>
-
-		<link th:if="${page == 'passwordCheck'}" th:href="@{/stylesheets/passwordCheck_stylesheet.css}" rel="stylesheet"/>
-
-		<link th:if="${page == 'profile'}" th:href="@{/stylesheets/profile_stylesheet.css}" rel="stylesheet"/>
-		<script th:if="${page == 'profile'}" type="text/javascript" th:src="@{/scripts/profile_script.js}"></script>
-
-		<link th:if="${page == 'changePassword'}" th:href="@{/stylesheets/changePassword_stylesheet.css}" rel="stylesheet"/>
-
-		<link th:if="${page == 'contact'}" th:href="@{/stylesheets/contact_stylesheet.css}" rel="stylesheet"/>
-
-		<link th:if="${page == 'contactProfile'}" th:href="@{/stylesheets/contactProfile_stylesheet.css}" rel="stylesheet"/>
+		<link th:href="@{/stylesheets/{page}_stylesheet.css (page = ${page})}" rel="stylesheet"/>
+		<script type="text/javascript" th:src="@{/scripts/{page}_script.js (page = ${page})}"></script>
 	</head>
 	<body th:switch="${page}">
-		<div th:if="${page == 'transfer'}" class="main_alerts disable">
-			<div th:replace="transfer_frg :: tranferAlert"></div>
+		<div class="main_alerts disable" th:if="${page == 'transfer'}">
+			<div th:replace="alert_frg :: tranfer-alert"></div>
 		</div>
 
 		<header class="main_header">
@@ -59,35 +35,8 @@
 			<a th:href="@{/contact}" class="main_nav_element" th:classappend="${page == 'contact'} ? selected">Contact</a>
 		</nav>
 
-		<main class="main_content" th:case="login">
-			<div th:replace="login_frg"></div>
-		</main>
-		<main class="main_content" th:case="signup">
-			<div th:replace="signup_frg"></div>
-		</main>
-		<main class="main_content" th:case="account">
-			<div th:replace="myAccount_frg"></div>
-		</main>
-		<main class="main_content" th:case="addNewCard">
-			<div th:replace="addNewCard_frg"></div>
-		</main>
-		<main class="main_content" th:case="transfer">
-			<div th:replace="transfer_frg :: transfer"></div>
-		</main>
-		<main class="main_content" th:case="passwordCheck">
-			<div th:replace="passwordCheck_frg"></div>
-		</main>
-		<main class="main_content" th:case="profile">
-			<div th:replace="profile_frg"></div>
-		</main>
-		<main class="main_content" th:case="changePassword">
-			<div th:replace="changePassword_frg"></div>
-		</main>
-		<main class="main_content" th:case="contact">
-			<div th:replace="contact_frg"></div>
-		</main>
-		<main class="main_content" th:case="contactProfile">
-			<div th:replace="contactProfile_frg"></div>
+		<main class="main_content">
+			<div th:replace="${page} + _frg"></div>
 		</main>
 		<footer class="main_footer">© PayMyBuddy - 2020</footer>
 	</body>
