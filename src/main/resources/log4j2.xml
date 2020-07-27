@@ -11,7 +11,7 @@
         </Console>
 
         <RollingFile name="FileAppender" fileName="logs/PayMyBuddy.log"
-                     filePattern="logs/SafetyNetAlert-%d{yyyy-MM-dd}-%i.log"
+                     filePattern="logs/PayMyBuddy-%d{yyyy-MM-dd}-%i.log"
                      append="false">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
