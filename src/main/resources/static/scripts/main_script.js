@@ -6,6 +6,19 @@ class Template {
 			var idx = 0;
 			this.childNodes.forEach((item, index) => {
 				(index % 2 !== 0 && $(item).hasClass('input_ctn')) ? idx ++ : null;
+				(index % 2 !== 0 && $(item).hasClass('sub_comp_input_ctn')) ? idx ++ : null;
+			})
+
+			this.childNodes.forEach((item, index) => {
+				(index % 2 !== 0 && $(item).hasClass('input_ctn')) ? $(item).css('width', 'calc(' + (100 / idx) + '% - 10px)') : null;
+				(index % 2 !== 0 && $(item).hasClass('sub_comp_input_ctn')) ? $(item).css('width', 'calc(' + (100 / idx) + '% - 10px)') : null;
+			})
+		})
+
+		$('.sub_comp_input_ctn').each(function() {
+			var idx = 0;
+			this.childNodes.forEach((item, index) => {
+				(index % 2 !== 0 && $(item).hasClass('input_ctn')) ? idx ++ : null;
 			})
 
 			this.childNodes.forEach((item, index) => {

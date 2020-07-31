@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
+.main_content {
+    align-items: center;
+}
+
+#error_ctn {
+    width: calc(var(--sectionWidth_M) - (2 * var(--blockCtnPadding_LR)));
+    padding: 30px var(--blockCtnPadding_LR);
+}
+
+#error_ctn .title_ctn {
+    font-size: 25px;
+}
+
+#error_ctn .subtitle_ctn {
+    font-size: 14px;
+    margin: 50px 0 70px 0;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#error_ctn .input_btn {
+    width: 250px;
+    margin: auto;
+}

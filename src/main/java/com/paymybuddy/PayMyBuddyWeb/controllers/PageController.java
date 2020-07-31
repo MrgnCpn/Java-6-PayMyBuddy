@@ -13,20 +13,49 @@ import java.util.Map;
 @RestController
 @Singleton
 public class PageController {
+    boolean isLogin = true;
 
     @GetMapping("/")
     public ModelAndView root(){
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/login");
+        if (isLogin) {
+            redirectView.setUrl("/account");
+        } else {
+            redirectView.setUrl("/login");
+        }
 
         return new ModelAndView(redirectView);
     }
 
+    @GetMapping("/login")
+    public ModelAndView login(){
+        Map<String, Object> model = new HashMap<>();
+        model.put("page", "login");
+        model.put("isLogin", isLogin);
+
+        return new ModelAndView("template.html" , model);
+    }
+
+    @GetMapping("/signup")
+    public ModelAndView signup(){
+        Map<String, Object> model = new HashMap<>();
+        model.put("page", "signup");
+        model.put("isLogin", isLogin);
+
+        return new ModelAndView("template.html" , model);
+    }
+
     @GetMapping("/{page}")
-    public ModelAndView rooter(@PathVariable(value="page") String page){
+    public ModelAndView getRooter(@PathVariable(value="page") String page){
         Map<String, Object> model = new HashMap<>();
         model.put("page", page);
-        model.put("isLogin", true);
+        model.put("isLogin", isLogin);
+
+        if (!isLogin) {
+            RedirectView redirectView = new RedirectView();
+            redirectView.setUrl("/login");
+            return new ModelAndView(redirectView);
+        }
 
         return new ModelAndView("template.html" , model);
     }

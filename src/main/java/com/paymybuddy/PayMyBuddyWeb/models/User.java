@@ -9,7 +9,6 @@ public class User {
     private String firstName;
     private String lastName;
     private LocalDate birthday;
-    private String phone;
     private String email;
     private Country country;
     private List<Integer> friends;
@@ -20,16 +19,14 @@ public class User {
      * @param firstName
      * @param lastName
      * @param birthday
-     * @param phone
      * @param email
      * @param country
      */
-    public User(Integer id, String firstName, String lastName, LocalDate birthday, String phone, String email, Country country) {
+    public User(Integer id, String firstName, String lastName, LocalDate birthday, String email, Country country) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
-        this.phone = phone;
         this.email = email;
         this.country = country;
     }
@@ -64,14 +61,6 @@ public class User {
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getEmail() {
