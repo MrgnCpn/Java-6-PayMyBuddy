@@ -1,22 +1,22 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
-public class BuddyAccount {
-    private Integer userId;
+import java.time.LocalDate;
+
+public class Account {
     private Double amount;
     private Currency currency;
+    private LocalDate date;
 
-    public BuddyAccount(Integer userId, Double amount, Currency currency) {
-        this.userId = userId;
+    /**
+     * Constructor
+     * @param amount
+     * @param currency
+     * @param date
+     */
+    public Account(Double amount, Currency currency, LocalDate date) {
         this.amount = amount;
         this.currency = currency;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.date = date;
     }
 
     public Double getAmount() {
@@ -33,5 +33,13 @@ public class BuddyAccount {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

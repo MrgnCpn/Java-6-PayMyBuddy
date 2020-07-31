@@ -12,6 +12,8 @@ public class User {
     private String email;
     private Country country;
     private List<Integer> friends;
+    private Account account;
+    private List<CreditCard> creditCards;
 
     /**
      * Constructor
@@ -21,14 +23,16 @@ public class User {
      * @param birthday
      * @param email
      * @param country
+     * @param friends
      */
-    public User(Integer id, String firstName, String lastName, LocalDate birthday, String email, Country country) {
+    public User(Integer id, String firstName, String lastName, LocalDate birthday, String email, Country country, List<Integer> friends) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.email = email;
         this.country = country;
+        this.friends = friends;
     }
 
     public Integer getId() {
@@ -85,6 +89,22 @@ public class User {
 
     public void setFriends(List<Integer> friends) {
         this.friends = friends;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public List<CreditCard> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(List<CreditCard> creditCards) {
+        this.creditCards = creditCards;
     }
 
     public int getAge(){

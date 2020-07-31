@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Currency {
     private String code;
-    private Double ratebasedUSD;
+    private Double rateBasedUSD;
 
     /**
      * Constructor
@@ -28,12 +28,12 @@ public class Currency {
         this.getInfoCurrency(code.toUpperCase());
     }
 
-    public Double getRatebasedUSD() {
-        return ratebasedUSD;
+    public Double getRateBasedUSD() {
+        return rateBasedUSD;
     }
 
-    public void setRatebasedUSD(Double ratebasedUSD) {
-        this.ratebasedUSD = ratebasedUSD;
+    public void setRateBasedUSD(Double rateBasedUSD) {
+        this.rateBasedUSD = rateBasedUSD;
     }
 
     /**
@@ -46,7 +46,7 @@ public class Currency {
         Integer status = data.getInt("status");
         if (status < 299) {
             JSONObject rates = (JSONObject) ((JSONObject) data.get("content")).get("rates");
-            this.setRatebasedUSD(rates.getDouble(code));
+            this.setRateBasedUSD(rates.getDouble(code));
         }
     }
 }

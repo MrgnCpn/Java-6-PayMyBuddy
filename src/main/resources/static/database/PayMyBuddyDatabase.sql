@@ -1,4 +1,6 @@
 -- CREATE Database
+    DROP DATABASE IF EXISTS PayMyBuddy_OC_MC;
+    CREATE DATABASE IF NOT EXISTS PayMyBuddy_OC_MC;
     USE PayMyBuddy_OC_MC;
     SET autocommit=1;
 
