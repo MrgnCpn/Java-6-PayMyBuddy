@@ -30,7 +30,7 @@ Backend REST API server for SafetyNet Alert apps
 
 ## Logs File
 
-`/logs/SafetyNetAlert.log`
+`/logs/PayMyBuddy.log`
 
 ## Project documentation and Reports
 
