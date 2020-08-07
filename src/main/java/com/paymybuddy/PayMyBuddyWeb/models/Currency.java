@@ -1,5 +1,6 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
 import org.json.JSONObject;
 
@@ -42,7 +43,8 @@ public class Currency {
      * @throws IOException
      */
     private void getInfoCurrency(String code) throws IOException {
-        JSONObject data = new HTTPRequestService().getReq("https://api.exchangeratesapi.io/latest?base=USD", null);
+        HTTPRequestServiceInterface httpRequestService = new HTTPRequestService();
+        JSONObject data = httpRequestService.getReq("https://api.exchangeratesapi.io/latest?base=USD", null);
         Integer status = data.getInt("status");
         if (status < 299) {
             JSONObject rates = (JSONObject) ((JSONObject) data.get("content")).get("rates");

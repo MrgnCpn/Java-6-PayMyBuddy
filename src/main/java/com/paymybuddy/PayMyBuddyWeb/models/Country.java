@@ -1,5 +1,6 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
 import org.json.JSONObject;
 
@@ -45,8 +46,9 @@ public class Country {
      */
     private void getInfo(String code) throws IOException {
         Map<String, String> params = new HashMap<>();
+        HTTPRequestServiceInterface httpRequestService = new HTTPRequestService();
         params.put("fields", "name");
-        JSONObject data = new HTTPRequestService().getReq("https://restcountries.eu/rest/v2/alpha/" + code, params);
+        JSONObject data = httpRequestService.getReq("https://restcountries.eu/rest/v2/alpha/" + code, params);
         Integer status = data.getInt("status");
         if (status < 299) {
             JSONObject content = (JSONObject) data.get("content");

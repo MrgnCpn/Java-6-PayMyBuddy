@@ -1,8 +1,10 @@
 package com.paymybuddy.PayMyBuddyWeb.configuration;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Singleton;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,7 +12,8 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
-public class DatabaseConfiguration {
+@Singleton
+public class DatabaseConfiguration implements DatabaseConfigurationInterface {
 
     /**
      * Logger log4j2
@@ -39,13 +42,11 @@ public class DatabaseConfiguration {
     private String password;
 
     /**
-     * Open Connection on OC_parkingSystem_p4_prod DB
-     * @return Connection
-     * @throws ClassNotFoundException
-     * @throws SQLException
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #getConnection()}
      */
+    @Override
     public Connection getConnection() throws ClassNotFoundException, SQLException {
-        logger.info("Create DB connection");
+        //logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
         try (InputStream inputStream = new FileInputStream("src/main/resources/static/database/databaseConfiguration.properties")){
             Properties properties = new Properties();
@@ -65,14 +66,14 @@ public class DatabaseConfiguration {
     }
 
     /**
-     * Close Connection
-     * @param con Active connection
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeConnection(Connection)}
      */
+    @Override
     public void closeConnection(Connection con) {
         if (con != null) {
             try {
                 con.close();
-                logger.info("Closing DB connection");
+                //logger.info("Closing DB connection");
             } catch (SQLException e) {
                 logger.error("Error while closing connection", e);
             }
@@ -80,14 +81,14 @@ public class DatabaseConfiguration {
     }
 
     /**
-     * Close Prepared Statement
-     * @param ps Open statement
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closePreparedStatement(Statement)}
      */
-    public void closePreparedStatement(PreparedStatement ps) {
+    @Override
+    public void closePreparedStatement(Statement ps) {
         if (ps != null) {
             try {
                 ps.close();
-                logger.info("Closing Prepared Statement");
+                //logger.info("Closing Prepared Statement");
             } catch (SQLException e) {
                 logger.error("Error while closing prepared statement", e);
             }
@@ -96,17 +97,27 @@ public class DatabaseConfiguration {
 
 
     /**
-     * Close ResultSet
-     * @param rs Open ResultSet
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeResultSet(ResultSet)}
      */
+    @Override
     public void closeResultSet(ResultSet rs) {
         if (rs != null) {
             try {
                 rs.close();
-                logger.info("Closing Result Set");
+                //logger.info("Closing Result Set");
             } catch (SQLException e) {
                 logger.error("Error while closing result set", e);
             }
         }
+    }
+
+    /**
+     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeSQLTransaction(Connection, Statement, ResultSet)}
+     */
+    @Override
+    public void closeSQLTransaction(Connection con, Statement ps, ResultSet rs){
+        if (con != null) closeConnection(con);
+        if (ps != null) closePreparedStatement(ps);
+        if (rs != null) closeResultSet(rs);
     }
 }

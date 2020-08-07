@@ -35,6 +35,13 @@ public class User {
         this.friends = friends;
     }
 
+    /**
+     * Constructor
+     */
+    public User() {
+
+    }
+
     public Integer getId() {
         return id;
     }

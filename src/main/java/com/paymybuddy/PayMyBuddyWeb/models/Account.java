@@ -3,9 +3,15 @@ package com.paymybuddy.PayMyBuddyWeb.models;
 import java.time.LocalDate;
 
 public class Account {
+    private Integer userId;
     private Double amount;
     private Currency currency;
     private LocalDate date;
+
+    /**
+     * Constructor
+     */
+    public Account() { }
 
     /**
      * Constructor
@@ -13,10 +19,19 @@ public class Account {
      * @param currency
      * @param date
      */
-    public Account(Double amount, Currency currency, LocalDate date) {
+    public Account(Integer userId, Double amount, Currency currency, LocalDate date) {
+        this.userId = userId;
         this.amount = amount;
         this.currency = currency;
         this.date = date;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Double getAmount() {

@@ -1,9 +1,10 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class Transaction {
-    private Boolean isFromCard;
+    private Integer idCard;
     private Integer idFrom;
     private Integer idTo;
     private LocalDate date;
@@ -15,17 +16,16 @@ public class Transaction {
 
     /**
      * Constructor
-     * @param isFromCard
+     * @param idCard
      * @param idFrom
      * @param idTo
      * @param date
      * @param description
      * @param amount
-     * @param fee
      * @param currency
      */
-    public Transaction(Boolean isFromCard, Integer idFrom, Integer idTo, LocalDate date, String description, Double amount, Double fee, Currency currency) {
-        this.isFromCard = isFromCard;
+    public Transaction(Integer idCard, Integer idFrom, Integer idTo, LocalDate date, String description, Double amount, Currency currency) {
+        this.idCard = idCard;
         this.idFrom = idFrom;
         this.idTo = idTo;
         this.date = date;
@@ -35,12 +35,12 @@ public class Transaction {
         this.currency = currency;
     }
 
-    public Boolean getFromCard() {
-        return isFromCard;
+    public Integer getIdCard() {
+        return idCard;
     }
 
-    public void setFromCard(Boolean fromCard) {
-        isFromCard = fromCard;
+    public void setIdCard(Integer fromCard) {
+        idCard = fromCard;
     }
 
     public Integer getIdFrom() {
@@ -84,19 +84,22 @@ public class Transaction {
     }
 
     public Double getFee() {
-        return fee;
+        this.setFee();
+        return Double.valueOf(new DecimalFormat("0.00").format(fee));
     }
 
-    public void setFee(Double fee) {
-        this.fee = fee;
+    public void setFee() {
+        this.fee = Double.valueOf(new DecimalFormat("0.00").format(this.amount * 0.005));
     }
 
     public Double getFinalAmount() {
-        return finalAmount;
+        this.setFinalAmount();
+        return Double.valueOf(new DecimalFormat("0.00").format(finalAmount));
     }
 
-    public void setFinalAmount(Double finalAmount) {
-        this.finalAmount = this.amount + (this.amount * this.fee);
+    public void setFinalAmount() {
+        this.setFee();
+        this.finalAmount = this.amount - this.fee;
     }
 
     public Currency getCurrency() {
