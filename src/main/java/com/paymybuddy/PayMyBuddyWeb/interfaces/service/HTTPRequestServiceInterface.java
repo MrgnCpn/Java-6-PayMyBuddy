@@ -1,11 +1,11 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces;
+package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Map;
 
-public interface HTTPRequestServiceI {
+public interface HTTPRequestServiceInterface {
     /**
      * API reader, HTTP GET request
      * @param url
