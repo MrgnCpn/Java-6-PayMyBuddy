@@ -1,8 +1,7 @@
 package com.paymybuddy.PayMyBuddyWeb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,12 +44,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" id, card_type, card_number, card_cvv, wording");
-        sql.append(" FROM");
-        sql.append(" CREDIT_CARDS");
-        sql.append(" WHERE");
-        sql.append(" user_id = ?");
+        sql.append("SELECT id, card_type, card_number, card_cvv, wording");
+        sql.append(" FROM credit_cards");
+        sql.append(" WHERE user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -87,10 +83,8 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO");
-        sql.append(" credit_cards (user_id, card_type, card_number, card_cvv, wording)");
-        sql.append(" VALUES");
-        sql.append(" (?, ?, ?, ?, ?)");
+        sql.append("INSERT INTO credit_cards (user_id, card_type, card_number, card_cvv, wording)");
+        sql.append(" VALUES (?, ?, ?, ?, ?)");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -117,12 +111,8 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE");
-        sql.append(" credit_cards");
-        sql.append(" WHERE");
-        sql.append(" id = ?");
-        sql.append(" AND");
-        sql.append(" user_id = ?");
+        sql.append("DELETE credit_cards");
+        sql.append(" WHERE id = ? AND user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -146,17 +136,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE");
-        sql.append(" credit_cards");
-        sql.append(" SET");
-        sql.append(" card_type = ?,");
-        sql.append(" card_number = ?,");
-        sql.append(" card_cvv = ?,");
-        sql.append(" wording = ?");
-        sql.append(" WHERE");
-        sql.append(" id = ?");
-        sql.append(" AND");
-        sql.append(" user_id = ?");
+        sql.append("UPDATE credit_cards");
+        sql.append(" SET card_type = ?, card_number = ?, card_cvv = ?, wording = ?");
+        sql.append(" WHERE id = ? AND user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

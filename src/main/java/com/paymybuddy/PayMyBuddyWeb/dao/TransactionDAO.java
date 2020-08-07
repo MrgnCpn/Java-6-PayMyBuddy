@@ -46,12 +46,9 @@ public class TransactionDAO implements TransactionDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency");
-        sql.append(" FROM");
-        sql.append(" transactions");
-        sql.append(" WHERE");
-        sql.append(" from_id = ? OR to_id = ?");
+        sql.append("SELECT from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency");
+        sql.append(" FROM transactions");
+        sql.append(" WHERE from_id = ? OR to_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -94,16 +91,9 @@ public class TransactionDAO implements TransactionDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" date, description, amount, fee, final_amount, currency");
-        sql.append(" FROM");
-        sql.append(" transactions");
-        sql.append(" WHERE");
-        sql.append(" from_id = ?");
-        sql.append(" AND");
-        sql.append(" to_id = ?");
-        sql.append(" AND");
-        sql.append(" from_isCard = false");
+        sql.append("SELECT date, description, amount, fee, final_amount, currency");
+        sql.append(" FROM transactions");
+        sql.append(" WHERE from_id = ? AND to_id = ? AND from_isCard = false");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -142,11 +132,8 @@ public class TransactionDAO implements TransactionDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO");
-        sql.append(" transactions (from_isCard, from_id, to_id, date,");
-        sql.append(" description, amount, fee, final_amount, currency)");
-        sql.append(" VALUES");
-        sql.append(" (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        sql.append("INSERT INTO transactions (from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency)");
+        sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         try {
             con = databaseConfiguration.getConnection();

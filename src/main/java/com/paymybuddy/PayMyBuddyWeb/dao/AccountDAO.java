@@ -45,12 +45,9 @@ public class AccountDAO implements AccountDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" amount, currency, balance_date");
-        sql.append(" FROM");
-        sql.append(" accounts");
-        sql.append(" WHERE");
-        sql.append(" user_id = ?");
+        sql.append("SELECT amount, currency, balance_date");
+        sql.append(" FROM accounts");
+        sql.append(" WHERE user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -82,14 +79,9 @@ public class AccountDAO implements AccountDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE");
-        sql.append(" accounts");
-        sql.append(" SET");
-        sql.append(" amount = ?,");
-        sql.append(" currency = ?");
-        sql.append(" balance_date = ?");
-        sql.append(" WHERE");
-        sql.append(" user_id = ?");
+        sql.append("UPDATE accounts");
+        sql.append(" SET amount = ?, currency = ? balance_date = ?");
+        sql.append(" WHERE user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

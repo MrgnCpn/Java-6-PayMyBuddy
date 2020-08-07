@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
 import org.apache.logging.log4j.LogManager;
@@ -44,12 +43,7 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" friend_id");
-        sql.append(" FROM");
-        sql.append(" friends");
-        sql.append(" WHERE");
-        sql.append(" user_id = ?");
+        sql.append("SELECT friend_id FROM friends WHERE user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -76,10 +70,8 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO");
-        sql.append(" friends (user_id, friend_id)");
-        sql.append(" VALUES");
-        sql.append(" (?, ?)");
+        sql.append("INSERT INTO friends (user_id, friend_id)");
+        sql.append(" VALUES (?, ?)");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -103,12 +95,8 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE");
-        sql.append(" friends");
-        sql.append(" WHERE");
-        sql.append(" user_id = ?");
-        sql.append(" AND");
-        sql.append(" friend_id = ?");
+        sql.append("DELETE friends");
+        sql.append(" WHERE user_id = ? AND friend_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

@@ -18,7 +18,7 @@
             lastname VARCHAR(60) NOT NULL,
             birthday DATE NOT NULL,
             email VARCHAR(100) NOT NULL,
-            password TEXT(256) NOT NULL,
+            password VARCHAR(255) NOT NULL,
             country_code CHAR(3),
             UNIQUE INDEX index_email (email)
         )
@@ -83,28 +83,29 @@
 
     INSERT INTO USERS(firstname, lastname, birthday, email, password, country_code)
     VALUES
-        ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '', 'FRA'),
-        ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '', 'GBR'),
-        ('ford', 'bashirian', '1997-09-13', 'ford.bashirian@email.com', '', 'USA'),
-        ('katrine', 'lehner', '2000-05-05', 'katrine.lehner@email.com', '', 'FIN'),
-        ('jacob', 'boyd', '1989-06-03', 'jacob.boyd@email.com', '', 'GBR'),
-        ('tony', 'cooper', '1994-08-03', 'tony.cooper@email.com', '', 'GBR'),
-        ('lily', 'peters', '1994-10-03', 'lily.peters@email.com', '', 'GBR'),
-        ('sophia', 'zemicks', '1988-02-27', 'sophia.zemicks@email.com', '', 'DEU'),
-        ('brain', 'stelzer', '1975-03-15', 'brain.stelzer@email.com', '', 'DEU'),
-        ('allison', 'dupond', '1995-04-01', 'allison.dupond@email.com', '', 'FRA'),
-        ('morgan', 'johnson', '1997-10-03', 'morgan.johnson@email.com', '', 'GBR'),
-        ('peggie', 'goodwin', '1997-10-03', 'peggie.goodwin@email.com', '', 'AUS'),
-        ('alvera', 'schinner', '1997-10-03', 'alvera.schinner@email.com', '', 'ESP'),
-        ('lila', 'casper', '1997-10-03', 'lila.casper@email.com', '', 'AUS'),
-        ('pascale', 'okon', '1997-10-03', 'pascale.okon@email.com', '', 'GHA'),
-        ('esmeralda', 'zieme', '1997-10-03', 'esmeralda.zieme@email.com', '', 'ESP'),
-        ('austen', 'okuneva', '1997-10-03', 'austen.okuneva@email.com', '', 'JPN'),
-        ('ewell', 'medhurst', '1997-10-03', 'ewell.medhurst@email.com', '', 'DEU'),
-        ('alf', 'keebler', '1997-10-03','alf.keebler@email.com', '',  'TUR'),
-        ('riley', 'bashirian', '1997-10-03', 'riley.bashirian@email.com', '', 'USA'),
-        ('sigmund', 'legros', '1997-10-03', 'sigmund.legros@email.com', '', 'FRA'),
-        ('john', 'smith', '1991-11-11', 'john.smith@email.com', '', 'USA');
+        ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '$2a$10$w4YKpuluFDrfomqaBzy1w./GTA57TtnAX6PngUtMhpk6KUGQBbe2e', 'FRA'),
+        ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR'),
+        ('ford', 'bashirian', '1997-09-13', 'ford.bashirian@email.com', '$2a$10$KOAKk39lx.QsbuXTeuDPzOdDYZbS4k50HMH/KQJPlttLKlf0w4pO.', 'USA'),
+        ('katrine', 'lehner', '2000-05-05', 'katrine.lehner@email.com', '$2a$10$KcSclLuey7.Kw3LseJqjYOzgwUcZyvvi0UarO7xazYN1ZCjD5Vroq', 'FIN'),
+        ('jacob', 'boyd', '1989-06-03', 'jacob.boyd@email.com', '$2a$10$FX9R2eRixaquseTKyk2W0uJgPAHQ.iTfw6KtHyMa79yc47F7rGZH6', 'GBR'),
+        ('tony', 'cooper', '1994-08-03', 'tony.cooper@email.com', '$2a$10$.7bo3NrXntHNo01SqPWRIeB0vk6WxBqX8D3E4dyS6R47WXiLkOQSy', 'GBR'),
+        ('lily', 'peters', '1994-10-03', 'lily.peters@email.com', '$2a$10$DTpBpPZpruUjd2V0Al8jZ.uwvcCDduV/haJEmjl74TvNUCwFlxYDW', 'GBR'),
+        ('sophia', 'zemicks', '1988-02-27', 'sophia.zemicks@email.com', '$2a$10$cuRhsiMub1TLPRoRrWpYLOBgFFjS5j/TY2v2QKF1Myn5kn9CWSJL2', 'DEU'),
+        ('brain', 'stelzer', '1975-03-15', 'brain.stelzer@email.com', '$2a$10$xQCF4x2/NQ.SQNwhgoUdneiO2MlDz.5jwXCnhoydDQQsLpD2WkaGq', 'DEU'),
+        ('allison', 'dupond', '1995-04-01', 'allison.dupond@email.com', '$2a$10$60Eyfv97.hoNFVUxQ9CMqefXlOgZFfHA5cjL.9Zw4KXvH59PluSOi', 'FRA'),
+        ('morgan', 'johnson', '1997-10-03', 'morgan.johnson@email.com', '$2a$10$jUfhu6KqPKdOcjUPdlVsp.zcSDqmRQydBVaSTRGFGaIHR6rnjLE1q', 'GBR'),
+        ('peggie', 'goodwin', '1997-10-03', 'peggie.goodwin@email.com', '$2a$10$qlivtwuO8sOJrxdmmizps.b29QAJq1B.f2H/YQCVoahDQKTMC.pIS', 'AUS'),
+        ('alvera', 'schinner', '1997-10-03', 'alvera.schinner@email.com', '$2a$10$YKTZTYSLbs8kKsTxI8Wgeeugprex4ReXY/LQHAEouDWK.tgebuKBC', 'ESP'),
+        ('lila', 'casper', '1997-10-03', 'lila.casper@email.com', '$2a$10$LBFZzCvITuxeaCScgA6GGeD1bjChSE/nNodBYvoI/R2pDUfQMjWeK', 'AUS'),
+        ('pascale', 'okon', '1997-10-03', 'pascale.okon@email.com', '$2a$10$wCsVHYPmbBoPoSBXBqP75eknY6cUabPIKcFIV8gq8H6HLglU0m0ZW', 'GHA'),
+        ('esmeralda', 'zieme', '1997-10-03', 'esmeralda.zieme@email.com', '$2a$10$qXg1eCPh4KnwWKzjVw0Cc.zW2brJo0qeWUXD4f5uTM77dHNxXFLAC', 'ESP'),
+        ('austen', 'okuneva', '1997-10-03', 'austen.okuneva@email.com', '$2a$10$dGkBuWKh3Kk/H0IDdAY/s.fcJ/kQvfm7ke1Jwp4Gd/vlPCbMxccTe', 'JPN'),
+        ('ewell', 'medhurst', '1997-10-03', 'ewell.medhurst@email.com', '$2a$10$rPq77i8.X1UnPTAiL88kWOqHa/WFXSPjblzbrAG4Ko9r2F4/xiviC', 'DEU'),
+        ('alf', 'keebler', '1997-10-03', 'alf.keebler@email.com', '$2a$10$x9oMwjFz7xK3CnhPGa8vX.3ZLmMTxsM5.MRB760L8fCf2lzPtKgie', 'TUR'),
+        ('riley', 'bashirian', '1997-10-03', 'riley.bashirian@email.com', '$2a$10$cExJLr8vpbuvA/kHfuozdO9pp8bMFQPr4yaRFRZt29r6pcM6W4pz2', 'USA'),
+        ('sigmund', 'legros', '1997-10-03', 'sigmund.legros@email.com', '$2a$10$/jLNATaL.rlY6ncmALhQAe0N5PSjj9P69py0KGynd04cgywA9HEOW', 'FRA'),
+        ('john', 'smith', '1991-11-11', 'john.smith@email.com', '$2a$10$ThnKOO8S59OALUDSO02mceEisQpU6iVySch35w40HDq.4cEQqHxcq', 'USA');
+
 
     LOCK TABLES TRANSACTIONS WRITE;
 

@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
@@ -59,12 +58,9 @@ public class UserDAO implements UserDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" firstname, lastname, birthday, email, country_code");
-        sql.append(" FROM");
-        sql.append(" users");
-        sql.append(" WHERE");
-        sql.append(" id = ?");
+        sql.append("SELECT firstname, lastname, birthday, email, country_code");
+        sql.append(" FROM users");
+        sql.append(" WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -100,16 +96,8 @@ public class UserDAO implements UserDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE");
-        sql.append(" users");
-        sql.append(" SET");
-        sql.append(" firstname = ?");
-        sql.append(" lastname = ?");
-        sql.append(" birthday = ?");
-        sql.append(" email = ?");
-        sql.append(" country_code = ?)");
-        sql.append(" WHERE");
-        sql.append(" id = ?");
+        sql.append("UPDATE users SET firstname = ?, lastname = ?, birthday = ?, email = ?, country_code = ?");
+        sql.append(" WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -137,12 +125,9 @@ public class UserDAO implements UserDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO");
-        sql.append(" users (firstname, lastname, birthday, email, country_code)");
-        sql.append(" VALUES");
-        sql.append(" (?, ?, ?, ?, ?)");
-        sql.append(" WHERE");
-        sql.append(" id = ?");
+        sql.append("INSERT INTO users (firstname, lastname, birthday, email, country_code)");
+        sql.append(" VALUES (?, ?, ?, ?, ?)");
+        sql.append(" WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

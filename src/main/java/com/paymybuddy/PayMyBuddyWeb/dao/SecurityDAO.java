@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.SecurityDAOInterface;
 import org.apache.logging.log4j.LogManager;
@@ -41,12 +40,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT");
-        sql.append(" password");
-        sql.append(" FROM");
-        sql.append(" users");
-        sql.append(" WHERE");
-        sql.append(" userId = ?");
+        sql.append("SELECT password FROM users WHERE id = ?");
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
@@ -72,11 +66,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE");
-        sql.append(" users");
-        sql.append(" SET");
-        sql.append(" password = ?");
-        sql.append(" id = ?");
+        sql.append("UPDATE users SET password = ? id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

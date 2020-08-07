@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.IOException;
-
 
 @SpringBootApplication
 public class PayMyBuddyWebApplication {
@@ -16,6 +14,14 @@ public class PayMyBuddyWebApplication {
 		logger.info("Application start");
 		SpringApplication.run(PayMyBuddyWebApplication.class, args);
 		logger.info("Application running");
+
+		/*
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String password = "myPassword";
+		String encodedPassword = passwordEncoder.encode("password");
+		boolean matches = passwordEncoder.matches("password", encodedPassword)
+		*/
+
 	}
 
 }
