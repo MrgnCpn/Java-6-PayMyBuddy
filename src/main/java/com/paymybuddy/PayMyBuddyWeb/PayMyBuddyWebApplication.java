@@ -6,7 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
+		org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration.class
+	}
+)
 public class PayMyBuddyWebApplication {
 	private static final Logger logger = LogManager.getLogger("PayMyBuddyWebApplication");
 
@@ -19,8 +23,9 @@ public class PayMyBuddyWebApplication {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String password = "myPassword";
 		String encodedPassword = passwordEncoder.encode("password");
-		boolean matches = passwordEncoder.matches("password", encodedPassword)
+		boolean matches = passwordEncoder.matches("password", encodedPassword);
 		*/
+
 
 	}
 
