@@ -9,6 +9,6 @@ import javax.servlet.http.HttpSession;
 @Singleton
 public class ControllerUtil {
     public boolean isLog(HttpSession session) {
-        return (session.getAttribute("id") != null) && (session.getAttribute("username") != null);
+        return (session.getAttribute("userId") != null) && (session.getAttribute("username") != null);
     }
 }

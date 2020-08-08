@@ -23,6 +23,13 @@ public class AuthenticateController {
 
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session){
+
+        if (controllerUtil.isLog(session)) {
+            RedirectView redirectView = new RedirectView();
+            redirectView.setUrl("/");
+            return new ModelAndView(redirectView);
+        }
+
         Map<String, Object> model = new HashMap<>();
         model.put("page", "login");
         model.put("isLogin", controllerUtil.isLog(session));
@@ -30,9 +37,8 @@ public class AuthenticateController {
         return new ModelAndView("template.html" , model);
     }
 
-    /*
     @PostMapping("/login")
-    public ModelAndView postLogin(HttpSession session, @RequestBody Map<String,String> requestParams){
+    public ModelAndView postLogin(HttpSession session, @RequestParam Map<String,String> requestParams){
         Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"));
 
         if (userLogin != null) {
@@ -43,26 +49,16 @@ public class AuthenticateController {
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
     }
-    */
-
-
-    @PostMapping("/login")
-    public String postLogin(HttpSession session, @RequestBody Map<String,String> requestParams){
-        Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"));
-        String r = "TEST \n";
-        if (userLogin != null) {
-            userLogin.forEach((k, v) -> session.setAttribute(k, v));
-            for (Map.Entry<String, String> entry : userLogin.entrySet()) {
-                r += "Key : " + entry.getKey() + " / " + "Value : " + entry.getValue() + "\n";
-            }
-        }
-        return r;
-    }
-
-
 
     @GetMapping("/signup")
     public ModelAndView getSignup(HttpSession session){
+
+        if (controllerUtil.isLog(session)) {
+            RedirectView redirectView = new RedirectView();
+            redirectView.setUrl("/");
+            return new ModelAndView(redirectView);
+        }
+
         Map<String, Object> model = new HashMap<>();
         model.put("page", "signup");
         model.put("isLogin", controllerUtil.isLog(session));
@@ -71,9 +67,17 @@ public class AuthenticateController {
     }
 
     @PostMapping("/signup")
-    public ModelAndView postSignup(HttpSession session, @RequestBody Map<String,String> requestParams){
+    public ModelAndView postSignup(HttpSession session, @RequestParam Map<String,String> requestParams){
         //
 
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/");
+        return new ModelAndView(redirectView);
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpSession session){
+        session.invalidate();
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);

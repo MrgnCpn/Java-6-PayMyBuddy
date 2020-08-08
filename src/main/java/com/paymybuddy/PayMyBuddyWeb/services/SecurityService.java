@@ -59,10 +59,10 @@ public class SecurityService implements SecurityServiceInterface {
     public Map<String, String> logUser(String username, String password) {
         Map<String, String> loginInformations = null;
         String encodePassword = securityDAO.getUserPassword(username);
-        if (passwordEncoder.matches(password, encodePassword)) {
+        if (encodePassword != null && !encodePassword.isEmpty() && passwordEncoder.matches(password, encodePassword)) {
             loginInformations = new HashMap<>();
             User user = userDAO.getUserByUsername(username);
-            loginInformations.put("id", user.getId().toString());
+            loginInformations.put("userId", user.getId().toString());
             loginInformations.put("username", user.getEmail());
         }
         return loginInformations;

@@ -36,7 +36,7 @@
 			<a th:href="@{/}" class="logo">
 				<img th:src="@{/assets/logo.svg}">
 			</a>
-			<a th:if="${isLogin}" th:href="@{/login}" class="btn circle logout">
+			<a th:if="${isLogin}" th:href="@{/logout}" class="btn circle logout">
 				<div class="subContainer">
 					<svg class="feather f_black">
 						<use th:href="@{/assets/icons/feather-sprite.svg#log-out}"/>
