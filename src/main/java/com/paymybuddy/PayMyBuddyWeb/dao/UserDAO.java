@@ -87,6 +87,43 @@ public class UserDAO implements UserDAOInterface {
         return result;
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        User result = null;
+        ResultSet rs = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT id, firstname, lastname, birthday, email, country_code");
+        sql.append(" FROM users");
+        sql.append(" WHERE email = ?");
+
+        try {
+            con = databaseConfiguration.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                result = new User();
+                result.setId(rs.getInt("id"));
+                result.setFirstName(rs.getString("firstname"));
+                result.setLastName(rs.getString("lastname"));
+                result.setBirthday(rs.getDate("birthday").toLocalDate());
+                result.setEmail(rs.getString("email"));
+                result.setCountry(new Country(rs.getString("country_code")));
+                result.setFriends(friendDAO.getUserFriends(rs.getInt("id")));
+                result.setAccount(accountDAO.getAccount(rs.getInt("id")));
+                result.setCreditCards(creditCardDAO.getUserCreditCards(rs.getInt("id")));
+            }
+        } catch (Exception e){
+            logger.error("Error fetching user", e);
+        } finally {
+            databaseConfiguration.closeSQLTransaction(con, ps, rs);
+        }
+        return result;
+    }
+
     /**
      * @see UserDAOInterface {@link #updateUser(User)}
      */
@@ -117,17 +154,16 @@ public class UserDAO implements UserDAOInterface {
     }
 
     /**
-     * @see UserDAOInterface {@link #insertUser(User)}
+     * @see UserDAOInterface {@link #createNewUser(User)}
      */
     @Override
-    public void insertUser(User user) {
+    public void createNewUser(User user) {
         Connection con = null;
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
         sql.append("INSERT INTO users (firstname, lastname, birthday, email, country_code)");
         sql.append(" VALUES (?, ?, ?, ?, ?)");
-        sql.append(" WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -137,7 +173,6 @@ public class UserDAO implements UserDAOInterface {
             ps.setDate(3, Date.valueOf(user.getBirthday()));
             ps.setString(4, user.getEmail());
             ps.setString(5, user.getCountry().getCode());
-            ps.setInt(6, user.getId());
             ps.execute();
         } catch (Exception ex){
             logger.error("Error insert new user", ex);

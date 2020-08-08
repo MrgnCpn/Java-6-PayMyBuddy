@@ -5,11 +5,12 @@ import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.SecurityDAOInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Singleton;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
+@Singleton
 public class SecurityDAO implements SecurityDAOInterface {
     /**
      * Logger log4j2
@@ -30,21 +31,21 @@ public class SecurityDAO implements SecurityDAOInterface {
     }
 
     /**
-     * @see SecurityDAOInterface {@link #getUserPassword(Integer)}
+     * @see SecurityDAOInterface {@link #getUserPassword(String)}
      */
     @Override
-    public String getUserPassword(Integer userId) {
+    public String getUserPassword(String username) {
         String result = "";
         ResultSet rs = null;
         Connection con = null;
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT password FROM users WHERE id = ?");
+        sql.append("SELECT password FROM users WHERE email = ?");
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
-            ps.setInt(1, userId);
+            ps.setString(1, username);
             rs = ps.executeQuery();
             if(rs.next()){
                 result = rs.getString("password");

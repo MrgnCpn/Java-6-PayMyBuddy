@@ -11,6 +11,13 @@ public interface UserDAOInterface {
     User getUserById(Integer id);
 
     /**
+     * Get user with username
+     * @param username
+     * @return User
+     */
+    User getUserByUsername(String username);
+
+    /**
      * Update user
      * @param user
      */
@@ -20,5 +27,5 @@ public interface UserDAOInterface {
      * Create new user
      * @param user
      */
-    void insertUser(User user);
+    void createNewUser(User user);
 }

@@ -1,18 +1,23 @@
 package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
 
+import com.paymybuddy.PayMyBuddyWeb.models.User;
+
+import java.util.Map;
+
 public interface SecurityServiceInterface {
 
-    boolean isLogged();
+    /**
+     * Encode user password and insert into db
+     * @param userId
+     * @param password
+     */
+    void registerUser(Integer userId, String password);
 
-    // private
-    String encryptPassword();
-
-    // private
-    boolean decryptPassword();
-
-    void changeUserPassword();
-
-    void logUser();
-
-
+    /**
+     * Check user log and return user profile
+     * @param username
+     * @param password
+     * @return
+     */
+    Map<String, String> logUser(String username, String password);
 }

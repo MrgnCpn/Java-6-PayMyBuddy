@@ -18,15 +18,5 @@ public class PayMyBuddyWebApplication {
 		logger.info("Application start");
 		SpringApplication.run(PayMyBuddyWebApplication.class, args);
 		logger.info("Application running");
-
-		/*
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String password = "myPassword";
-		String encodedPassword = passwordEncoder.encode("password");
-		boolean matches = passwordEncoder.matches("password", encodedPassword);
-		*/
-
-
 	}
-
 }

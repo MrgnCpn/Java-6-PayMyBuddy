@@ -4,10 +4,10 @@ public interface SecurityDAOInterface {
 
     /**
      * Get user password
-     * @param userId
+     * @param username
      * @return
      */
-    String getUserPassword(Integer userId);
+    String getUserPassword(String username);
 
     /**
      * Update user password

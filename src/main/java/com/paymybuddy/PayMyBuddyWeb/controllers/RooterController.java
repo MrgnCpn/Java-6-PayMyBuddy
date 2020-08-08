@@ -7,51 +7,37 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.inject.Singleton;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @Singleton
-public class PageController {
-    boolean isLogin = true;
+public class RooterController {
+    private final ControllerUtil controllerUtil;
+
+    public RooterController(ControllerUtil controllerUtil) {
+        this.controllerUtil = controllerUtil;
+    }
 
     @GetMapping("/")
-    public ModelAndView root(){
+    public ModelAndView root(HttpSession session) {
         RedirectView redirectView = new RedirectView();
-        if (isLogin) {
+        if (controllerUtil.isLog(session)) {
             redirectView.setUrl("/account");
         } else {
             redirectView.setUrl("/login");
         }
-
         return new ModelAndView(redirectView);
     }
 
-    @GetMapping("/login")
-    public ModelAndView login(){
-        Map<String, Object> model = new HashMap<>();
-        model.put("page", "login");
-        model.put("isLogin", isLogin);
-
-        return new ModelAndView("template.html" , model);
-    }
-
-    @GetMapping("/signup")
-    public ModelAndView signup(){
-        Map<String, Object> model = new HashMap<>();
-        model.put("page", "signup");
-        model.put("isLogin", isLogin);
-
-        return new ModelAndView("template.html" , model);
-    }
-
     @GetMapping("/{page}")
-    public ModelAndView getRooter(@PathVariable(value="page") String page){
+    public ModelAndView getMainRooter(@PathVariable(value="page") String page, HttpSession session){
         Map<String, Object> model = new HashMap<>();
         model.put("page", page);
-        model.put("isLogin", isLogin);
+        model.put("isLogin", controllerUtil.isLog(session));
 
-        if (!isLogin) {
+        if (!controllerUtil.isLog(session)) {
             RedirectView redirectView = new RedirectView();
             redirectView.setUrl("/login");
             return new ModelAndView(redirectView);
