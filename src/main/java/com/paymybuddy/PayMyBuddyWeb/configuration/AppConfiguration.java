@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.configuration;
 
-import com.paymybuddy.PayMyBuddyWeb.controllers.ControllerUtil;
 import com.paymybuddy.PayMyBuddyWeb.dao.*;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.*;
@@ -12,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class AppConfiguration {
-    private ControllerUtil controllerUtil = new ControllerUtil();
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
     private DatabaseConfigurationInterface databaseConfiguration = new DatabaseConfiguration();
 

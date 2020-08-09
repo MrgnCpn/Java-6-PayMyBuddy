@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.configuration;
 
-import com.paymybuddy.PayMyBuddyWeb.controllers.ControllerUtil;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -18,7 +17,7 @@ import java.util.Map;
 public class ClassErrorController implements ErrorController {
 
     @Autowired
-    private ControllerUtil controllerUtil;
+    private SecurityServiceInterface securityService;
 
     @Override
     public String getErrorPath() {
@@ -31,7 +30,7 @@ public class ClassErrorController implements ErrorController {
         Map<String, Object> model = new HashMap<>();
         model.put("page", "error");
         model.put("errorCode", request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
-        model.put("isLogin", controllerUtil.isLog(request.getSession()));
+        model.put("isLogin", securityService.isLog(request.getSession()));
 
         return new ModelAndView("template.html" , model);
     }

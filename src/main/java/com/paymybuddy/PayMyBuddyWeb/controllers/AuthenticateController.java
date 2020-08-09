@@ -14,17 +14,13 @@ import java.util.Map;
 @RestController
 @Singleton
 public class AuthenticateController {
-
-    @Autowired
-    private ControllerUtil controllerUtil;
-
     @Autowired
     private SecurityServiceInterface securityService;
 
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session){
 
-        if (controllerUtil.isLog(session)) {
+        if (securityService.isLog(session)) {
             RedirectView redirectView = new RedirectView();
             redirectView.setUrl("/");
             return new ModelAndView(redirectView);
@@ -32,7 +28,7 @@ public class AuthenticateController {
 
         Map<String, Object> model = new HashMap<>();
         model.put("page", "login");
-        model.put("isLogin", controllerUtil.isLog(session));
+        model.put("isLogin", securityService.isLog(session));
 
         return new ModelAndView("template.html" , model);
     }
@@ -53,7 +49,7 @@ public class AuthenticateController {
     @GetMapping("/signup")
     public ModelAndView getSignup(HttpSession session){
 
-        if (controllerUtil.isLog(session)) {
+        if (securityService.isLog(session)) {
             RedirectView redirectView = new RedirectView();
             redirectView.setUrl("/");
             return new ModelAndView(redirectView);
@@ -61,7 +57,7 @@ public class AuthenticateController {
 
         Map<String, Object> model = new HashMap<>();
         model.put("page", "signup");
-        model.put("isLogin", controllerUtil.isLog(session));
+        model.put("isLogin", securityService.isLog(session));
 
         return new ModelAndView("template.html" , model);
     }
