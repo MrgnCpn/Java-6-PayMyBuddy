@@ -128,7 +128,21 @@
             </svg>
             <input type="text" name="alert_search_field" id="alert_search_field" class="input_text" placeholder="Search ...">
         </div>
-        <div class="resultSet_ctn"></div>
+        <div class="resultSet_ctn">
+            <div th:each="entry : ${countries}" class="result_option" th:data-value="${entry.key}" th:data-name="${entry.value}">
+            	<span class="option_icon">
+					<h2 th:text="${entry.key}"></h2>
+				</span>
+            	<div class="option_info">
+                	<h2 th:text="${entry.value}"></h2>
+                </div>
+            	<span class="option_btn">
+					<svg class="feather f_black">
+					    <use href="/assets/icons/feather-sprite.svg#check"/>
+					</svg>
+				</span>
+            </div>
+        </div>
     </div>
 </body>
 </html>

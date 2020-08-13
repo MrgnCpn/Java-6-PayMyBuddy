@@ -1,8 +1,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-<section th:fragment="error" id="error_ctn" class="block_ctn">
-    <h1 class="title_ctn">Error 404</h1>
-    <h2 class="subtitle_ctn">Sorry, page not found</h2>
-    <a th:href="@{/}" class="btn btn_label btn_anim round b_blueApp c_white">Back to Home</a>
-</section>
+<body th:fragment="error">
+    <header th:replace="header_frg :: main_header"></header>
+    <main class="main_content">
+        <section id="error_ctn" class="block_ctn">
+            <h1 class="title_ctn">Error 404</h1>
+            <h2 class="subtitle_ctn">Sorry, page not found</h2>
+            <a th:href="@{/}" class="btn btn_label btn_anim round b_blueApp c_white">Back to Home</a>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body></html>

@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="main_header" class="main_header">
+        <a th:href="@{/}" class="logo">
+            <img th:src="@{/assets/logo.svg}">
+        </a>
+        <a th:if="${isLogin}" th:href="@{/logout}" class="btn circle logout">
+            <div class="subContainer">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#log-out}"/>
+                </svg>
+                <span class="label">Log-out</span>
+            </div>
+        </a>
+    </header>
+</body>
+</html>

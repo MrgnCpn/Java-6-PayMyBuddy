@@ -1,84 +1,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-    <section class="block_ctn" id="contact_ctn">
-        <div class="input_ctn text_icon">
-            <svg class="feather f_black">
-                <use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
-            </svg>
-            <input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
-        </div>
-        <div class="resultSet_ctn">
-            <a th:href="@{/contact-profile}" class="result_option">
-                <span class="option_icon">
-                    <img th:src="@{/assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
-                </span>
-                <div class="option_info">
-                    <h2>Juanita EMARD</h2>
-                    <h3>juanita.emard@email.com</h3>
-                </div>
-                <span class="option_btn">
-                    <svg class="feather f_red">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
-                    </svg>
-                </span>
-            </a>
-            <a th:href="@{/contact-profile}" class="result_option">
-                <span class="option_icon">
-                    <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
-                </span>
-                <div class="option_info">
-                    <h2>Alexane COLLINS</h2>
-                    <h3>alexane.collins@email.com</h3>
-                </div>
-                <span class="option_btn">
-                    <svg class="feather f_red">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
-                    </svg>
-                </span>
-            </a>
-            <a th:href="@{/contact-profile}" class="result_option">
-                <span class="option_icon">
-                    <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
-                </span>
-                <div class="option_info">
-                    <h2>Ford BASHIRIAN</h2>
-                    <h3>ford.bashirian@email.com</h3>
-                </div>
-                <span class="option_btn">
-                    <svg class="feather f_red">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
-                    </svg>
-                </span>
-            </a>
-            <a th:href="@{/contact-profile}" class="result_option">
-                <span class="option_icon">
-                    <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
-                </span>
-                <div class="option_info">
-                    <h2>Alexane COLLINS</h2>
-                    <h3>alexane.collins@email.com</h3>
-                </div>
-                <span class="option_btn">
-                    <svg class="feather f_red">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
-                    </svg>
-                </span>
-            </a>
-            <a th:href="@{/contact-profile}" class="result_option">
-                <span class="option_icon">
-                    <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
-                </span>
-                <div class="option_info">
-                    <h2>Ford BASHIRIAN</h2>
-                    <h3>ford.bashirian@email.com</h3>
-                </div>
-                <span class="option_btn">
-                    <svg class="feather f_green">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#user-plus}"/>
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </section>
+<body th:fragment="contact">
+    <header th:replace="header_frg :: main_header"></header>
+    <nav th:replace="navigation_frg :: navigation('contact')"></nav>
+    <main class="main_content">
+        <section class="block_ctn" id="contact_ctn">
+            <div class="input_ctn text_icon">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#search}"/>
+                </svg>
+                <input type="text" name="alert_search_field" class="input_text" placeholder="Search ...">
+            </div>
+            <div class="resultSet_ctn">
+                <a th:href="@{/contact-profile}" class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
+                    </span>
+                    <div class="option_info">
+                        <h2>Juanita EMARD</h2>
+                        <h3>juanita.emard@email.com</h3>
+                    </div>
+                    <span class="option_btn">
+                        <svg class="feather f_red">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
+                        </svg>
+                    </span>
+                </a>
+                <a th:href="@{/contact-profile}" class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
+                    </span>
+                    <div class="option_info">
+                        <h2>Alexane COLLINS</h2>
+                        <h3>alexane.collins@email.com</h3>
+                    </div>
+                    <span class="option_btn">
+                        <svg class="feather f_red">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
+                        </svg>
+                    </span>
+                </a>
+                <a th:href="@{/contact-profile}" class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
+                    </span>
+                    <div class="option_info">
+                        <h2>Ford BASHIRIAN</h2>
+                        <h3>ford.bashirian@email.com</h3>
+                    </div>
+                    <span class="option_btn">
+                        <svg class="feather f_red">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
+                        </svg>
+                    </span>
+                </a>
+                <a th:href="@{/contact-profile}" class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/alexane_collins.jpg}" alt="profile_pct">
+                    </span>
+                    <div class="option_info">
+                        <h2>Alexane COLLINS</h2>
+                        <h3>alexane.collins@email.com</h3>
+                    </div>
+                    <span class="option_btn">
+                        <svg class="feather f_red">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#user-minus}"/>
+                        </svg>
+                    </span>
+                </a>
+                <a th:href="@{/contact-profile}" class="result_option">
+                    <span class="option_icon">
+                        <img th:src="@{/assets/profilePicture/ford_bashirian.jpg}" alt="profile_pct">
+                    </span>
+                    <div class="option_info">
+                        <h2>Ford BASHIRIAN</h2>
+                        <h3>ford.bashirian@email.com</h3>
+                    </div>
+                    <span class="option_btn">
+                        <svg class="feather f_green">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#user-plus}"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body>
 </html>

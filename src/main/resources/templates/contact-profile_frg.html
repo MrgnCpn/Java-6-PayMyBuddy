@@ -1,45 +1,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-    <section th:fragment="contact-profile" id="contactProfile_ctn" class="block_ctn">
-        <a th:href="@{/contact}" class="backBtn btn circle b_white">
-            <svg class="feather f_black">
-                <use th:href="@{/assets/icons/feather-sprite.svg#chevron-left}"/>
-            </svg>
-        </a>
-        <div class="contactProfilePicture">
-            <img th:src="@{/assets/profilePicture/juanita_emard.jpg}">
-        </div>
-        <div class="contact_info_ctn">
-            <div class="contact_info">
-                <span class="label">Firstname</span>
-                <p class="info">Juanita</p>
+<body th:fragment="contact-profile">
+    <header th:replace="header_frg :: main_header"></header>
+    <nav th:replace="navigation_frg :: navigation('contact')"></nav>
+    <main class="main_content">
+        <section id="contactProfile_ctn" class="block_ctn">
+            <a th:href="@{/contact}" class="backBtn btn circle b_white">
+                <svg class="feather f_black">
+                    <use th:href="@{/assets/icons/feather-sprite.svg#chevron-left}"/>
+                </svg>
+            </a>
+            <div class="contactProfilePicture">
+                <img th:src="@{/assets/profilePicture/juanita_emard.jpg}">
             </div>
-            <div class="contact_info">
-                <span class="label">lastname</span>
-                <p class="info">EMARD</p>
+            <div class="contact_info_ctn">
+                <div class="contact_info">
+                    <span class="label">Firstname</span>
+                    <p class="info">Juanita</p>
+                </div>
+                <div class="contact_info">
+                    <span class="label">lastname</span>
+                    <p class="info">EMARD</p>
+                </div>
+                <div class="contact_info">
+                    <span class="label">Email</span>
+                    <p class="info">juanita.emard@email.com</p>
+                </div>
+                <div class="contact_info">
+                    <span class="label">Phone</span>
+                    <p class="info">+001 0123456789</p>
+                </div>
+                <div class="contact_info">
+                    <span class="label">Age</span>
+                    <p class="info">01 / 01 / 2000 (20 y)</p>
+                </div>
+                <div class="contact_info">
+                    <span class="label">Country</span>
+                    <p class="info">United Kingdom (GBR)</p>
+                </div>
             </div>
-            <div class="contact_info">
-                <span class="label">Email</span>
-                <p class="info">juanita.emard@email.com</p>
+            <div class="input_ctn btns">
+                <a href="#" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
+                <!--<a href="#" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>-->
+                <a th:href="@{/transfer}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
             </div>
-            <div class="contact_info">
-                <span class="label">Phone</span>
-                <p class="info">+001 0123456789</p>
-            </div>
-            <div class="contact_info">
-                <span class="label">Age</span>
-                <p class="info">01 / 01 / 2000 (20 y)</p>
-            </div>
-            <div class="contact_info">
-                <span class="label">Country</span>
-                <p class="info">United Kingdom (GBR)</p>
-            </div>
-        </div>
-        <div class="input_ctn btns">
-            <a href="#" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
-            <!--<a href="#" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>-->
-            <a th:href="@{/transfer}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
-        </div>
-    </section>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body>
 </html>

@@ -1,37 +1,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-    <section th:fragment="accountInfo" id="accountInfo">
-        <h3 class="c_greyE1">Account Balance</h3>
-        <h1 class="account_balance c_green">+ 1,223.00 €</h1>
-        <div class="account_btns">
-            <a th:href="@{/transfer}" class="btn btn_label round btn_anim b_grey69 c_white">Feed Account</a>
-            <a th:href="@{/new-card}" class="btn btn_label btn_anim round b_black c_white">Manage your cards</a>
-        </div>
-    </section>
-    <section th:fragment="accountDetails" id="accountInfo_details" class="block_ctn">
-        <header class="accountInfo_details_header">
-            <div class="section_btn active" data-targetID="historyInfoSection">
-                <svg class="feather f_black">
-                    <use th:href="@{/assets/icons/feather-sprite.svg#clock}"/>
-                </svg>
-                <p>History</p>
+<body th:fragment="accountInfo">
+    <header th:replace="header_frg :: main_header"></header>
+    <nav th:replace="navigation_frg :: navigation('account')"></nav>
+    <main class="main_content">
+        <section id="accountInfo">
+            <h3 class="c_greyE1">Account Balance</h3>
+            <h1 class="account_balance c_green">+ 1,223.00 €</h1>
+            <div class="account_btns">
+                <a th:href="@{/transfer}" class="btn btn_label round btn_anim b_grey69 c_white">Feed Account</a>
+                <a th:href="@{/new-card}" class="btn btn_label btn_anim round b_black c_white">Manage your cards</a>
             </div>
-            <span class="middle_dash"></span>
-            <div class="section_btn" data-targetID="charInfoSection">
-                <svg class="feather f_black">
-                    <use th:href="@{/assets/icons/feather-sprite.svg#bar-chart-2}"/>
-                </svg>
-                <p>Chart</p>
+        </section>
+        <section th:fragment="accountDetails" id="accountInfo_details" class="block_ctn">
+            <header class="accountInfo_details_header">
+                <div class="section_btn active" data-targetID="historyInfoSection">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#clock}"/>
+                    </svg>
+                    <p>History</p>
+                </div>
+                <span class="middle_dash"></span>
+                <div class="section_btn" data-targetID="charInfoSection">
+                    <svg class="feather f_black">
+                        <use th:href="@{/assets/icons/feather-sprite.svg#bar-chart-2}"/>
+                    </svg>
+                    <p>Chart</p>
+                </div>
+            </header>
+            <div class="subSection_ctn">
+                <div id="historyInfoSection" class="subSection active">
+                    HISTORY
+                </div>
+                <div id="charInfoSection" class="subSection">
+                    CHARTS
+                </div>
             </div>
-        </header>
-        <div class="subSection_ctn">
-            <div id="historyInfoSection" class="subSection active">
-                HISTORY
-            </div>
-            <div id="charInfoSection" class="subSection">
-                CHARTS
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body>
 </html>

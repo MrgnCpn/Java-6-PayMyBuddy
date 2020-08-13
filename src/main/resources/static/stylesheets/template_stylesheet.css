@@ -558,6 +558,22 @@ input:disabled {
 				position: relative;
 			}
 
+			div.input_ctn.select div.input_select.unselect span {
+				color: var(--greyE1);
+			}
+
+			div.input_ctn.select div.input_select.selected span {
+				color: #000;
+			}
+
+			div.input_ctn.select div.input_select.unselect .feather {
+				stroke: var(--greyE1);
+			}
+
+			div.input_ctn.select div.input_select.selected .feather {
+				stroke: #000;
+			}
+
 			div.input_ctn.select div.input_select .feather {
 				position: absolute;
 				top: 50%;

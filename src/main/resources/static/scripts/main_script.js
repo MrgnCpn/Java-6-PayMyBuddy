@@ -62,6 +62,14 @@ class Template {
 		})
 	}
 
+	changeSelect(slc, active) {
+		if (active) {
+			$(slc).removeClass('unselect').addClass('selected');
+		} else {
+			$(slc).addClass('unselect').removeClass('selected');
+		}
+	}
+
 	enabledForm(form_selector, btn_selector) {
 		$(btn_selector).on('click', function(){
 
@@ -121,7 +129,9 @@ class Template {
 		});
 	}
 
-	closeElement
+	closeElement(element, open_class, close_class){
+		$(element).removeClass(open_class).addClass(close_class);
+	}
 }
 
 const template = new Template();

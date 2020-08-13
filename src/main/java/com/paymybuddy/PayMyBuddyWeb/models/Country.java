@@ -1,6 +1,8 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
+import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
 import org.json.JSONObject;
 
@@ -11,6 +13,7 @@ import java.util.Map;
 public class Country {
     private String code;
     private String wording;
+    private CountryServiceInterface countryServiceInterface = new CountryService();
 
     /**
      * Constructor
@@ -19,7 +22,7 @@ public class Country {
      */
     public Country(String code) throws IOException {
         this.code = code.toUpperCase();
-        this.getInfo(code.toUpperCase());
+        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
     }
 
     public String getCode() {
@@ -28,31 +31,14 @@ public class Country {
 
     public void setCode(String code) throws IOException {
         this.code = code.toUpperCase();
-        this.getInfo(code.toUpperCase());
+        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
     }
 
     public String getWording() {
         return wording;
     }
 
-    public void setWording(String wording) {
-        this.wording = wording;
-    }
-
-    /**
-     * Get Country info from External API
-     * @param code
-     * @throws IOException
-     */
-    private void getInfo(String code) throws IOException {
-        Map<String, String> params = new HashMap<>();
-        HTTPRequestServiceInterface httpRequestService = new HTTPRequestService();
-        params.put("fields", "name");
-        JSONObject data = httpRequestService.getReq("https://restcountries.eu/rest/v2/alpha/" + code, params);
-        Integer status = data.getInt("status");
-        if (status < 299) {
-            JSONObject content = (JSONObject) data.get("content");
-            this.setWording(content.getString("name"));
-        }
+    public void setWording(String code) throws IOException {
+        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
     }
 }

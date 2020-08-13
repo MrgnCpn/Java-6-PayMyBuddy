@@ -1,6 +1,7 @@
 package com.paymybuddy.PayMyBuddyWeb.controllers;
 
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,6 +62,7 @@ public class AuthenticateController {
         Map<String, Object> model = new HashMap<>();
         model.put("page", "signup");
         model.put("isLogin", securityService.isLog(session));
+        model.put("countries", new CountryService().getAllCountries());
 
         return new ModelAndView("template.html" , model);
     }

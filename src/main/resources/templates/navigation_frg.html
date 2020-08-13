@@ -1,0 +1,10 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <nav th:fragment="navigation(section)" th:if="${isLogin}" class="main_nav">
+        <a th:href="@{/account}" class="main_nav_element" th:classappend="${section == 'account'} ? selected">My account</a>
+        <a th:href="@{/transfer}" class="main_nav_element" th:classappend="${section == 'transfer'} ? selected">Transfer</a>
+        <a th:href="@{/profile}" class="main_nav_element" th:classappend="${section == 'profile'} ? selected">Profile</a>
+        <a th:href="@{/contact}" class="main_nav_element" th:classappend="${section == 'contact'} ? selected">Contact</a>
+    </nav>
+</body>
+</html>

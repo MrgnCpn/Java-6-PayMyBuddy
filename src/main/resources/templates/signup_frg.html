@@ -1,66 +1,73 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-    <section th:fragment="signup" id="signup_ctn" class="block_ctn">
-        <h1 class="title_ctn">Sign Up</h1>
-        <form class="form" th:action="@{/signup}" method="POST">
-            <div class="comp_input_ctn">
-                <div class="input_ctn text">
-                    <label for="firstname" class="input_label">Firstname</label>
-                    <input type="text" name="firstname" id="firstname" placeholder="John" class="input_text">
-                </div>
-                <div class="input_ctn text">
-                    <label for="lastname" class="input_label">Lastname</label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Smith" class="input_text">
-                </div>
-            </div>
-            <div class="input_ctn text">
-                <label for="email" class="input_label">Email</label>
-                <input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
-            </div>
-            <div class="comp_input_ctn">
-                <div class="input_ctn text">
-                    <label for="age_day" class="input_label">Age</label>
-                    <input type="text" name="age_day" id="age_day" placeholder="DD" class="input_text center">
-                </div>
-                <div class="input_ctn text">
-                    <label for="age_month" class="input_label c_white">Age</label>
-                    <input type="text" name="age_month" id="age_month" placeholder="MM" class="input_text center">
-                </div>
-                <div class="input_ctn text">
-                    <label for="age_year" class="input_label c_white">Age</label>
-                    <input type="text" name="age_year" id="age_year" placeholder="YYYY" class="input_text center">
-                </div>
-            </div>
-            <div class="input_ctn text">
-                <label for="password" class="input_label">Password</label>
-                <input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
-            </div>
-            <div class="comp_input_ctn">
-                <div class="input_ctn select" id="countrySelect">
-                    <label for="country" class="input_label">Country</label>
-                    <div class="input_select">
-                        <span class="c_greyE1">Select Country</span>
-                        <svg class="feather f_greyE1">
-                            <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
-                        </svg>
+<body th:fragment="signup">
+    <div class="main_alerts disable">
+        <div th:replace="alert_frg :: country-alert"></div>
+    </div>
+    <header th:replace="header_frg :: main_header"></header>
+    <main class="main_content">
+        <section id="signup_ctn" class="block_ctn">
+            <h1 class="title_ctn">Sign Up</h1>
+            <form class="form" th:action="@{/signup}" method="POST">
+                <div class="comp_input_ctn">
+                    <div class="input_ctn text">
+                        <label for="firstname" class="input_label">Firstname</label>
+                        <input type="text" name="firstname" id="firstname" placeholder="John" class="input_text">
                     </div>
-                    <input type="text" name="country" id="country" class="disable">
-                </div>
-                <div class="input_ctn radio">
-                    <label for="currency" class="input_label">Currency</label>
-                    <input type="text" name="currency" id="currency" class="disable" value="USD">
-                    <div class="input_radio_ctn">
-                        <span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
+                    <div class="input_ctn text">
+                        <label for="lastname" class="input_label">Lastname</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Smith" class="input_text">
                     </div>
                 </div>
-            </div>
-            <div class="input_ctn btns">
-                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_purpleApp c_white" value="sign up">
-            </div>
-        </form>
-    </section>
+                <div class="input_ctn text">
+                    <label for="email" class="input_label">Email</label>
+                    <input type="text" name="email" id="email" placeholder="john.smith@email.com" class="input_text">
+                </div>
+                <div class="comp_input_ctn">
+                    <div class="input_ctn text">
+                        <label for="age_day" class="input_label">Age</label>
+                        <input type="text" name="age_day" id="age_day" placeholder="DD" class="input_text center">
+                    </div>
+                    <div class="input_ctn text">
+                        <label for="age_month" class="input_label c_white">Age</label>
+                        <input type="text" name="age_month" id="age_month" placeholder="MM" class="input_text center">
+                    </div>
+                    <div class="input_ctn text">
+                        <label for="age_year" class="input_label c_white">Age</label>
+                        <input type="text" name="age_year" id="age_year" placeholder="YYYY" class="input_text center">
+                    </div>
+                </div>
+                <div class="input_ctn text">
+                    <label for="password" class="input_label">Password</label>
+                    <input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
+                </div>
+                <div class="comp_input_ctn">
+                    <div class="input_ctn select" id="countrySelect">
+                        <label for="country" class="input_label">Country</label>
+                        <div class="input_select unselect">
+                            <span>Select Country</span>
+                            <svg class="feather">
+                                <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
+                            </svg>
+                        </div>
+                        <input type="text" name="country" id="country" class="disable">
+                    </div>
+                    <div class="input_ctn radio">
+                        <label for="currency" class="input_label">Currency</label>
+                        <input type="text" name="currency" id="currency" class="disable" value="USD">
+                        <div class="input_radio_ctn">
+                            <span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_ctn btns">
+                    <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_purpleApp c_white" value="sign up">
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body>
 </html>

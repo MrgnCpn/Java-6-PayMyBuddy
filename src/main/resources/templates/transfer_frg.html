@@ -1,67 +1,75 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-    <section th:fragment="transfer" id="transfer_ctn" class="block_ctn">
-        <form>
-            <div class="input_ctn select">
-                <label for="from" class="input_label">FROM</label>
-                <div class="input_select">
-                    <div class="selected_option">
-                        <span class="option_icon">
-                            <img th:src="@{assets/icons/visa.svg}" alt="myCard_logo">
-                        </span>
-                        <div class="option_info">
-                            <h2>BANK ACCOUNT - MORGAN STANLEY</h2>
-                            <h3>**** **** **** 1234</h3>
+<body th:fragment="transfer">
+    <div class="main_alerts disable">
+        <div th:replace="alert_frg :: tranfer-alert"></div>
+    </div>
+    <header th:replace="header_frg :: main_header"></header>
+    <nav th:replace="navigation_frg :: navigation('transfer')"></nav>
+    <main class="main_content">
+        <section id="transfer_ctn" class="block_ctn">
+            <form>
+                <div class="input_ctn select">
+                    <label for="from" class="input_label">FROM</label>
+                    <div class="input_select">
+                        <div class="selected_option">
+                            <span class="option_icon">
+                                <img th:src="@{assets/icons/visa.svg}" alt="myCard_logo">
+                            </span>
+                            <div class="option_info">
+                                <h2>BANK ACCOUNT - MORGAN STANLEY</h2>
+                                <h3>**** **** **** 1234</h3>
+                            </div>
+                        </div>
+                        <svg class="feather f_greyE1">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
+                        </svg>
+                    </div>
+                    <input type="text" name="from" id="from" class="disable">
+                </div>
+                <div class="input_ctn select">
+                    <label for="to" class="input_label">TO</label>
+                    <div class="input_select">
+                        <div class="selected_option">
+                            <span class="option_icon">
+                                <img th:src="@{assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
+                            </span>
+                            <div class="option_info">
+                                <h2>Juanita EMARD</h2>
+                                <h3>juanita.emard@email.com</h3>
+                            </div>
+                        </div>
+                        <svg class="feather f_greyE1">
+                            <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
+                        </svg>
+                    </div>
+                    <input type="text" name="to" id="to" class="disable">
+                </div>
+                <div class="comp_input_ctn">
+                    <div class="input_ctn text">
+                        <label for="amount" class="input_label">Amount<span class="input_sub_label">(0.5 % fees)</span></label>
+                        <input type="text" name="amount" id="amount" placeholder="0.00" class="input_text">
+                    </div>
+                    <div class="input_ctn radio">
+                        <label for="currency" class="input_label c_white">Currency</label>
+                        <input type="text" name="currency" id="currency" class="disable">
+                        <div class="input_radio_ctn">
+                            <span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
+                            <span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
                         </div>
                     </div>
-                    <svg class="feather f_greyE1">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
-                    </svg>
                 </div>
-                <input type="text" name="from" id="from" class="disable">
-            </div>
-            <div class="input_ctn select">
-                <label for="to" class="input_label">TO</label>
-                <div class="input_select">
-                    <div class="selected_option">
-                        <span class="option_icon">
-                            <img th:src="@{assets/profilePicture/juanita_emard.jpg}" alt="profile_pct">
-                        </span>
-                        <div class="option_info">
-                            <h2>Juanita EMARD</h2>
-                            <h3>juanita.emard@email.com</h3>
-                        </div>
-                    </div>
-                    <svg class="feather f_greyE1">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
-                    </svg>
-                </div>
-                <input type="text" name="to" id="to" class="disable">
-            </div>
-            <div class="comp_input_ctn">
                 <div class="input_ctn text">
-                    <label for="amount" class="input_label">Amount<span class="input_sub_label">(0.5 % fees)</span></label>
-                    <input type="text" name="amount" id="amount" placeholder="0.00" class="input_text">
+                    <label for="description" class="input_label">Description<span class="input_sub_label">(Optional)</span></label>
+                    <textarea type="text" name="description" id="description" placeholder="Descritpion ..." class="input_textarea"></textarea>
                 </div>
-                <div class="input_ctn radio">
-                    <label for="currency" class="input_label c_white">Currency</label>
-                    <input type="text" name="currency" id="currency" class="disable">
-                    <div class="input_radio_ctn">
-                        <span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="GBP">£</span>
-                        <span class="currencyRadio btn c_white radio_btn" data-value="JPY">¥</span>
-                    </div>
+                <div class="input_ctn btns">
+                    <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Validate with password">
                 </div>
-            </div>
-            <div class="input_ctn text">
-                <label for="description" class="input_label">Description<span class="input_sub_label">(Optional)</span></label>
-                <textarea type="text" name="description" id="description" placeholder="Descritpion ..." class="input_textarea"></textarea>
-            </div>
-            <div class="input_ctn btns">
-                <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Validate with password">
-            </div>
-        </form>
-    </section>
+            </form>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
 </body>
 </html>

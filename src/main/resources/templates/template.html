@@ -27,38 +27,5 @@
 		<link th:href="@{/stylesheets/{page}_stylesheet.css (page = ${page})}" rel="stylesheet"/>
 		<script type="text/javascript" th:src="@{/scripts/{page}_script.js (page = ${page})}"></script>
 	</head>
-	<body th:switch="${page}">
-		<div class="main_alerts disable" th:if="${page == 'transfer'}">
-			<div th:replace="alert_frg :: tranfer-alert"></div>
-		</div>
-
-		<div class="main_alerts disable" th:if="${page == 'signup'}">
-			<div th:replace="alert_frg :: country-alert"></div>
-		</div>
-
-		<header class="main_header">
-			<a th:href="@{/}" class="logo">
-				<img th:src="@{/assets/logo.svg}">
-			</a>
-			<a th:if="${isLogin}" th:href="@{/logout}" class="btn circle logout">
-				<div class="subContainer">
-					<svg class="feather f_black">
-						<use th:href="@{/assets/icons/feather-sprite.svg#log-out}"/>
-					</svg>
-					<span class="label">Log-out</span>  
-				</div>
-			</a>
-		</header>
-		<nav th:if="${isLogin}" class="main_nav">
-			<a th:href="@{/account}" class="main_nav_element" th:classappend="${page == 'account'} ? selected">My account</a>
-			<a th:href="@{/transfer}" class="main_nav_element" th:classappend="${page == 'transfer'} ? selected">Transfer</a>
-			<a th:href="@{/profile}" class="main_nav_element" th:classappend="${page == 'profile'} ? selected">Profile</a>
-			<a th:href="@{/contact}" class="main_nav_element" th:classappend="${page == 'contact'} ? selected">Contact</a>
-		</nav>
-
-		<main class="main_content">
-			<div th:replace="${page} + _frg"></div>
-		</main>
-		<footer class="main_footer">© PayMyBuddy - 2020</footer>
-	</body>
+	<body th:replace="${page} + _frg"></body>
 </html>
