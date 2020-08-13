@@ -109,6 +109,7 @@ public class SecurityService implements SecurityServiceInterface {
             User user = userDAO.getUserByUsername(username);
 
             Map<String, Object> claims = new HashMap<>();
+            claims.put("userID", user.getId());
             claims.put("username", user.getEmail());
             claims.put("name", user.getFirstName() + " " + user.getLastName());
             if (rememberUser) {
@@ -123,6 +124,7 @@ public class SecurityService implements SecurityServiceInterface {
     /**
      * @see SecurityServiceInterface {@link #createJWT(Integer, String, String, Map, long)}
      */
+    @Override
     public String createJWT(Integer id, String subject, String issuer, Map<String, Object> claims, long ttlMillis) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
@@ -150,6 +152,7 @@ public class SecurityService implements SecurityServiceInterface {
     /**
      * @see SecurityServiceInterface {@link #parseJWT(String)}
      */
+    @Override
     public Claims parseJWT(String token) {
         Claims claims = null;
 
@@ -180,8 +183,30 @@ public class SecurityService implements SecurityServiceInterface {
     /**
      * @see SecurityServiceInterface {@link #isLog(HttpSession)}
      */
+    @Override
     public Boolean isLog(HttpSession session) {
         String token = (String) session.getAttribute("token");
         return ((token != null) && (parseJWT(token) != null));
+    }
+
+    /**
+     * @see SecurityServiceInterface {@link #updateUserPassword(HttpSession, Map)}
+     */
+    @Override
+    public void updateUserPassword(HttpSession session, Map<String, Object> requestParams){
+        String token = (String) session.getAttribute("token");
+        if (
+                token != null &&
+                requestParams != null &&
+                !MSStringUtils.isEmpty((String) requestParams.get("old_password")) &&
+                !MSStringUtils.isEmpty((String) requestParams.get("new_password")) &&
+                !MSStringUtils.isEmpty((String) requestParams.get("new_chk_password"))
+        ) {
+            Claims claims = parseJWT(token);
+            securityDAO.updatePassword(
+                    (Integer) claims.get("userID"),
+                    passwordEncoder.encode((String) requestParams.get("new_password"))
+            );
+        }
     }
 }

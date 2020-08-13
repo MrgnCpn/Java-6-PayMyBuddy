@@ -87,4 +87,15 @@ public class AuthenticateController {
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
     }
+
+    @PostMapping("/change-password")
+    public ModelAndView changePassword(HttpSession session, @RequestParam Map<String, Object> requestParams){
+        securityService.updateUserPassword(session, requestParams);
+
+
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/profile");
+        return new ModelAndView(redirectView);
+    }
 }

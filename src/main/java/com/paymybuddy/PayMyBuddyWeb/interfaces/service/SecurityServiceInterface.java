@@ -47,4 +47,11 @@ public interface SecurityServiceInterface {
      * @return
      */
     Boolean isLog(HttpSession session);
+
+    /**
+     * Update user password
+     * @param session
+     * @param requestParams
+     */
+    void updateUserPassword(HttpSession session, Map<String, Object> requestParams);
 }
