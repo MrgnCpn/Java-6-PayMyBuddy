@@ -8,6 +8,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,9 @@ public class AuthenticateController {
 
     @PostMapping("/login")
     public ModelAndView postLogin(HttpSession session, @RequestParam Map<String,String> requestParams){
-        Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"));
+        Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"), requestParams.get("remember") != null);
+
+        System.out.println(requestParams.get("remember"));
 
         if (userLogin != null) {
             userLogin.forEach((k, v) -> session.setAttribute(k, v));
@@ -47,7 +50,7 @@ public class AuthenticateController {
     }
 
     @GetMapping("/signup")
-    public ModelAndView getSignup(HttpSession session){
+    public ModelAndView getSignup(HttpSession session) throws IOException {
 
         if (securityService.isLog(session)) {
             RedirectView redirectView = new RedirectView();
@@ -63,8 +66,12 @@ public class AuthenticateController {
     }
 
     @PostMapping("/signup")
-    public ModelAndView postSignup(HttpSession session, @RequestParam Map<String,String> requestParams){
-        //
+    public ModelAndView postSignup(HttpSession session, @RequestParam Map<String, Object> requestParams) throws IOException {
+        Map<String, String> userLogin = securityService.registerUser(requestParams);
+
+        if (userLogin != null) {
+            userLogin.forEach((k, v) -> session.setAttribute(k, v));
+        }
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");

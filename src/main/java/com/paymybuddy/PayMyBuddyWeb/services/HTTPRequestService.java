@@ -30,8 +30,8 @@ public class HTTPRequestService implements HTTPRequestServiceInterface {
         con.setRequestMethod("GET");
         con.setDoOutput(true);
         con.setRequestProperty("Content-Type", "application/json");
-        con.setConnectTimeout(5000);
-        con.setReadTimeout(5000);
+        con.setConnectTimeout(1000);
+        con.setReadTimeout(1500);
         String res = this.getResponse(con);
         con.disconnect();
         return new JSONObject(res);

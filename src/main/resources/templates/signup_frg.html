@@ -2,7 +2,7 @@
 <body>
     <section th:fragment="signup" id="signup_ctn" class="block_ctn">
         <h1 class="title_ctn">Sign Up</h1>
-        <form class="form" action="" method="POST">
+        <form class="form" th:action="@{/signup}" method="POST">
             <div class="comp_input_ctn">
                 <div class="input_ctn text">
                     <label for="firstname" class="input_label">Firstname</label>
@@ -36,19 +36,19 @@
                 <input type="password" name="password" id="password" placeholder="●●●●●●●●" class="input_text">
             </div>
             <div class="comp_input_ctn">
-                <div class="input_ctn select">
+                <div class="input_ctn select" id="countrySelect">
                     <label for="country" class="input_label">Country</label>
                     <div class="input_select">
-                        <span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
+                        <span class="c_greyE1">Select Country</span>
                         <svg class="feather f_greyE1">
-                            <use th:href="@{/assets/icons/feather-sprite.svg#chevron-down}"/>
+                            <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
                         </svg>
                     </div>
                     <input type="text" name="country" id="country" class="disable">
                 </div>
                 <div class="input_ctn radio">
                     <label for="currency" class="input_label">Currency</label>
-                    <input type="text" name="currency" id="currency" class="disable">
+                    <input type="text" name="currency" id="currency" class="disable" value="USD">
                     <div class="input_radio_ctn">
                         <span class="currencyRadio btn c_white radio_btn selected" data-value="USD">$</span>
                         <span class="currencyRadio btn c_white radio_btn" data-value="EUR">€</span>

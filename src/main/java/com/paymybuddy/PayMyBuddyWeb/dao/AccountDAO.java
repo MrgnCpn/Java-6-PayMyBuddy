@@ -80,7 +80,7 @@ public class AccountDAO implements AccountDAOInterface {
 
         StringBuffer sql = new StringBuffer();
         sql.append("UPDATE accounts");
-        sql.append(" SET amount = ?, currency = ? balance_date = ?");
+        sql.append(" SET amount = ?, currency = ?, balance_date = ?");
         sql.append(" WHERE user_id = ?");
 
         try {
@@ -93,6 +93,31 @@ public class AccountDAO implements AccountDAOInterface {
             ps.execute();
         } catch (Exception ex){
             logger.error("Error update user account", ex);
+        } finally {
+            databaseConfiguration.closeSQLTransaction(con, ps, null);
+        }
+    }
+
+    /**
+     * @see AccountDAOInterface {@link #updateAccount(Account)}
+     */
+    @Override
+    public void createAccount(Integer userId, String currency){
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        StringBuffer sql = new StringBuffer();
+        sql.append("INSERT INTO accounts (user_id, amount, currency, balance_date)");
+        sql.append(" VALUES (?, 0, ?, NOW())");
+
+        try {
+            con = databaseConfiguration.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setInt(1, userId);
+            ps.setString(2, currency);
+            ps.execute();
+        } catch (Exception ex){
+            logger.error("Error create user account", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

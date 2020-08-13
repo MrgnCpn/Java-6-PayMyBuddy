@@ -1,9 +1,7 @@
 class Template {
 	initTemplate(){	
-		var containers = $('.comp_input_ctn');
-
 		$('.comp_input_ctn').each(function() {
-			var idx = 0;
+			let idx = 0;
 			this.childNodes.forEach((item, index) => {
 				(index % 2 !== 0 && $(item).hasClass('input_ctn')) ? idx ++ : null;
 				(index % 2 !== 0 && $(item).hasClass('sub_comp_input_ctn')) ? idx ++ : null;
@@ -16,7 +14,7 @@ class Template {
 		})
 
 		$('.sub_comp_input_ctn').each(function() {
-			var idx = 0;
+			let idx = 0;
 			this.childNodes.forEach((item, index) => {
 				(index % 2 !== 0 && $(item).hasClass('input_ctn')) ? idx ++ : null;
 			})
@@ -30,9 +28,12 @@ class Template {
 	toggleCheckbox(input_chk_field, input_chk_btn) {
 		$(input_chk_btn).on('click', function(){
 			$(input_chk_btn).toggleClass('on').toggleClass('off');
-			$(input_chk_field).attr("value") === 'on'
-				? $(input_chk_field).attr("value", "off")
-				: $(input_chk_field).attr("value", "on");
+			if ($(input_chk_field).attr("checked") !== undefined){
+				$(input_chk_field).removeAttr("checked")
+			} else {
+				$(input_chk_field).attr("checked", "checked")
+			}
+			console.log('toggle');
 		});
 	}
 
@@ -119,6 +120,8 @@ class Template {
 			$(element).removeClass(open_class).addClass(close_class);
 		});
 	}
+
+	closeElement
 }
 
 const template = new Template();

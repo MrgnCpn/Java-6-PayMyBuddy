@@ -1,5 +1,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
+
+
+
+
+
+
     <section th:fragment="login" id="login_ctn" class="block_ctn">
         <h1 class="title_ctn">Login</h1>
         <form class="form" action="/login" method="POST">
@@ -13,7 +19,7 @@
                 <a th:href="@{#}" class="input_link">Forgot password ?</a>
             </div>
             <div class="input_ctn chk">
-                <input type="checkbox" name="remember" id="input_chk_field" class="disable" value="on">
+                <input type="checkbox" name="remember" id="input_chk_field" class="disable" checked>
                 <div class="input_chk on" id="input_chk_btn"><span>O</span><span>I</span><span class="chk_btn"></span></div>
                 <label class="label_chk">Remember me</label>
             </div>
@@ -46,5 +52,10 @@
             </div>
         </div>
     </section>
+
+
+
+
+
 </body>
 </html>

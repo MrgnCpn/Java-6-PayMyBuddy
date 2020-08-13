@@ -13,7 +13,14 @@ public interface AccountDAOInterface {
 
     /**
      * Upadate Account
-     * @param userId
+     * @param account
      */
     void updateAccount(Account account);
+
+    /**
+     * Create new User account
+     * @param userId
+     * @param currency
+     */
+    void createAccount(Integer userId, String currency);
 }

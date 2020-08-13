@@ -154,16 +154,16 @@ public class UserDAO implements UserDAOInterface {
     }
 
     /**
-     * @see UserDAOInterface {@link #createNewUser(User)}
+     * @see UserDAOInterface {@link #createUser(User, String, String)}
      */
     @Override
-    public void createNewUser(User user) {
+    public void createUser(User user, String currency, String password) {
         Connection con = null;
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO users (firstname, lastname, birthday, email, country_code)");
-        sql.append(" VALUES (?, ?, ?, ?, ?)");
+        sql.append("INSERT INTO users (firstname, lastname, birthday, email, password, country_code)");
+        sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -172,10 +172,13 @@ public class UserDAO implements UserDAOInterface {
             ps.setString(2, user.getLastName());
             ps.setDate(3, Date.valueOf(user.getBirthday()));
             ps.setString(4, user.getEmail());
-            ps.setString(5, user.getCountry().getCode());
+            ps.setString(5, password);
+            ps.setString(6, user.getCountry().getCode());
             ps.execute();
+
+            accountDAO.createAccount(getUserByUsername(user.getEmail()).getId(), currency);
         } catch (Exception ex){
-            logger.error("Error insert new user", ex);
+            logger.error("Error create new user", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

@@ -1,27 +1,27 @@
 package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
 
-import com.paymybuddy.PayMyBuddyWeb.models.User;
 import io.jsonwebtoken.Claims;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Map;
 
 public interface SecurityServiceInterface {
 
     /**
      * Encode user password and insert into db
-     * @param userId
-     * @param password
+     * @param signUpParams
      */
-    void registerUser(Integer userId, String password);
+    Map<String, String> registerUser(Map<String, Object> signUpParams) throws IOException;
 
     /**
      * Check user log and return login information with token
      * @param username
      * @param password
+     * @param rememeberUser
      * @return
      */
-    Map<String, String> logUser(String username, String password);
+    Map<String, String> logUser(String username, String password, Boolean rememeberUser);
 
     /**
      * Create JWT

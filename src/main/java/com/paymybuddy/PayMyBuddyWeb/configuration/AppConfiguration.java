@@ -46,6 +46,6 @@ public class AppConfiguration {
 
     @Bean
     public SecurityServiceInterface securityService(){
-        return new SecurityService(securityDAO(), bCryptPasswordEncoder, userDAO());
+        return new SecurityService(securityDAO(), bCryptPasswordEncoder, userDAO(), accountDAO());
     }
 }

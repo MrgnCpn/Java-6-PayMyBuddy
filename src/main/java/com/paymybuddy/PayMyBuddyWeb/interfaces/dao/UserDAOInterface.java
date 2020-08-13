@@ -26,6 +26,8 @@ public interface UserDAOInterface {
     /**
      * Create new user
      * @param user
+     * @param currency
+     * @param password
      */
-    void createNewUser(User user);
+    void createUser(User user, String currency, String password);
 }

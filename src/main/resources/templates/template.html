@@ -32,6 +32,10 @@
 			<div th:replace="alert_frg :: tranfer-alert"></div>
 		</div>
 
+		<div class="main_alerts disable" th:if="${page == 'signup'}">
+			<div th:replace="alert_frg :: country-alert"></div>
+		</div>
+
 		<header class="main_header">
 			<a th:href="@{/}" class="logo">
 				<img th:src="@{/assets/logo.svg}">
