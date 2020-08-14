@@ -65,8 +65,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
                         )
                 );
             }
+            logger.info("CreditCardDAO.getUserCreditCards() -> cards getted for user : " + userId);
         } catch (Exception e){
-            logger.error("Error fetching user credit cards", e);
+            logger.error("CreditCardDAO.getUserCreditCards() -> Error fetching user credit cards", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
 
@@ -95,8 +96,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setString(4, creditCard.getCvv());
             ps.setString(5, creditCard.getWording());
             ps.execute();
+            logger.info("CreditCardDAO.addCreditCard() -> Credit cards added for user : " + creditCard.getUserId());
         } catch (Exception ex){
-            logger.error("Error add user card", ex);
+            logger.error("CreditCardDAO.addCreditCard() -> Error add user card", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
@@ -120,8 +122,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setInt(1, creditCard.getCardId());
             ps.setInt(2, creditCard.getUserId());
             ps.execute();
+            logger.info("CreditCardDAO.removeCreditCard() -> Credit cards removed for user : " + creditCard.getUserId());
         } catch (Exception ex){
-            logger.error("Error remove user card", ex);
+            logger.error("CreditCardDAO.removeCreditCard() -> Error remove user card", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
@@ -150,8 +153,9 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setInt(5, creditCard.getCardId());
             ps.setInt(6, creditCard.getUserId());
             ps.execute();
+            logger.info("CreditCardDAO.updateCreditCard() -> Credit cards updated for user : " + creditCard.getUserId());
         } catch (Exception ex){
-            logger.error("Error update user card", ex);
+            logger.error("CreditCardDAO.updateCreditCard() -> Error update user card", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

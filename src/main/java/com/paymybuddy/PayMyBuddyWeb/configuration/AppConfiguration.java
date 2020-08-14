@@ -3,8 +3,12 @@ package com.paymybuddy.PayMyBuddyWeb.configuration;
 import com.paymybuddy.PayMyBuddyWeb.dao.*;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.*;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import com.paymybuddy.PayMyBuddyWeb.services.SecurityService;
+import com.paymybuddy.PayMyBuddyWeb.services.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,5 +51,15 @@ public class AppConfiguration {
     @Bean
     public SecurityServiceInterface securityService(){
         return new SecurityService(securityDAO(), bCryptPasswordEncoder, userDAO(), accountDAO());
+    }
+
+    @Bean
+    public CountryServiceInterface countryService(){
+        return new CountryService();
+    }
+
+    @Bean
+    public UserServiceInterface userService() {
+        return new UserService(securityService(), userDAO());
     }
 }

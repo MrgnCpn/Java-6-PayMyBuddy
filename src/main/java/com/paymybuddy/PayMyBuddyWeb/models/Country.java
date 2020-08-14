@@ -13,7 +13,7 @@ import java.util.Map;
 public class Country {
     private String code;
     private String wording;
-    private CountryServiceInterface countryServiceInterface = new CountryService();
+    private final CountryServiceInterface countryServiceInterface = new CountryService();
 
     /**
      * Constructor

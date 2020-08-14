@@ -72,7 +72,6 @@ class Template {
 
 	enabledForm(form_selector, btn_selector) {
 		$(btn_selector).on('click', function(){
-
 			if ($(form_selector).hasClass('disabled')) {
 				$(form_selector + ' input').each(function(){
 					$(this).attr('disabled', false);
@@ -80,14 +79,6 @@ class Template {
 
 				$(form_selector + ' .input_select').each(function(){
 					$(this).removeClass('disabled');
-				})
-
-				$(form_selector + ' .input_select span').each(function(){
-					$(this).toggleClass('c_greyE1').toggleClass('c_black');
-				})
-
-				$(form_selector + ' .input_select feather').each(function(){
-					$(this).toggleClass('f_greyE1').toggleClass('f_black');
 				})
 
 				$(form_selector).removeClass('disabled');
@@ -100,16 +91,16 @@ class Template {
 					$(this).addClass('disabled');
 				})
 
-				$(form_selector + ' .input_select span').each(function(){
-					$(this).toggleClass('c_greyE1').toggleClass('c_black');
-				})
-
-				$(form_selector + ' .input_select feather').each(function(){
-					$(this).toggleClass('f_greyE1').toggleClass('f_black');
-				})
-
 				$(form_selector).addClass('disabled');
 			}
+
+			$(form_selector + ' .input_select span').each(function(){
+				$(this).toggleClass('c_greyE1').toggleClass('c_black');
+			})
+
+			$(form_selector + ' .input_select .feather').each(function(){
+				$(this).toggleClass('f_greyE1').toggleClass('f_black');
+			})
 
 			$(form_selector + ' .input_ctn.btns').each(function(){
 				$(this).removeClass('disable');

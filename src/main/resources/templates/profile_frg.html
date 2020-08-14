@@ -1,50 +1,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
+    <div class="main_alerts disable">
+        <div th:replace="alert_frg :: country-alert"></div>
+    </div>
     <header th:replace="header_frg :: main_header"></header>
     <nav th:replace="navigation_frg :: navigation('profile')"></nav>
     <main class="main_content">
         <section th:fragment="profile" id="usrProfile_ctn" class="block_ctn">
             <div class="usrProfilePicture">
-                <img th:src="@{assets/profilePicture/john_smith.jpg}">
+                <img th:src="@{'assets/profilePicture/' + ${user.id} + '_' + ${user.firstName} + '_' + ${user.lastName} + '.jpg'}">
             </div>
-            <form class="form disabled" id="usrProfileForm" method="POST">
+            <form class="form disabled" id="usrProfileForm" method="POST" th:action="@{/profile}" th:object="${user}">
                 <div class="comp_input_ctn">
                     <div class="input_ctn text">
                         <label for="firstname" class="input_label">Firstname</label>
-                        <input type="text" name="firstname" id="firstname" value="John" class="input_text" disabled="true">
+                        <input type="text" name="firstname" id="firstname" th:value="*{firstName}" class="input_text" disabled="true">
                     </div>
                     <div class="input_ctn text">
                         <label for="lastname" class="input_label">Lastname</label>
-                        <input type="text" name="lastname" id="lastname" value="Smith" class="input_text" disabled="true">
+                        <input type="text" name="lastname" id="lastname" th:value="*{lastName}" class="input_text uppercase" disabled="true">
                     </div>
                 </div>
                 <div class="input_ctn text">
                     <label for="email" class="input_label">Email</label>
-                    <input type="text" name="email" id="email" value="john.smith@email.com" class="input_text" disabled="true">
+                    <input type="text" name="email" id="email" th:value="*{email}" class="input_text" disabled="true">
                 </div>
                 <div class="comp_input_ctn">
                     <div class="input_ctn text">
                         <label for="age_day" class="input_label">Age</label>
-                        <input type="text" name="age_day" id="age_day" value="01" class="input_text center" disabled="true">
+                        <input th:if="*{birthday.getDayOfMonth() < 10}" type="text" name="age_day" id="age_day" th:value="'0' + *{birthday.getDayOfMonth()}" class="input_text center" disabled="true">
+                        <input th:unless="*{birthday.getDayOfMonth() < 10}" type="text" name="age_day" id="age_day" th:value="*{birthday.getDayOfMonth()}" class="input_text center" disabled="true">
                     </div>
                     <div class="input_ctn text">
                         <label for="age_month" class="input_label c_white">Age</label>
-                        <input type="text" name="age_month" id="age_month" value="01" class="input_text center" disabled="true">
+                        <input th:if="*{birthday.getMonthValue() < 10}" type="text" name="age_month" id="age_month" th:value="'0' + *{birthday.getMonthValue()}" class="input_text center" disabled="true">
+                        <input th:unless="*{birthday.getMonthValue() < 10}" type="text" name="age_month" id="age_month" th:value="*{birthday.getMonthValue()}" class="input_text center" disabled="true">
                     </div>
                     <div class="input_ctn text">
                         <label for="age_year" class="input_label c_white">Age</label>
-                        <input type="text" name="age_year" id="age_year" value="2020" class="input_text center" disabled="true">
+                        <input type="text" name="age_year" id="age_year" th:value="*{birthday.getYear()}" class="input_text center" disabled="true">
                     </div>
                 </div>
-                <div class="input_ctn select">
+                <div class="input_ctn select" id="countrySelect">
                     <label for="country" class="input_label">Country</label>
                     <div class="input_select disabled">
-                        <span class="c_greyE1" data-value="GBR">GBR - United Kingdom</span>
+                        <span class="c_greyE1" th:data-value="*{country.code}" th:text="*{country.code} + ' - ' + *{country.wording}"></span>
                         <svg class="feather f_greyE1">
                             <use th:href="@{/assets/icons/feather-sprite.svg#edit-3}"/>
                         </svg>
                     </div>
-                    <input type="text" name="country" id="country" class="disable">
+                    <input type="text" name="country" id="country" class="disable" th:value="*{country.code}">
                 </div>
                 <div class="input_ctn btns disable">
                     <input type="reset" name="cancel" id="input_btn_cancel" class="input_btn btn btn_label btn_anim round b_red c_white" value="Cancel">

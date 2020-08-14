@@ -71,8 +71,9 @@ public class TransactionDAO implements TransactionDAOInterface {
                         )
                 );
             }
+            logger.info("TransactionDAO.getUserTransactions() -> Transactions getted for user : " + userId);
         } catch (Exception e){
-            logger.error("Error fetching user", e);
+            logger.error("TransactionDAO.getUserTransactions() -> Error fetching user", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
 
@@ -114,8 +115,9 @@ public class TransactionDAO implements TransactionDAOInterface {
                         )
                 );
             }
+            logger.info("TransactionDAO.getTransactionsBetweenTwoUsers() -> Transactions getted between " + userId_1 + " and " + userId_2);
         } catch (Exception e){
-            logger.error("Error fetching user", e);
+            logger.error("TransactionDAO.getTransactionsBetweenTwoUsers() -> Error fetching user", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
 
@@ -154,8 +156,9 @@ public class TransactionDAO implements TransactionDAOInterface {
             ps.setDouble(8, transaction.getFinalAmount());
             ps.setString(9, transaction.getCurrency().getCode());
             ps.execute();
+            logger.info("TransactionDAO.newTransaction() -> Transactions getted between " + transaction.getIdFrom() + " and " + transaction.getIdCard() + ", date : " + transaction.getDate());
         } catch (Exception ex){
-            logger.error("Error update new user", ex);
+            logger.error("TransactionDAO.newTransaction() -> Error update new user", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

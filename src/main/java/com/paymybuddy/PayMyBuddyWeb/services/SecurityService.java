@@ -82,11 +82,11 @@ public class SecurityService implements SecurityServiceInterface {
                 !MSStringUtils.isEmpty((String) signUpParams.get("country")) &&
                 !MSStringUtils.isEmpty((String) signUpParams.get("currency"))
         ) {
-            Integer year = Integer.valueOf((String) signUpParams.get("age_year"));
-            Integer month = Integer.valueOf((String) signUpParams.get("age_month"));
-            Integer day = Integer.valueOf((String) signUpParams.get("age_day"));
-
-            LocalDate birthday = LocalDate.of(year, month, day);
+            LocalDate birthday = LocalDate.of(
+                    Integer.valueOf((String) signUpParams.get("age_year")),
+                    Integer.valueOf((String) signUpParams.get("age_month")),
+                    Integer.valueOf((String) signUpParams.get("age_day"))
+            );
             Country country = new Country((String) signUpParams.get("country"));
             User newUser = new User(null, (String) signUpParams.get("firstname"), (String) signUpParams.get("lastname"), birthday, (String) signUpParams.get("email"), country, null);
             userDAO.createUser(newUser, (String) signUpParams.get("currency"), passwordEncoder.encode((String) signUpParams.get("password")));
@@ -208,5 +208,24 @@ public class SecurityService implements SecurityServiceInterface {
                     passwordEncoder.encode((String) requestParams.get("new_password"))
             );
         }
+    }
+
+    /**
+     * @see SecurityServiceInterface {@link #getUserInfoFromJWT(HttpSession)}
+     */
+    @Override
+    public Map<String, Object> getUserInfoFromJWT(HttpSession session){
+        Map<String, Object> userInfo = null;
+        String token = (String) session.getAttribute("token");
+        if (token != null) {
+            userInfo = new HashMap<>();
+            Claims claims = parseJWT(token);
+            userInfo.put("userID", claims.get("userID"));
+            userInfo.put("username", claims.get("username"));
+            userInfo.put("name", claims.get("name"));
+        } else {
+            logger.error("Invalid token");
+        }
+        return userInfo;
     }
 }

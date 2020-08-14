@@ -54,4 +54,11 @@ public interface SecurityServiceInterface {
      * @param requestParams
      */
     void updateUserPassword(HttpSession session, Map<String, Object> requestParams);
+
+    /**
+     * Parse JWT token
+     * @param session
+     * @return
+     */
+    Map<String, Object> getUserInfoFromJWT(HttpSession session);
 }

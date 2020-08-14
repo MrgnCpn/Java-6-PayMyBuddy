@@ -53,8 +53,9 @@ public class FriendDAO implements FriendDAOInterface {
             while (rs.next()) {
                 result.add(rs.getInt("friend_id"));
             }
+            logger.info("FriendDAO.getUserFriends() -> Friends getted for user : " + userId);
         } catch (Exception e){
-            logger.error("Error fetching user", e);
+            logger.error("FriendDAO.getUserFriends() -> Error fetching user", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
@@ -79,8 +80,14 @@ public class FriendDAO implements FriendDAOInterface {
             ps.setInt(1, userId);
             ps.setInt(2, friendId);
             ps.execute();
+
+            ps.setInt(1, friendId);
+            ps.setInt(2, userId);
+            ps.execute();
+
+            logger.info("FriendDAO.addNewFriendToUser() -> Friendship added between " + userId + " and " + friendId);
         } catch (Exception ex){
-            logger.error("Error add user friend", ex);
+            logger.error("FriendDAO.addNewFriendToUser() -> Error add user friend", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
@@ -104,8 +111,9 @@ public class FriendDAO implements FriendDAOInterface {
             ps.setInt(1, userId);
             ps.setInt(2, friendId);
             ps.execute();
+            logger.info("FriendDAO.removeFriendFromUser() -> Friendship removed between " + userId + " and " + friendId);
         } catch (Exception ex){
-            logger.error("Error remove user friend", ex);
+            logger.error("FriendDAO.removeFriendFromUser() -> Error remove user friend", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
 

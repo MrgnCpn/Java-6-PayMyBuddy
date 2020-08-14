@@ -3,6 +3,8 @@ package com.paymybuddy.PayMyBuddyWeb.services;
 import com.paymybuddy.PayMyBuddyWeb.Utils.MSArrayUtils;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,6 +15,10 @@ import java.util.Map;
 
 @Singleton
 public class CountryService implements CountryServiceInterface {
+    /**
+     * Logger log4j2
+     */
+    private static final Logger logger = LogManager.getLogger("CountryService");
 
     /**
      * @see CountryServiceInterface {@link #getNameOfCountry(String)}
@@ -28,6 +34,7 @@ public class CountryService implements CountryServiceInterface {
         if (status < 299) {
             JSONObject content = (JSONObject) data.get("content");
             name = content.getString("name");
+            logger.info("API request : CountryService -> " + code);
         }
         return name;
     }
@@ -50,6 +57,7 @@ public class CountryService implements CountryServiceInterface {
                 countries.put(country.getString("alpha3Code"), country.getString("name"));
             }
             countries = MSArrayUtils.sortMapByValue(countries);
+            logger.info("API request : CountryService -> All");
         }
         return countries;
     }

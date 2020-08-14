@@ -48,11 +48,13 @@ public class AccountDAO implements AccountDAOInterface {
         sql.append("SELECT amount, currency, balance_date");
         sql.append(" FROM accounts");
         sql.append(" WHERE user_id = ?");
+        sql.append(" AND balance_date = (SELECT MAX(balance_date) FROM accounts WHERE user_id = ?)");
 
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
             ps.setInt(1, userId);
+            ps.setInt(2, userId);
             rs = ps.executeQuery();
             if(rs.next()){
                 result = new Account(
@@ -61,8 +63,9 @@ public class AccountDAO implements AccountDAOInterface {
                         new Currency(rs.getString("currency")),
                         rs.getDate("balance_date").toLocalDate());
             }
+            logger.info("AccountDAO.getAccount() -> Account getted for user : " + userId);
         } catch (Exception e){
-            logger.error("Error fetching user account", e);
+            logger.error("AccountDAO.getAccount() -> Error fetching user account", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
 
@@ -91,8 +94,9 @@ public class AccountDAO implements AccountDAOInterface {
             ps.setDate(3, Date.valueOf(account.getDate()));
             ps.setInt(4, account.getUserId());
             ps.execute();
+            logger.info("AccountDAO.updateAccount() -> Account updated for user : " + account.getUserId());
         } catch (Exception ex){
-            logger.error("Error update user account", ex);
+            logger.error("AccountDAO.updateAccount() -> Error update user account", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
@@ -116,8 +120,9 @@ public class AccountDAO implements AccountDAOInterface {
             ps.setInt(1, userId);
             ps.setString(2, currency);
             ps.execute();
+            logger.info("AccountDAO.createAccount() -> Account created for user : " + userId);
         } catch (Exception ex){
-            logger.error("Error create user account", ex);
+            logger.error("AccountDAO.createAccount() -> Error create user account", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

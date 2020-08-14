@@ -79,8 +79,9 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(userId));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(userId));
             }
+            logger.info("UserDAO.getUserById() -> Profile getted for user : " + userId);
         } catch (Exception e){
-            logger.error("Error fetching user", e);
+            logger.error("UserDAO.getUserById() -> Error fetching user", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
@@ -116,8 +117,9 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(rs.getInt("id")));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(rs.getInt("id")));
             }
+            logger.info("UserDAO.getUserByUsername() -> Profile getted for user : " + username);
         } catch (Exception e){
-            logger.error("Error fetching user", e);
+            logger.error("UserDAO.getUserByUsername() -> Error fetching user", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
@@ -146,8 +148,9 @@ public class UserDAO implements UserDAOInterface {
             ps.setString(5, user.getCountry().getCode());
             ps.setInt(6, user.getId());
             ps.execute();
+            logger.info("UserDAO.updateUser() -> Profile updated for user : " + user.getId());
         } catch (Exception ex){
-            logger.error("Error update new user", ex);
+            logger.error("UserDAO.updateUser() -> Error update new user", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
@@ -176,9 +179,11 @@ public class UserDAO implements UserDAOInterface {
             ps.setString(6, user.getCountry().getCode());
             ps.execute();
 
-            accountDAO.createAccount(getUserByUsername(user.getEmail()).getId(), currency);
+            Integer userID = getUserByUsername(user.getEmail()).getId();
+            logger.info("UserDAO.createUser() -> Profile created for user : " + userID);
+            accountDAO.createAccount(userID, currency);
         } catch (Exception ex){
-            logger.error("Error create new user", ex);
+            logger.error("UserDAO.createUser() -> Error create new user", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }

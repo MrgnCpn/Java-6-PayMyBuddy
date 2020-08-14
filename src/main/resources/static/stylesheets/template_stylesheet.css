@@ -83,6 +83,18 @@ input:disabled {
 	display: flex;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
 /* COLOR ----------------------------------------------- */
 	
 	.c_white {

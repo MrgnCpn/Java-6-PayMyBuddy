@@ -1,9 +1,12 @@
 package com.paymybuddy.PayMyBuddyWeb.controllers;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -18,6 +21,9 @@ import java.util.Map;
 public class AuthenticateController {
     @Autowired
     private SecurityServiceInterface securityService;
+
+    @Autowired
+    private CountryServiceInterface countryService;
 
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session){
@@ -38,8 +44,6 @@ public class AuthenticateController {
     @PostMapping("/login")
     public ModelAndView postLogin(HttpSession session, @RequestParam Map<String,String> requestParams){
         Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"), requestParams.get("remember") != null);
-
-        System.out.println(requestParams.get("remember"));
 
         if (userLogin != null) {
             userLogin.forEach((k, v) -> session.setAttribute(k, v));
@@ -62,7 +66,7 @@ public class AuthenticateController {
         Map<String, Object> model = new HashMap<>();
         model.put("page", "signup");
         model.put("isLogin", securityService.isLog(session));
-        model.put("countries", new CountryService().getAllCountries());
+        model.put("countries", countryService.getAllCountries());
 
         return new ModelAndView("template.html" , model);
     }
@@ -91,9 +95,6 @@ public class AuthenticateController {
     @PostMapping("/change-password")
     public ModelAndView changePassword(HttpSession session, @RequestParam Map<String, Object> requestParams){
         securityService.updateUserPassword(session, requestParams);
-
-
-
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/profile");
         return new ModelAndView(redirectView);

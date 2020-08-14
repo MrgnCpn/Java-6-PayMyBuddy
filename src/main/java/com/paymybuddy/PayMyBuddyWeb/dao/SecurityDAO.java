@@ -50,8 +50,9 @@ public class SecurityDAO implements SecurityDAOInterface {
             if(rs.next()){
                 result = rs.getString("password");
             }
+            logger.info("SecurityDAO.getUserPassword() -> Password getted for user : " + username);
         } catch (Exception e){
-            logger.error("Error fetching user password", e);
+            logger.error("SecurityDAO.getUserPassword() -> Error fetching user password", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
@@ -67,7 +68,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("UPDATE users SET password = ? id = ?");
+        sql.append("UPDATE users SET password = ? WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -75,8 +76,9 @@ public class SecurityDAO implements SecurityDAOInterface {
             ps.setString(1, userPassword);
             ps.setInt(2, userId);
             ps.execute();
+            logger.info("SecurityDAO.updatePassword() -> Password updated for user : " + userId);
         } catch (Exception ex){
-            logger.error("Error update user password", ex);
+            logger.error("SecurityDAO.updatePassword() -> Error update user password", ex);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
