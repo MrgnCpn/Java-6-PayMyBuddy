@@ -2,6 +2,8 @@ package com.paymybuddy.PayMyBuddyWeb.interfaces.dao;
 
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 
+import java.util.List;
+
 public interface UserDAOInterface {
     /**
      * Get user with id
@@ -30,4 +32,12 @@ public interface UserDAOInterface {
      * @param password
      */
     void createUser(User user, String currency, String password);
+
+    /**
+     * Get list of users with search
+     * @param userID
+     * @param search
+     * @return
+     */
+    List<User> searchUsers(Integer userID, String search);
 }

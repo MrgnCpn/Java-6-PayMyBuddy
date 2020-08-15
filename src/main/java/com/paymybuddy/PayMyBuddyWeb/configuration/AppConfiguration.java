@@ -1,7 +1,9 @@
 package com.paymybuddy.PayMyBuddyWeb.configuration;
 
+import com.paymybuddy.PayMyBuddyWeb.Utils.MSControllerUtils;
 import com.paymybuddy.PayMyBuddyWeb.dao.*;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.*;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
@@ -60,6 +62,11 @@ public class AppConfiguration {
 
     @Bean
     public UserServiceInterface userService() {
-        return new UserService(securityService(), userDAO());
+        return new UserService(securityService(), userDAO(), friendDAO());
+    }
+
+    @Bean
+    public ControllerUtilsInterface controllerUtils(){
+        return new MSControllerUtils();
     }
 }

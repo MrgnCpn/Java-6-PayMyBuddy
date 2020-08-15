@@ -37,7 +37,7 @@ public class FriendDAO implements FriendDAOInterface {
      */
     @Override
     public List<Integer> getUserFriends(Integer userId) {
-        List<Integer> result = new ArrayList<>();
+        List<Integer> result = null;
         ResultSet rs = null;
         Connection con = null;
         PreparedStatement ps = null;
@@ -50,12 +50,18 @@ public class FriendDAO implements FriendDAOInterface {
             ps = con.prepareStatement(sql.toString());
             ps.setInt(1, userId);
             rs = ps.executeQuery();
+            result = new ArrayList<>();
             while (rs.next()) {
                 result.add(rs.getInt("friend_id"));
             }
-            logger.info("FriendDAO.getUserFriends() -> Friends getted for user : " + userId);
+            if (result.size() > 0) {
+                logger.info("FriendDAO.getUserFriends() -> Friends get for user : " + userId);
+            } else {
+                result = null;
+                logger.info("FriendDAO.getUserFriends() -> No friends for user : " + userId);
+            }
         } catch (Exception e){
-            logger.error("FriendDAO.getUserFriends() -> Error fetching user", e);
+            logger.error("FriendDAO.getUserFriends() -> Error fetching friends", e);
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
@@ -76,11 +82,13 @@ public class FriendDAO implements FriendDAOInterface {
 
         try {
             con = databaseConfiguration.getConnection();
+
             ps = con.prepareStatement(sql.toString());
             ps.setInt(1, userId);
             ps.setInt(2, friendId);
             ps.execute();
 
+            ps = con.prepareStatement(sql.toString());
             ps.setInt(1, friendId);
             ps.setInt(2, userId);
             ps.execute();
@@ -102,21 +110,56 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE friends");
+        sql.append("DELETE FROM friends");
         sql.append(" WHERE user_id = ? AND friend_id = ?");
+
+        try {
+            con = databaseConfiguration.getConnection();
+
+            ps = con.prepareStatement(sql.toString());
+            ps.setInt(1, userId);
+            ps.setInt(2, friendId);
+            ps.execute();
+
+            ps = con.prepareStatement(sql.toString());
+            ps.setInt(1, friendId);
+            ps.setInt(2, userId);
+            ps.execute();
+
+            logger.info("FriendDAO.removeFriendFromUser() -> Friendship removed between " + userId + " and " + friendId);
+        } catch (Exception ex){
+            logger.error("FriendDAO.removeFriendFromUser() -> Error remove user friend", ex);
+        } finally {
+            databaseConfiguration.closeSQLTransaction(con, ps, null);
+        }
+    }
+
+    /**
+     * @see FriendDAOInterface {@link #areFriends(Integer, Integer)}
+     */
+    @Override
+    public Boolean areFriends(Integer userId, Integer friendId) {
+        Boolean result = false;
+        ResultSet rs = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT friend_id FROM friends WHERE user_id = ? and friend_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
             ps.setInt(1, userId);
             ps.setInt(2, friendId);
-            ps.execute();
-            logger.info("FriendDAO.removeFriendFromUser() -> Friendship removed between " + userId + " and " + friendId);
-        } catch (Exception ex){
-            logger.error("FriendDAO.removeFriendFromUser() -> Error remove user friend", ex);
+            rs = ps.executeQuery();
+            result =  rs.next();
+            logger.info("FriendDAO.removeFriendFromUser() -> Friendship get between " + userId + " and " + friendId);
+        } catch (Exception e){
+            logger.error("FriendDAO.getUserFriends() -> Error fetching friendship", e);
         } finally {
-            databaseConfiguration.closeSQLTransaction(con, ps, null);
-
+            databaseConfiguration.closeSQLTransaction(con, ps, rs);
         }
+        return result;
     }
 }

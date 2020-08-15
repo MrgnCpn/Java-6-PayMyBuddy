@@ -24,4 +24,12 @@ public interface FriendDAOInterface {
      * @param friendId
      */
     void removeFriendFromUser(Integer userId, Integer friendId);
+
+    /**
+     * Return is user and friend are friends
+     * @param userId
+     * @param friendId
+     * @return
+     */
+    Boolean areFriends(Integer userId, Integer friendId);
 }

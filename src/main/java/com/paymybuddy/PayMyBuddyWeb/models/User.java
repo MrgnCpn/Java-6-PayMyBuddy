@@ -1,5 +1,8 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import com.paymybuddy.PayMyBuddyWeb.Utils.MSFileUtils;
+import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -114,7 +117,54 @@ public class User {
         this.creditCards = creditCards;
     }
 
-    public int getAge(){
+    /**
+     * Test if user has a profile picture and return image extension
+     * WARNING : Called in frontend
+     * @return
+     */
+    public String getProfilePictureExt(){
+        return new MSFileUtils().isFileExist(
+                "src/main/resources/static/assets/profilePicture/" + this.getId() + "_" + this.getFirstName() + "_" + this.getLastName(),
+                "img"
+        );
+    }
+
+    /**
+     * Cast name into "Fistname LASTNAME"
+     * WARNING : Called in frontend
+     * @return
+     */
+    public String getFullNameCasted() {
+        return MSStringUtils.firstUpperCase(this.getFirstName()) + " " + this.getLastName().toUpperCase();
+    }
+
+    /**
+     * Cast birthdate into "01/01/2000"
+     * WARNING : Called in frontend
+     * @return
+     */
+    public String getCastedBirthday(){
+        String result = "";
+
+        Integer dd = this.getBirthday().getDayOfMonth();
+        Integer MM = this.getBirthday().getMonthValue();
+        Integer YYYY = this.getBirthday().getYear();
+
+        result += (dd < 10) ? "0" + dd : dd;
+        result += "/";
+        result += (MM < 10) ? "0" + MM : MM;
+        result += "/";
+        result += YYYY;
+
+        return result;
+    }
+
+    /**
+     * Return user age
+     * WARNING : Called in frontend
+     * @return
+     */
+    public Integer getAge(){
         if (this.birthday != null) {
             return Period.between(this.birthday, LocalDate.now()).getYears();
         } else {

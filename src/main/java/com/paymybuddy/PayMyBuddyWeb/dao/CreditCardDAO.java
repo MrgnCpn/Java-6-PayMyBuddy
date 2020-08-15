@@ -65,7 +65,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
                         )
                 );
             }
-            logger.info("CreditCardDAO.getUserCreditCards() -> cards getted for user : " + userId);
+            logger.info("CreditCardDAO.getUserCreditCards() -> cards get for user : " + userId);
         } catch (Exception e){
             logger.error("CreditCardDAO.getUserCreditCards() -> Error fetching user credit cards", e);
         } finally {
@@ -113,7 +113,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE credit_cards");
+        sql.append("DELETE FROM credit_cards");
         sql.append(" WHERE id = ? AND user_id = ?");
 
         try {

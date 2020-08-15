@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Singleton
 public class UserDAO implements UserDAOInterface {
@@ -79,7 +81,7 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(userId));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(userId));
             }
-            logger.info("UserDAO.getUserById() -> Profile getted for user : " + userId);
+            logger.info("UserDAO.getUserById() -> Profile get for user : " + userId);
         } catch (Exception e){
             logger.error("UserDAO.getUserById() -> Error fetching user", e);
         } finally {
@@ -117,7 +119,7 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(rs.getInt("id")));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(rs.getInt("id")));
             }
-            logger.info("UserDAO.getUserByUsername() -> Profile getted for user : " + username);
+            logger.info("UserDAO.getUserByUsername() -> Profile get for user : " + username);
         } catch (Exception e){
             logger.error("UserDAO.getUserByUsername() -> Error fetching user", e);
         } finally {
@@ -187,5 +189,51 @@ public class UserDAO implements UserDAOInterface {
         } finally {
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
+    }
+
+    /**
+     * @see UserDAOInterface {@link #searchUsers(Integer, String)}
+     */
+    @Override
+    public List<User> searchUsers(Integer userID, String search) {
+        List<User> result = null;
+        ResultSet rs = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT id, firstname, lastname, email");
+        sql.append(" FROM users");
+        sql.append(" WHERE (firstname LIKE('" + search + "%')");
+        sql.append(" OR lastname LIKE ('" + search + "%')");
+        sql.append(" OR email LIKE('" + search + "%'))");
+        sql.append(" AND id <> ?");
+
+        try {
+            con = databaseConfiguration.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+            result = new ArrayList<>();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setLastName(rs.getString("lastname"));
+                user.setEmail(rs.getString("email"));
+                result.add(user);
+            }
+            if(result.size() > 0) {
+                logger.info("UserDAO.searchUser() -> Users get for search : " + search);
+            } else {
+                result = null;
+                logger.info("UserDAO.searchUser() -> No users for search : " + search);
+            }
+        } catch (Exception e){
+            logger.error("UserDAO.searchUser() -> Error fetching users", e);
+        } finally {
+            databaseConfiguration.closeSQLTransaction(con, ps, rs);
+        }
+        return result;
     }
 }

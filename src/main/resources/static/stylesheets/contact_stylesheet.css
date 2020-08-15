@@ -36,6 +36,18 @@
     height: 45px;
 }
 
+#contact_ctn .resultSet_ctn h1.resultSet_sectionTitle {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--greyCA);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#contact_ctn .resultSet_ctn h1.resultSet_sectionTitle:not(#contact_ctn .resultSet_ctn h1.resultSet_sectionTitle:nth-child(1)) {
+    margin-top: 40px;
+}
+
 #contact_ctn .resultSet_ctn .result_option .option_icon, #contact_ctn .resultSet_ctn .result_option .option_btn {
     height: 40px;
     width: 40px;

@@ -1,6 +1,7 @@
 package com.paymybuddy.PayMyBuddyWeb.services;
 
 import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
@@ -8,10 +9,13 @@ import com.paymybuddy.PayMyBuddyWeb.models.Country;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONValue;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class UserService implements UserServiceInterface {
@@ -31,12 +35,18 @@ public class UserService implements UserServiceInterface {
     private final UserDAOInterface userDAO;
 
     /**
+     * Friends DAO
+     */
+    private final FriendDAOInterface friendDAO;
+
+    /**
      * Constructor
      * @param securityService
      */
-    public UserService(SecurityServiceInterface securityService, UserDAOInterface userDAO) {
+    public UserService(SecurityServiceInterface securityService, UserDAOInterface userDAO, FriendDAOInterface friendDAO) {
         this.securityService = securityService;
         this.userDAO = userDAO;
+        this.friendDAO = friendDAO;
     }
 
     /**
@@ -50,6 +60,33 @@ public class UserService implements UserServiceInterface {
             user = userDAO.getUserById((Integer) userInfo.get("userID"));
         }
         return user;
+    }
+
+    /**
+     * @see UserServiceInterface {@link #getUser(Integer)}
+     */
+    @Override
+    public User getUser(Integer id) {
+        User user = null;
+        if (id != null && id > 0) {
+            user = userDAO.getUserById(id);
+        }
+        return user;
+    }
+
+    /**
+     * @see UserServiceInterface {@link #getUserFriends(User)}
+     */
+    @Override
+    public List<User> getUserFriends(User user) {
+        List<User> friendsList = null;
+        if (user.getFriends() != null) {
+            friendsList = new ArrayList<>();
+            for (Integer id : user.getFriends() ) {
+                friendsList.add(userDAO.getUserById(id));
+            }
+        }
+        return friendsList;
     }
 
     /**
@@ -79,5 +116,77 @@ public class UserService implements UserServiceInterface {
         } else {
             logger.info("UserService.updateUserProfile : Incomplete profile");
         }
+    }
+
+    /**
+     * @see UserServiceInterface {@link #getIfAreFriends(HttpSession, Integer)}
+     */
+    @Override
+    public Boolean getIfAreFriends(HttpSession session, Integer friendId) {
+        Boolean result = false;
+        Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
+        if (userInfo != null) {
+            result = friendDAO.areFriends((Integer) userInfo.get("userID"), friendId);
+        }
+        return result;
+    }
+
+    /**
+     * @see UserServiceInterface {@link #removeFriend(HttpSession, Integer)}
+     */
+    @Override
+    public void removeFriend(HttpSession session, Integer friendId) {
+        Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
+        if (userInfo != null) {
+            friendDAO.removeFriendFromUser((Integer) userInfo.get("userID"), friendId);
+        }
+    }
+
+    /**
+     * @see UserServiceInterface {@link #addFriend(HttpSession, Integer)}
+     */
+    @Override
+    public void addFriend(HttpSession session, Integer friendId) {
+        Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
+        if (userInfo != null) {
+            friendDAO.addNewFriendToUser((Integer) userInfo.get("userID"), friendId);
+        }
+    }
+
+    /**
+     * @see UserServiceInterface {@link #searchContactUsers(HttpSession, String)}
+     */
+    @Override
+    public String searchContactUsers(HttpSession session, String search) {
+        StringBuffer data = new StringBuffer();
+        Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
+        if (userInfo != null) {
+            List<User> userList = userDAO.searchUsers((Integer) userInfo.get("userID"), search);
+            if (userList != null) {
+                data.append("[");
+                for (User user : userList) {
+                    data.append("{");
+                    data.append("\"id\" : ").append(user.getId()).append(",");
+                    data.append("\"firstName\" : \"").append(JSONValue.escape(user.getFirstName())).append("\",");
+                    data.append("\"lastName\" : \"").append(JSONValue.escape(user.getLastName())).append("\",");
+                    data.append("\"fullname\" : \"").append(JSONValue.escape(user.getFullNameCasted())).append("\",");
+                    data.append("\"email\" : \"").append(JSONValue.escape(user.getEmail())).append("\",");
+                    data.append("\"isFriend\" : ").append(this.getIfAreFriends(session, user.getId())).append(",");
+                    String ext = user.getProfilePictureExt();
+                    if (ext != null){
+                        data.append("\"isProfilePicture\" : \"").append(ext).append("\"");
+                    } else {
+                        data.append("\"isProfilePicture\" : ").append(ext);
+                    }
+
+
+                    data.append("},");
+                }
+                if (data.charAt(data.length() - 1) == ',') data.delete(data.length() - 1, data.length());
+                data.append("]");
+                return data.toString();
+            }
+        }
+        return null;
     }
 }

@@ -50,7 +50,7 @@ public class SecurityDAO implements SecurityDAOInterface {
             if(rs.next()){
                 result = rs.getString("password");
             }
-            logger.info("SecurityDAO.getUserPassword() -> Password getted for user : " + username);
+            logger.info("SecurityDAO.getUserPassword() -> Password get for user : " + username);
         } catch (Exception e){
             logger.error("SecurityDAO.getUserPassword() -> Error fetching user password", e);
         } finally {

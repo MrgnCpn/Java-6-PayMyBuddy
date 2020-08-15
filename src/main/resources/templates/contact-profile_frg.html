@@ -10,38 +10,35 @@
                 </svg>
             </a>
             <div class="contactProfilePicture">
-                <img th:src="@{/assets/profilePicture/juanita_emard.jpg}">
+                <img th:if="${user.getProfilePictureExt() != null}" th:src="@{'/assets/profilePicture/' + ${user.id} + '_' + ${user.firstName} + '_' + ${user.lastName} + ${user.getProfilePictureExt()}}">
+                <img th:unless="${user.getProfilePictureExt() != null}" th:src="@{/assets/icons/user.svg}">
             </div>
             <div class="contact_info_ctn">
                 <div class="contact_info">
                     <span class="label">Firstname</span>
-                    <p class="info">Juanita</p>
+                    <p class="info capitalize" th:text="${user.firstName}"></p>
                 </div>
                 <div class="contact_info">
                     <span class="label">lastname</span>
-                    <p class="info">EMARD</p>
+                    <p class="info uppercase" th:text="${user.lastName}"></p>
                 </div>
                 <div class="contact_info">
                     <span class="label">Email</span>
-                    <p class="info">juanita.emard@email.com</p>
-                </div>
-                <div class="contact_info">
-                    <span class="label">Phone</span>
-                    <p class="info">+001 0123456789</p>
+                    <p class="info" th:text="${user.email}"></p>
                 </div>
                 <div class="contact_info">
                     <span class="label">Age</span>
-                    <p class="info">01 / 01 / 2000 (20 y)</p>
+                    <p class="info" th:text="${user.getCastedBirthday()} + ' (' + ${user.getAge()} + 'y)'"></p>
                 </div>
                 <div class="contact_info">
                     <span class="label">Country</span>
-                    <p class="info">United Kingdom (GBR)</p>
+                    <p class="info" th:text="${user.getCountry().getWording()} + ' (' + ${user.getCountry().getCode()} + ')'"></p>
                 </div>
             </div>
             <div class="input_ctn btns">
-                <a href="#" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
-                <!--<a href="#" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>-->
-                <a th:href="@{/transfer}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
+                <a th:if="${friendship}" th:href="@{/contact/friends/remove?id={id}&from={from} (id=${user.id}, from='/contact/profile/')}" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>
+                <a th:unless="${friendship}" th:href="@{/contact/friends/add?id={id}&from={from} (id=${user.id}, from='/contact/profile/')}" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
+                <a th:href="@{/transfer?to={friend_id} (friend_id=${user.id})}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
             </div>
         </section>
     </main>

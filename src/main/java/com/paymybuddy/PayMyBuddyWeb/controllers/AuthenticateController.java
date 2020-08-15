@@ -1,5 +1,6 @@
 package com.paymybuddy.PayMyBuddyWeb.controllers;
 
+import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
@@ -25,14 +25,12 @@ public class AuthenticateController {
     @Autowired
     private CountryServiceInterface countryService;
 
+    @Autowired
+    private ControllerUtilsInterface controllerUtils;
+
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session){
-
-        if (securityService.isLog(session)) {
-            RedirectView redirectView = new RedirectView();
-            redirectView.setUrl("/");
-            return new ModelAndView(redirectView);
-        }
+        if (securityService.isLog(session)) return controllerUtils.rootRedirect();
 
         Map<String, Object> model = new HashMap<>();
         model.put("page", "login");
@@ -42,26 +40,19 @@ public class AuthenticateController {
     }
 
     @PostMapping("/login")
-    public ModelAndView postLogin(HttpSession session, @RequestParam Map<String,String> requestParams){
+    public ModelAndView postLogin(HttpSession session, @RequestParam(required = true) Map<String,String> requestParams){
         Map<String, String> userLogin = securityService.logUser(requestParams.get("username"), requestParams.get("password"), requestParams.get("remember") != null);
 
         if (userLogin != null) {
             userLogin.forEach((k, v) -> session.setAttribute(k, v));
         }
 
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        return new ModelAndView(redirectView);
+        return controllerUtils.rootRedirect();
     }
 
     @GetMapping("/signup")
     public ModelAndView getSignup(HttpSession session) throws IOException {
-
-        if (securityService.isLog(session)) {
-            RedirectView redirectView = new RedirectView();
-            redirectView.setUrl("/");
-            return new ModelAndView(redirectView);
-        }
+        if (securityService.isLog(session)) return controllerUtils.rootRedirect();
 
         Map<String, Object> model = new HashMap<>();
         model.put("page", "signup");
@@ -72,31 +63,25 @@ public class AuthenticateController {
     }
 
     @PostMapping("/signup")
-    public ModelAndView postSignup(HttpSession session, @RequestParam Map<String, Object> requestParams) throws IOException {
+    public ModelAndView postSignup(HttpSession session, @RequestParam(required = true) Map<String, Object> requestParams) throws IOException {
         Map<String, String> userLogin = securityService.registerUser(requestParams);
 
         if (userLogin != null) {
             userLogin.forEach((k, v) -> session.setAttribute(k, v));
         }
 
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        return new ModelAndView(redirectView);
+        return controllerUtils.rootRedirect();
     }
 
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session){
         session.invalidate();
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        return new ModelAndView(redirectView);
+        return controllerUtils.rootRedirect();
     }
 
     @PostMapping("/change-password")
-    public ModelAndView changePassword(HttpSession session, @RequestParam Map<String, Object> requestParams){
+    public ModelAndView changePassword(HttpSession session, @RequestParam(required = true) Map<String, Object> requestParams){
         securityService.updateUserPassword(session, requestParams);
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/profile");
-        return new ModelAndView(redirectView);
+        return controllerUtils.doRedirect("/profile");
     }
 }

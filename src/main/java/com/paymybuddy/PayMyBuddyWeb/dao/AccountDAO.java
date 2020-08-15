@@ -63,7 +63,7 @@ public class AccountDAO implements AccountDAOInterface {
                         new Currency(rs.getString("currency")),
                         rs.getDate("balance_date").toLocalDate());
             }
-            logger.info("AccountDAO.getAccount() -> Account getted for user : " + userId);
+            logger.info("AccountDAO.getAccount() -> Account get for user : " + userId);
         } catch (Exception e){
             logger.error("AccountDAO.getAccount() -> Error fetching user account", e);
         } finally {

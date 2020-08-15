@@ -8,7 +8,8 @@
     <main class="main_content">
         <section th:fragment="profile" id="usrProfile_ctn" class="block_ctn">
             <div class="usrProfilePicture">
-                <img th:src="@{'assets/profilePicture/' + ${user.id} + '_' + ${user.firstName} + '_' + ${user.lastName} + '.jpg'}">
+                <img th:if="${user.getProfilePictureExt() != null}" th:src="@{'/assets/profilePicture/' + ${user.id} + '_' + ${user.firstName} + '_' + ${user.lastName} + ${user.getProfilePictureExt()}}">
+                <img th:unless="${user.getProfilePictureExt() != null}" th:src="@{assets/icons/user.svg}">
             </div>
             <form class="form disabled" id="usrProfileForm" method="POST" th:action="@{/profile}" th:object="${user}">
                 <div class="comp_input_ctn">
