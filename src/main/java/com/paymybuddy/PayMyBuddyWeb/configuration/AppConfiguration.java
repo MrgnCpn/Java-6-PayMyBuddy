@@ -5,12 +5,8 @@ import com.paymybuddy.PayMyBuddyWeb.dao.*;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.*;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
-import com.paymybuddy.PayMyBuddyWeb.services.SecurityService;
-import com.paymybuddy.PayMyBuddyWeb.services.UserService;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.*;
+import com.paymybuddy.PayMyBuddyWeb.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,7 +38,7 @@ public class AppConfiguration {
 
     @Bean
     public TransactionDAOInterface transactionDAO(){
-        return new TransactionDAO(databaseConfiguration);
+        return new TransactionDAO(databaseConfiguration, creditCardDAO(), userDAO());
     }
 
     @Bean
@@ -63,6 +59,16 @@ public class AppConfiguration {
     @Bean
     public UserServiceInterface userService() {
         return new UserService(securityService(), userDAO(), friendDAO());
+    }
+
+    @Bean
+    public CreditCardServiceInterface creditCardService(){
+        return new CreditCardService(creditCardDAO(), securityService());
+    }
+
+    @Bean
+    public TransactionServiceInterface transactionService() {
+        return new TransactionService(securityService(), transactionDAO());
     }
 
     @Bean

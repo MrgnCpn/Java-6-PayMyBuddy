@@ -1,11 +1,17 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreditCard {
-    private Integer cardId;
+    private Integer id;
     private Integer userId;
+
+    // MAST - VISA
     private String type;
     private String number;
     private String cvv;
+    private String date;
     private String wording;
 
     /**
@@ -15,12 +21,13 @@ public class CreditCard {
      * @param cvv
      * @param wording
      */
-    public CreditCard(Integer cardId, Integer userId, String type, String number, String cvv, String wording) {
-        this.cardId = cardId;
+    public CreditCard(Integer id, Integer userId, String type, String number, String cvv, String date, String wording) {
+        this.id = id;
         this.userId = userId;
         this.type = type;
         this.number = number;
         this.cvv = cvv;
+        this.date = date;
         this.wording = wording;
     }
 
@@ -31,12 +38,12 @@ public class CreditCard {
 
     }
 
-    public Integer getCardId() {
-        return cardId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCardId(Integer cardId) {
-        this.cardId = cardId;
+    public void setId(Integer cardId) {
+        this.id = cardId;
     }
 
     public Integer getUserId() {
@@ -71,11 +78,42 @@ public class CreditCard {
         this.cvv = cvv;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getWording() {
         return wording;
     }
 
     public void setWording(String wording) {
         this.wording = wording;
+    }
+
+    public List<String> getNumberSplited(){
+        List<String> numbers = new ArrayList<>();
+        numbers.add(this.getNumber().substring(0,4));
+        numbers.add(this.getNumber().substring(4,8));
+        numbers.add(this.getNumber().substring(8,12));
+        numbers.add(this.getNumber().substring(12,16));
+        return numbers;
+    }
+
+    public List<String> getNumberHide(){
+        List<String> numbers = new ArrayList<>();
+        numbers.add("****");
+        numbers.add("****");
+        numbers.add("****");
+        numbers.add(this.getNumber().substring(12,16));
+        return numbers;
+    }
+
+    public String getWordingLib(){
+        if (this.getWording().length() > 25) return this.getWording().substring(0, 25) + "...";
+        else return this.getWording();
     }
 }

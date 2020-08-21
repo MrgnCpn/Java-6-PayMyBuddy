@@ -5,34 +5,44 @@
     <main class="main_content">
         <section id="accountInfo">
             <h3 class="c_greyE1">Account Balance</h3>
-            <h1 class="account_balance c_green">+ 1,223.00 €</h1>
+            <h1 class="account_balance" th:text="${user.getAccount().getAmountLib()}" th:classappend="${user.getAccount().getAmount() >= 0} ? c_green : c_red"></h1>
             <div class="account_btns">
                 <a th:href="@{/transfer}" class="btn btn_label round btn_anim b_grey69 c_white">Feed Account</a>
-                <a th:href="@{/new-card}" class="btn btn_label btn_anim round b_black c_white">Manage my cards</a>
+                <a th:href="@{/manage-card}" class="btn btn_label btn_anim round b_black c_white">Manage my cards</a>
             </div>
         </section>
-        <section th:fragment="accountDetails" id="accountInfo_details" class="block_ctn">
-            <header class="accountInfo_details_header">
-                <div class="section_btn active" data-targetID="historyInfoSection">
-                    <svg class="feather f_black">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#clock}"/>
-                    </svg>
-                    <p>History</p>
+        <section id="accountInfo_details" class="block_ctn">
+            <div class="table">
+                <div class="thead">
+                    <span class="col_1_2 th">Contact</span>
+                    <span class="col_3 th">Description</span>
+                    <span class="col_4 th">Date</span>
+                    <span class="col_5 th">Amount</span>
                 </div>
-                <span class="middle_dash"></span>
-                <div class="section_btn" data-targetID="charInfoSection">
-                    <svg class="feather f_black">
-                        <use th:href="@{/assets/icons/feather-sprite.svg#bar-chart-2}"/>
-                    </svg>
-                    <p>Chart</p>
-                </div>
-            </header>
-            <div class="subSection_ctn">
-                <div id="historyInfoSection" class="subSection active">
-                    HISTORY
-                </div>
-                <div id="charInfoSection" class="subSection">
-                    CHARTS
+                <div class="tbody">
+                    <div th:each="transaction : ${transactions}" th:if="${transaction.getContactUser(user.id) != null}" class="tr">
+                        <div class="col_1 td tb_img">
+                            <span class="contact_img">
+                                <img th:src="@{'/assets/profilePicture/' + ${transaction.getContactUser(user.id).getId()} + '_' + ${transaction.getContactUser(user.id).getFirstName()} + '_' + ${transaction.getContactUser(user.id).getLastName()} + ${transaction.getContactUser(user.id).getProfilePictureExt()}}" alt="profile_pct">
+                            </span>
+                        </div>
+                        <div class="col_2 td tb_contact" th:text="${transaction.getContactUser(user.id).getFullNameCasted()}"></div>
+                        <div class="col_3 td tb_description" th:text="${transaction.getHistoryDescription()}"></div>
+                        <div class="col_4 td tb_date" th:text="${transaction.date}"></div>
+                        <div class="col_5 td tb_amount" th:text="${transaction.getTransactionLib(user.id)}" th:classappend="${transaction.getUserTo().getId() == user.id} ? c_green : c_red"></div>
+                    </div>
+                    <div th:each="transaction : ${transactions}" th:unless="${transaction.getContactUser(user.id) != null}" class="tr">
+                        <div class="col_1 td tb_img">
+                            <span class="contact_img">
+                                <img th:if="${transaction.getCard().getType() == 'VISA'}" th:src="@{/assets/icons/visa.svg}"/>
+                                <img th:unless="${transaction.getCard().getType() == 'VISA'}" th:src="@{/assets/icons/mastercard_simply.svg}"/>
+                            </span>
+                        </div>
+                        <div class="col_2 td tb_contact" th:text="${transaction.getCard().getWordingLib()}"></div>
+                        <div class="col_3 td tb_description" th:text="${transaction.getHistoryDescription()}"></div>
+                        <div class="col_4 td tb_date" th:text="${transaction.date}"></div>
+                        <div class="col_5 td tb_amount" th:text="${transaction.getTransactionLib(user.id)}" th:classappend="${transaction.getUserTo().getId() == user.id} ? c_green : c_red"></div>
+                    </div>
                 </div>
             </div>
         </section>

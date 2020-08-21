@@ -165,8 +165,8 @@ public class User {
      * @return
      */
     public Integer getAge(){
-        if (this.birthday != null) {
-            return Period.between(this.birthday, LocalDate.now()).getYears();
+        if (this.getBirthday() != null) {
+            return Period.between(this.getBirthday(), LocalDate.now()).getYears();
         } else {
             return 0;
         }

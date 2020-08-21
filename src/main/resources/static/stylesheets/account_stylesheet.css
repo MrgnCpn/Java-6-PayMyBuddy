@@ -43,50 +43,106 @@
 	flex-direction: column;
 	align-items: center;
 	width: calc(var(--sectionWidth_XL) - (2 * var(--blockCtnPadding_LR)));
-	padding: 30px var(--blockCtnPadding_LR);
+	height: 520px;
+	padding: 20px var(--blockCtnPadding_LR);
+	padding-bottom: 0;
 }
 
-#accountInfo_details .accountInfo_details_header {
+#accountInfo_details .title_ctn {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#accountInfo_details .table {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#accountInfo_details .table .col_1_2 {
+	width: 30%;
+}
+
+#accountInfo_details .table .col_1 {
+	width: 5%;
+}
+
+#accountInfo_details .table .col_2 {
+	width: 25%;
+}
+
+#accountInfo_details .table .col_3 {
+	width: 40%;
+}
+
+#accountInfo_details .table .col_4, #accountInfo_details .table .col_5 {
+	width: 15%;
+}
+
+#accountInfo_details .table .thead {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	border-bottom: 2px solid var(--greyE1);
+	height: 45px;
+}
+
+#accountInfo_details .table .thead .th {
+	letter-spacing: 2px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#accountInfo_details .table .tbody {
+	height: calc(100% - 45px);
+	padding-bottom: 40px;
+	overflow-y: scroll;
+}
+
+#accountInfo_details .table .tbody .tr {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 65px;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+#accountInfo_details .table .tbody .tr .td {
+	letter-spacing: 2px;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	word-break: break-all;
+}
+
+#accountInfo_details .table .tbody .tr .td.tb_img {
+	display: flex;
+	align-items: center;
 	justify-content: center;
+}
+
+#accountInfo_details .table .tbody .tr .td.tb_img .contact_img {
+	height: 35px;
+	width: 35px;
+	border-radius: 35px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#accountInfo_details .table .tbody .tr .td.tb_img .contact_img img {
 	width: 100%;
 }
 
-#accountInfo_details .accountInfo_details_header .section_btn {
-	width: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	opacity: 0.35;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-}
-
-#accountInfo_details .accountInfo_details_header .section_btn.active, 
-#accountInfo_details .accountInfo_details_header .section_btn:hover {
-	opacity: 1;
-}
-
-#accountInfo_details .accountInfo_details_header .section_btn .feather {
-	margin-right: 15px;
-}
-
-#accountInfo_details .accountInfo_details_header .middle_dash {
-	height: 20px;
-	width: 2px;
-	background: #000;
+#accountInfo_details .table .tbody .tr .td.tb_description {
+	text-align: left;
+	padding: 0 5px;
 }
 
 
-#accountInfo_details .subSection_ctn .subSection {
-	display: none;
-}
-
-#accountInfo_details .subSection_ctn .subSection.active {
-	display: flex;
-}
 
 

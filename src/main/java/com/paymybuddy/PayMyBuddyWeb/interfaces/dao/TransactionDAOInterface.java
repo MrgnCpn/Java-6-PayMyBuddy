@@ -13,14 +13,6 @@ public interface TransactionDAOInterface {
     List<Transaction> getUserTransactions(Integer userId);
 
     /**
-     * Get All transaction between 2 users
-     * @param userId_1
-     * @param userId_2
-     * @return List of Transaction
-     */
-    List<Transaction> getTransactionsBetweenTwoUsers(Integer userId_1, Integer userId_2);
-
-    /**
      * Create new transaction
      * @param transaction
      */

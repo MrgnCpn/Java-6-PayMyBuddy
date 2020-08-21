@@ -50,6 +50,7 @@
             card_type CHAR(4) NOT NULL,
             card_number VARCHAR(16),
             card_cvv VARCHAR(3),
+            card_date VARCHAR(5),
             wording VARCHAR(150),
             CONSTRAINT FK_userId_id_creditCard FOREIGN KEY (user_id) REFERENCES users(id)
         )
@@ -239,30 +240,30 @@
 
     LOCK TABLES CREDIT_CARDS WRITE;
 
-    INSERT INTO CREDIT_CARDS (user_id, card_type, card_number, card_cvv, wording)
+    INSERT INTO CREDIT_CARDS (user_id, card_type, card_number, card_cvv, card_date, wording)
     VALUES
-        (1, 'MAST', '1447560945069489', '565', 'My Card - Société Générale'),
-        (2, 'VISA', '2049648612159233', '079', 'My Card - BforBank'),
-        (3, 'MAST', '9591221741525002', '757', 'My Card - Ally Financial'),
-        (4, 'VISA', '6191677172738759', '660', 'My Card - Société Générale'),
-        (5, 'MAST', '4251056551139390', '071', 'My Card - Bank of America'),
-        (6, 'VISA', '3845820614575538', '929', 'My Card - Silicon Valley Bank'),
-        (7, 'MAST', '9554094265951975', '654', 'My Card - HSBC'),
-        (8, 'MAST', '2976170107952553', '385', 'My Card - BforBank'),
-        (9, 'MAST', '3835111804646716', '735', 'My Card - Bank of America'),
-        (10, 'VISA', '7857666864510644', '225', 'My Card - Société Générale'),
-        (11, 'VISA', '5766517158593824', '305', 'My Card - BPCE'),
-        (12, 'VISA', '3501050162095724', '520', 'My Card - HSBC'),
-        (13, 'VISA', '6957934880271965', '683', 'My Card - JPMorgan Chase'),
-        (14, 'MAST', '9312572979604607', '460', 'My Card - ING'),
-        (15, 'MAST', '6066806940027793', '923', 'My Card - Bank of America'),
-        (16, 'VISA', '7036205304409556', '479', 'My Card - ING'),
-        (17, 'VISA', '8876532706524173', '038', 'My Card - UBS'),
-        (18, 'VISA', '8137581256910896', '567', 'My Card - Volksbank'),
-        (19, 'MAST', '7123550570744211', '774', 'My Card - BPCE'),
-        (20, 'MAST', '0151440941109811', '081', 'My Card - N26'),
-        (21, 'VISA', '2446539175591162', '220', 'My Card - BPCE'),
-        (22, 'MAST', '1708954204889586', '870', 'My Card - Santander UK');
+        (1, 'MAST', '1447560945069489', '565', '01/20', 'My Card - Société Générale'),
+        (2, 'VISA', '2049648612159233', '079', '01/20', 'My Card - BforBank'),
+        (3, 'MAST', '9591221741525002', '757', '01/20', 'My Card - Ally Financial'),
+        (4, 'VISA', '6191677172738759', '660', '01/20', 'My Card - Société Générale'),
+        (5, 'MAST', '4251056551139390', '071', '01/20', 'My Card - Bank of America'),
+        (6, 'VISA', '3845820614575538', '929', '01/20', 'My Card - Silicon Valley Bank'),
+        (7, 'MAST', '9554094265951975', '654', '01/20', 'My Card - HSBC'),
+        (8, 'MAST', '2976170107952553', '385', '01/20', 'My Card - BforBank'),
+        (9, 'MAST', '3835111804646716', '735', '01/20', 'My Card - Bank of America'),
+        (10, 'VISA', '7857666864510644', '225', '01/20', 'My Card - Société Générale'),
+        (11, 'VISA', '5766517158593824', '305', '01/20', 'My Card - BPCE'),
+        (12, 'VISA', '3501050162095724', '520', '01/20', 'My Card - HSBC'),
+        (13, 'VISA', '6957934880271965', '683', '01/20', 'My Card - JPMorgan Chase'),
+        (14, 'MAST', '9312572979604607', '460', '01/20', 'My Card - ING'),
+        (15, 'MAST', '6066806940027793', '923', '01/20', 'My Card - Bank of America'),
+        (16, 'VISA', '7036205304409556', '479', '01/20', 'My Card - ING'),
+        (17, 'VISA', '8876532706524173', '038', '01/20', 'My Card - UBS'),
+        (18, 'VISA', '8137581256910896', '567', '01/20', 'My Card - Volksbank'),
+        (19, 'MAST', '7123550570744211', '774', '01/20', 'My Card - BPCE'),
+        (20, 'MAST', '0151440941109811', '081', '01/20', 'My Card - N26'),
+        (21, 'VISA', '2446539175591162', '220', '01/20', 'My Card - BPCE'),
+        (22, 'MAST', '1708954204889586', '870', '01/20', 'My Card - Santander UK');
 
     LOCK TABLES ACCOUNTS WRITE;
 

@@ -4,40 +4,51 @@
     align-items: center;
 }
 
-#addCard_ctn {
+#manageCard {
     width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
     padding: 30px var(--blockCtnPadding_LR);
+    position: relative;
 }
 
-#addCard_ctn .form {
-    width: 75%;
-    margin-top: 60px;
+#manageCard .backBtn {
+    position: absolute;
+    top : -15px;
+    left : -15px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    box-shadow: var(--shadow_lv2);
 }
 
-.radio_btn {
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 11px;
+.cards_ctn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.typeAccountRadio {
-    height: 45px;
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
 }
 
-.typeCardRadio img {
-    height: 20px;
-}
-
-#bankCardLayer {
+.bankCardLayer, .newCardLayer {
     width: calc(230px * 1.63);
     height: 230px;
     border-radius: 30px;
-    background: url('../assets/creditCardLayer.png') no-repeat center;
     background-size: 100% 100%;
-    margin-bottom: 60px;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow_lv2);
+}
+
+.bankCardLayer {
+    background: url('../assets/creditCardLayer.png') no-repeat center;
+}
+
+.newCardLayer {
+    background: #FFF;
 }
 
 .bankCardLayer_img {
@@ -52,7 +63,6 @@
     flex-direction: row;
     align-items: center;
     position: absolute;
-    color: #FFFFFF;
     text-transform: uppercase;
     width: calc(100% - 50px);
 }
@@ -77,6 +87,21 @@
     justify-content: space-between;
 }
 
-#addCard_ctn .form .input_ctn.btns .input_btn {
-    width: 250px;
+.cardBtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.cardBtns .btn {
+    margin: 0 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.cardBtns .btn .feather {
+    height: 20px;
+    width: 20px;
 }

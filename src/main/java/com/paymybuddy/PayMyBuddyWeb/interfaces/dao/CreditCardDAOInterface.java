@@ -14,6 +14,14 @@ public interface CreditCardDAOInterface {
     List<CreditCard> getUserCreditCards(Integer userId);
 
     /**
+     * Get card by id
+     * @param cardId
+     * @param userId
+     * @return
+     */
+    CreditCard getCardById(Integer cardId, Integer userId);
+
+    /**
      * Add new card to user
      * @param creditCard
      */
@@ -21,9 +29,10 @@ public interface CreditCardDAOInterface {
 
     /**
      * Remove user card
-     * @param credtCard
+     * @param cardId
+     * @param userId
      */
-    void removeCreditCard(CreditCard credtCard);
+    void removeCreditCard(Integer cardId, Integer userId);
 
     /**
      * Update user card

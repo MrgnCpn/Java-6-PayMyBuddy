@@ -57,4 +57,12 @@ public class Account {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public String getAmountLib(){
+        if (amount > 0) {
+            return "+ " + amount + " " + currency.getSymbol();
+        } else {
+            return "- " + amount + " " + currency.getSymbol();
+        }
+    }
 }

@@ -1,16 +1,19 @@
 package com.paymybuddy.PayMyBuddyWeb.services;
 
 import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.models.Country;
+import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONValue;
 
+import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Singleton
 public class UserService implements UserServiceInterface {
     /**
      * Logger log4j2
@@ -33,6 +37,8 @@ public class UserService implements UserServiceInterface {
      * User DAO
      */
     private final UserDAOInterface userDAO;
+
+
 
     /**
      * Friends DAO
