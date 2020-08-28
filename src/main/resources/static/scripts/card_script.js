@@ -45,7 +45,10 @@ $(() => {
 
     $('.typeCardRadio').on('click', function(){
         $('.bankCardLayer_img').addClass('disable');
-        console.log($(this).attr('data-targetID'))
-        $('.' + $(this).attr('data-value') + '_img').removeClass('disable');
+        if($(this).attr('data-value') == "MAST") {
+            $('.mastercard_img').removeClass('disable');
+        } else {
+            $('.visa_img').removeClass('disable');
+        }
     })
 })

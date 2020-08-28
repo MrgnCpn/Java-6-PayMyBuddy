@@ -9,7 +9,7 @@
                     <use th:href="@{assets/icons/feather-sprite.svg#chevron-left}"/>
                 </svg>
             </a>
-            <h1 class="title_ctn">Manage your cards</h1>
+            <h1 class="title_ctn">Manage my cards</h1>
             <div class="cards_ctn">
                 <div th:each="card : ${cards}" class="card">
                     <div class="bankCardLayer">
@@ -39,7 +39,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="card">
+                <div th:if="${cards.size() < 2}" class="card">
                     <div class="newCardLayer">
                         <img th:src="@{/assets/icons/cb.svg}" class="bankCardLayer_img"/>
                         <div class="bankCardLayer_nbr_ctn c_black">

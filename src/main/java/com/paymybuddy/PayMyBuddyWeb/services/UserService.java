@@ -1,13 +1,11 @@
 package com.paymybuddy.PayMyBuddyWeb.services;
 
 import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -120,7 +118,7 @@ public class UserService implements UserServiceInterface {
             User user = new User((Integer) userInfo.get("userID"), (String) requestParams.get("firstname"), (String) requestParams.get("lastname"), birthday, (String) requestParams.get("email"), country, null);
             userDAO.updateUser(user);
         } else {
-            logger.info("UserService.updateUserProfile : Incomplete profile");
+            logger.error("UserService.updateUserProfile : Incomplete profile");
         }
     }
 
@@ -175,7 +173,7 @@ public class UserService implements UserServiceInterface {
                     data.append("\"id\" : ").append(user.getId()).append(",");
                     data.append("\"firstName\" : \"").append(JSONValue.escape(user.getFirstName())).append("\",");
                     data.append("\"lastName\" : \"").append(JSONValue.escape(user.getLastName())).append("\",");
-                    data.append("\"fullname\" : \"").append(JSONValue.escape(user.getFullNameCasted())).append("\",");
+                    data.append("\"fullname\" : \"").append(JSONValue.escape(user.getFullNameCasted(false))).append("\",");
                     data.append("\"email\" : \"").append(JSONValue.escape(user.getEmail())).append("\",");
                     data.append("\"isFriend\" : ").append(this.getIfAreFriends(session, user.getId())).append(",");
                     String ext = user.getProfilePictureExt();

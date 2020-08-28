@@ -18,7 +18,7 @@
                         <img th:unless="${friend.getProfilePictureExt() != null}" th:src="@{assets/icons/user.svg}" alt="profile_pct">
                     </a>
                     <a th:href="@{/contact/profile/{id} (id=${friend.id})}" class="option_info">
-                        <h2 th:text="${friend.getFullNameCasted()}"></h2>
+                        <h2 th:text="${friend.getFullNameCasted(false)}"></h2>
                         <h3 th:text="${friend.email}"></h3>
                     </a>
                     <a th:href="@{/contact/friends/remove?id={id}&from={from} (id=${friend.id}, from='/contact')}" class="option_btn">

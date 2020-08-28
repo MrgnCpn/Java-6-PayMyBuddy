@@ -9,8 +9,9 @@
                     <use th:href="@{../../../assets/icons/feather-sprite.svg#chevron-left}"/>
                 </svg>
             </a>
-            <h1 class="title_ctn">Add new credit card</h1>
-            <form th:if="${card != null}" class="form" action="#" method="POST">
+            <h1 th:if="${card != null}" class="title_ctn">My Card</h1>
+            <h1 th:unless="${card != null}" class="title_ctn">Add new credit card</h1>
+            <form th:if="${card != null}" class="form" th:action="@{/manage-card/card/edit/{id} (id=${card.id})}" method="POST">
                 <div id="bankCardLayer">
                     <img th:src="@{/assets/icons/visa.svg}" class="bankCardLayer_img visa_img" th:classappend="${card.type == 'MAST'} ? disable"/>
                     <img th:src="@{/assets/icons/mastercard_simply.svg}" class="bankCardLayer_img mastercard_img"  th:classappend="${card.type == 'VISA'} ? disable"/>
@@ -26,8 +27,8 @@
                     </div>
                 </div>
                 <div class="input_ctn text">
-                    <label for="account_wording" class="input_label">Card wording</label>
-                    <input type="text" name="account_wording" id="account_wording" th:value="${card.wording}" class="input_text">
+                    <label for="wording" class="input_label">Card wording</label>
+                    <input type="text" name="wording" id="wording" th:value="${card.wording}" class="input_text">
                 </div>
                 <div class="comp_input_ctn">
                     <div class="input_ctn text">
@@ -60,12 +61,12 @@
                     </div>
                     <div class="input_ctn radio">
                         <label for="card_type" class="input_label">Type</label>
-                        <input type="text" name="card_type" id="card_type" class="disable">
+                        <input type="text" name="card_type" id="card_type" class="disable" th:value="${card.type}">
                         <div class="input_radio_ctn">
-                            <span class="typeCardRadio btn c_white radio_btn" data-value="mastercard" th:classappend="${card.type == 'MAST'} ? selected">
+                            <span class="typeCardRadio btn c_white radio_btn" data-value="MAST" th:classappend="${card.type == 'MAST'} ? selected">
                                 <img th:src="@{/assets/icons/mastercard_simply.svg}"/>
                             </span>
-                            <span class="typeCardRadio btn c_white radio_btn" data-value="visa" th:classappend="${card.type == 'VISA'} ? selected">
+                            <span class="typeCardRadio btn c_white radio_btn" data-value="VISA" th:classappend="${card.type == 'VISA'} ? selected">
                                 <img th:src="@{/assets/icons/visa.svg}"/>
                             </span>
                         </div>
@@ -93,8 +94,8 @@
                     </div>
                 </div>
                 <div class="input_ctn text">
-                    <label for="account_wording" class="input_label">Card wording</label>
-                    <input type="text" name="account_wording" id="account_wording" placeholder="My Bank Account" class="input_text">
+                    <label for="wording" class="input_label">Card wording</label>
+                    <input type="text" name="wording" id="wording" placeholder="My Bank Account" class="input_text">
                 </div>
                 <div class="comp_input_ctn">
                     <div class="input_ctn text">
@@ -127,12 +128,12 @@
                     </div>
                     <div class="input_ctn radio">
                         <label for="card_type" class="input_label">Type</label>
-                        <input type="text" name="card_type" id="card_type" class="disable">
+                        <input type="text" name="card_type" id="card_type" class="disable" value="MAST">
                         <div class="input_radio_ctn">
-                            <span class="typeCardRadio btn c_white radio_btn selected" data-value="mastercard">
+                            <span class="typeCardRadio btn c_white radio_btn selected" data-value="MAST">
                                 <img th:src="@{/assets/icons/mastercard_simply.svg}"/>
                             </span>
-                            <span class="typeCardRadio btn c_white radio_btn" data-value="visa">
+                            <span class="typeCardRadio btn c_white radio_btn" data-value="VISA">
                                 <img th:src="@{/assets/icons/visa.svg}"/>
                             </span>
                         </div>

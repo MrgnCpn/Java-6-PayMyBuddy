@@ -113,7 +113,7 @@ public class CreditCard {
     }
 
     public String getWordingLib(){
-        if (this.getWording().length() > 25) return this.getWording().substring(0, 25) + "...";
+        if (this.getWording().length() > 15) return this.getWording().substring(0, 15) + "...";
         else return this.getWording();
     }
 }

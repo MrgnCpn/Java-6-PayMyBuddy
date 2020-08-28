@@ -58,7 +58,7 @@ public class Currency {
      */
     public String getSymbol(){
         if (this.getCode().equals("USD")) return "$";
-        else if (this.getCode().equals("EUR")) return "$";
+        else if (this.getCode().equals("EUR")) return "€";
         else if (this.getCode().equals("JPY")) return "¥";
         else if (this.getCode().equals("GBP")) return "£";
         else return null;

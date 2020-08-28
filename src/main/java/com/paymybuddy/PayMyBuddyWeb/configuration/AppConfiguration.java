@@ -68,7 +68,12 @@ public class AppConfiguration {
 
     @Bean
     public TransactionServiceInterface transactionService() {
-        return new TransactionService(securityService(), transactionDAO());
+        return new TransactionService(securityService(), transactionDAO(), userService());
+    }
+
+    @Bean
+    public AccountServiceInterface accountService() {
+        return new AccountService(securityService(), creditCardService(), transactionService(), accountDAO());
     }
 
     @Bean

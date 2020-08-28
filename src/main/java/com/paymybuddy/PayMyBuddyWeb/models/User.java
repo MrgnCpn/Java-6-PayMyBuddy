@@ -134,8 +134,9 @@ public class User {
      * WARNING : Called in frontend
      * @return
      */
-    public String getFullNameCasted() {
-        return MSStringUtils.firstUpperCase(this.getFirstName()) + " " + this.getLastName().toUpperCase();
+    public String getFullNameCasted(Boolean trunc) {
+        if (trunc) return this.getFirstName().substring(0,1).toUpperCase() + "." + this.getLastName().toUpperCase();
+        else return MSStringUtils.firstUpperCase(this.getFirstName()) + " " + this.getLastName().toUpperCase();
     }
 
     /**

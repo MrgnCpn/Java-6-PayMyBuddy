@@ -43,7 +43,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: calc(var(--sectionWidth_XL) - (2 * var(--blockCtnPadding_LR)));
-	height: 520px;
+	height: 530px;
 	padding: 20px var(--blockCtnPadding_LR);
 	padding-bottom: 0;
 }
@@ -97,7 +97,6 @@
 
 #accountInfo_details .table .tbody {
 	height: calc(100% - 45px);
-	padding-bottom: 40px;
 	overflow-y: scroll;
 }
 
@@ -107,7 +106,7 @@
 	align-items: center;
 	height: 65px;
 	overflow: hidden;
-	margin-top: 20px;
+	padding: 7.5px;
 }
 
 #accountInfo_details .table .tbody .tr .td {
@@ -142,7 +141,3 @@
 	text-align: left;
 	padding: 0 5px;
 }
-
-
-
-

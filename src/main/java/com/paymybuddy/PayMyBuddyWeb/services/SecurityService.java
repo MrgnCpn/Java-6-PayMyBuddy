@@ -113,9 +113,9 @@ public class SecurityService implements SecurityServiceInterface {
             claims.put("username", user.getEmail());
             claims.put("name", user.getFirstName() + " " + user.getLastName());
             if (rememberUser) {
-                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 1000 * 60 * 60 * 24 * 365));
+                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 60 * 60 * 24 * 90));
             } else {
-                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 1000 * 60 * 60 * 5));
+                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 60 * 60 * 24));
             }
         }
         return loginInformations;
@@ -127,9 +127,7 @@ public class SecurityService implements SecurityServiceInterface {
     @Override
     public String createJWT(Integer id, String subject, String issuer, Map<String, Object> claims, long ttlMillis) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
-        long nowMillis = System.currentTimeMillis();
-        Date now = new Date(nowMillis);
+        Date now = new Date(System.currentTimeMillis());
 
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(JWTKey);
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
@@ -143,7 +141,7 @@ public class SecurityService implements SecurityServiceInterface {
                 .signWith(signatureAlgorithm, signingKey);
 
         if (ttlMillis >= 0) {
-            builder.setExpiration(new Date(nowMillis + ttlMillis));
+            builder.setExpiration(new Date(System.currentTimeMillis() + ttlMillis * 1000));
         }
 
         return builder.compact();
@@ -162,19 +160,14 @@ public class SecurityService implements SecurityServiceInterface {
                     .parseClaimsJws(token).getBody();
         } catch (SignatureException e) {
             logger.info("Invalid JWT signature.");
-            logger.trace("Invalid JWT signature trace: {}", e);
         } catch (MalformedJwtException e) {
             logger.info("Invalid JWT token.");
-            logger.trace("Invalid JWT token trace: {}", e);
         } catch (ExpiredJwtException e) {
             logger.info("Expired JWT token.");
-            logger.trace("Expired JWT token trace: {}", e);
         } catch (UnsupportedJwtException e) {
             logger.info("Unsupported JWT token.");
-            logger.trace("Unsupported JWT token trace: {}", e);
         } catch (IllegalArgumentException e) {
             logger.info("JWT token compact of handler are invalid.");
-            logger.trace("JWT token compact of handler are invalid trace: {}", e);
         }
 
         return claims;

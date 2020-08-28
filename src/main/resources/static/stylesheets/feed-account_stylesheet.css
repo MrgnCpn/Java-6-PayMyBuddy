@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;1,400&family=Roboto&display=swap');
+
+.main_content {
+    align-items: center;
+}
+
+#feedAccount {
+    width: calc(var(--sectionWidth_L) - (2 * var(--blockCtnPadding_LR)));
+    padding: 30px var(--blockCtnPadding_LR);
+    position: relative;
+}
+
+#feedAccount .backBtn {
+    position: absolute;
+    top : -15px;
+    left : -15px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    box-shadow: var(--shadow_lv2);
+}
+
+#feedAccount .form {
+    width: 75%;
+    margin-top: 40px;
+}
+
+.cards_ctn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.bankCardLayer, .newCardLayer {
+    width: calc(230px * 1.63);
+    height: 230px;
+    border-radius: 30px;
+    background-size: 100% 100%;
+    position: relative;
+    box-shadow: var(--shadow_lv2);
+    transform: scale(0.8);
+}
+
+.bankCardLayer {
+    background: url('../assets/creditCardLayer.png') no-repeat center;
+    cursor: pointer;
+}
+
+.newCardLayer {
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newCardLayer .feather {
+    height: 50px;
+    width: 50px;
+}
+
+.bankCardLayer .selectedTag {
+    position: absolute;
+    top : -15px;
+    right : -15px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    box-shadow: var(--shadow_lv2);
+    display: none;
+}
+
+.bankCardLayer.selected .selectedTag {
+    display: flex;
+}
+
+.bankCardLayer_img {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 30px;
+}
+
+.bankCardLayer_nbr_ctn, .bankCardLayer_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    text-transform: uppercase;
+    width: calc(100% - 50px);
+}
+
+.bankCardLayer_nbr_ctn {
+    bottom: 65px;
+    left: 25px;
+    font-size: 17px;
+    justify-content: flex-start;
+}
+
+.bankCardLayer_nbr_ctn span.bankCardLayer_nbr {
+    margin-right: 15px;
+    letter-spacing: 5px;
+}
+
+.bankCardLayer_info {
+    bottom: 25px;
+    left: 25px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    justify-content: space-between;
+}
+
+#amount {
+    text-align: right;
+}

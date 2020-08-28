@@ -4,16 +4,15 @@ import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.TransactionDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
+import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import com.paymybuddy.PayMyBuddyWeb.models.Currency;
 import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
+import com.paymybuddy.PayMyBuddyWeb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Singleton;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,9 +61,28 @@ public class TransactionDAO implements TransactionDAOInterface {
         PreparedStatement ps = null;
 
         StringBuffer sql = new StringBuffer();
-        sql.append("SELECT from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency");
+        sql.append("SELECT DISTINCT");
+        sql.append(" u_from.id,");
+        sql.append(" u_from.firstname,");
+        sql.append(" u_from.lastname,");
+        sql.append(" u_from.email,");
+        sql.append(" u_to.id,");
+        sql.append(" u_to.firstname,");
+        sql.append(" u_to.lastname,");
+        sql.append(" u_to.email,");
+        sql.append(" transactions.from_iscard,");
+        sql.append(" transactions.from_id,");
+        sql.append(" transactions.to_id,");
+        sql.append(" transactions.date,");
+        sql.append(" transactions.description,");
+        sql.append(" transactions.amount,");
+        sql.append(" transactions.currency");
         sql.append(" FROM transactions");
-        sql.append(" WHERE from_id = ? OR to_id = ? ORDER BY date DESC");
+        sql.append(" INNER JOIN users u_from ON transactions.from_id = u_from.ID");
+        sql.append(" INNER JOIN users u_to ON transactions.to_id = u_to.ID");
+        sql.append(" WHERE from_id = ?");
+        sql.append(" OR to_id = ?");
+        sql.append(" ORDER BY transactions.date DESC");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -73,11 +91,31 @@ public class TransactionDAO implements TransactionDAOInterface {
             ps.setInt(2, userId);
             rs = ps.executeQuery();
             while (rs.next()){
+                User user_from = null;
+                User user_to = null;
+                CreditCard creditCard = null;
+
+                if (!rs.getBoolean("transactions.from_iscard")) {
+                    user_from = new User();
+                    user_from.setId(rs.getInt("u_from.id"));
+                    user_from.setFirstName(rs.getString("u_from.firstname"));
+                    user_from.setLastName(rs.getString("u_from.lastname"));
+                    user_from.setEmail(rs.getString("u_from.email"));
+                } else {
+                    creditCard = creditCardDAO.getCardById(rs.getInt("u_from.id"), userId);
+                }
+
+                user_to = new User();
+                user_to.setId(rs.getInt("u_to.id"));
+                user_to.setFirstName(rs.getString("u_to.firstname"));
+                user_to.setLastName(rs.getString("u_to.lastname"));
+                user_to.setEmail(rs.getString("u_to.email"));
+
                 result.add(
                     new Transaction(
-                        rs.getBoolean("from_isCard") ? creditCardDAO.getCardById(rs.getInt("from_id"), userId) : null,
-                        rs.getBoolean("from_isCard") ? null : userDAO.getUserById(rs.getInt("from_id")),
-                        userDAO.getUserById(rs.getInt("to_id")),
+                        creditCard,
+                        user_from,
+                        user_to,
                         rs.getDate("date").toLocalDate(),
                         rs.getString("description"),
                         rs.getDouble("amount"),
@@ -99,7 +137,7 @@ public class TransactionDAO implements TransactionDAOInterface {
      * @see TransactionDAOInterface {@link #newTransaction(Transaction)}
      */
     @Override
-    public void newTransaction(Transaction transaction) {
+    public void newTransaction(Transaction transaction) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
 
@@ -109,6 +147,7 @@ public class TransactionDAO implements TransactionDAOInterface {
 
         try {
             con = databaseConfiguration.getConnection();
+            con.setAutoCommit(false);
             ps = con.prepareStatement(sql.toString());
 
             if (transaction.getCard() == null) {
@@ -126,10 +165,13 @@ public class TransactionDAO implements TransactionDAOInterface {
             ps.setDouble(8, transaction.getFinalAmount());
             ps.setString(9, transaction.getCurrency().getCode());
             ps.execute();
-            logger.info("TransactionDAO.newTransaction() -> Transactions created between " + transaction.getUserFrom().getId() + " and " + transaction.getUserTo().getId() + ", date : " + transaction.getDate());
+            logger.info("TransactionDAO.newTransaction() -> Transactions created");
+            con.commit();
         } catch (Exception ex){
-            logger.error("TransactionDAO.newTransaction() -> Error update new user", ex);
+            logger.error("TransactionDAO.newTransaction() -> Error new transaction", ex);
+            con.rollback();
         } finally {
+            con.setAutoCommit(true);
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
     }

@@ -1,5 +1,7 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
+import com.paymybuddy.PayMyBuddyWeb.Utils.MSNumberUtils;
+
 import java.time.LocalDate;
 
 public class Account {
@@ -35,11 +37,11 @@ public class Account {
     }
 
     public Double getAmount() {
-        return amount;
+        return MSNumberUtils.getDouble_2_digits(amount);
     }
 
     public void setAmount(Double amount) {
-        this.amount = amount;
+        this.amount = MSNumberUtils.getDouble_2_digits(amount);
     }
 
     public Currency getCurrency() {

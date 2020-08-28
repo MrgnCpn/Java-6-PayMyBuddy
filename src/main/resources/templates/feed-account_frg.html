@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body th:fragment="feed-account">
+    <header th:replace="header_frg :: main_header"></header>
+    <nav th:replace="navigation_frg :: navigation('account')"></nav>
+    <main class="main_content">
+        <section id="feedAccount" class="block_ctn">
+            <a th:href="@{/account}" class="backBtn btn circle b_white">
+                <svg class="feather f_black">
+                    <use th:href="@{assets/icons/feather-sprite.svg#chevron-left}"/>
+                </svg>
+            </a>
+            <h1 class="title_ctn">Feed my account</h1>
+            <div class="cards_ctn">
+                <div class="bankCardLayer" th:each="card : ${cards}" th:classappend="${card.id == cards.get(0).id} ? selected" th:data-value="${card.id}">
+                    <div class="selectedTag btn circle b_green">
+                        <svg class="feather f_white">
+                            <use th:href="@{assets/icons/feather-sprite.svg#check}"/>
+                        </svg>
+                    </div>
+                    <img th:if="${card.type == 'VISA'}" th:src="@{/assets/icons/visa.svg}" class="bankCardLayer_img"/>
+                    <img th:unless="${card.type == 'VISA'}" th:src="@{/assets/icons/mastercard_simply.svg}" class="bankCardLayer_img"/>
+                    <div class="bankCardLayer_nbr_ctn c_white">
+                        <span class="bankCardLayer_nbr" th:text="${card.getNumberHide()[0]}"></span>
+                        <span class="bankCardLayer_nbr" th:text="${card.getNumberHide()[1]}"></span>
+                        <span class="bankCardLayer_nbr" th:text="${card.getNumberHide()[2]}"></span>
+                        <span class="bankCardLayer_nbr" th:text="${card.getNumberSplited()[3]}"></span>
+                    </div>
+                    <div class="bankCardLayer_info c_white">
+                        <span class="bankCardLayer_lib" th:text="${card.wording}"></span>
+                        <span class="bankCardLayer_date" th:text="${card.date}"></span>
+                    </div>
+                </div>
+                <a th:if="${cards.size() < 2}" th:href="@{/manage-card/card/new}" class="newCardLayer">
+                    <svg class="feather f_grey96">
+                        <use th:href="@{assets/icons/feather-sprite.svg#plus}"/>
+                    </svg>
+                    <div class="bankCardLayer_info c_black">
+                        <span class="bankCardLayer_lib">New card</span>
+                    </div>
+                </a>
+            </div>
+            <form class="form" th:action="@{/feed-account}" method="POST">
+                <input type="text" name="cardid" id="cardid" th:value="${cards.get(0).id}" class="disable">
+                <div class="input_ctn text">
+                    <label for="amount" class="input_label">Amount - [[${user.getAccount().getCurrency().getSymbol()}]]<span class="input_sub_label">(0.5 % fees)</span></label>
+                    <input type="text" name="amount" id="amount" th:placeholder="0.00" class="input_text">
+                </div>
+                <div class="input_ctn btns">
+                    <input type="submit" name="submit" id="input_btn_submit" class="input_btn btn btn_label btn_anim round b_green c_white" value="Validate">
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer th:replace="footer_frg :: main_footer"></footer>
+</body>
+</html>

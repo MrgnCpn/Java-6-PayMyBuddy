@@ -1,19 +1,15 @@
 package com.paymybuddy.PayMyBuddyWeb.controllers;
 
 import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CreditCardServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.TransactionServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.PayMyBuddyWeb.interfaces.service.*;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +31,9 @@ public class AccountController {
     @Autowired
     private TransactionServiceInterface transactionService;
 
+    @Autowired
+    private AccountServiceInterface accountService;
+
     @GetMapping("/account")
     public ModelAndView getAccount(HttpSession session) {
         if (!securityService.isLog(session)) return controllerUtils.rootRedirect();
@@ -46,6 +45,26 @@ public class AccountController {
         model.put("user", user);
         model.put("transactions", transactionService.getUserTransaction(session));
         return new ModelAndView("template.html" , model);
+    }
+
+    @GetMapping("/feed-account")
+    public ModelAndView getFeedAccount(HttpSession session) {
+        if (!securityService.isLog(session)) return controllerUtils.rootRedirect();
+
+        User user = userService.getUser(session);
+        Map<String, Object> model = new HashMap<>();
+        model.put("page", "feed-account");
+        model.put("isLogin", securityService.isLog(session));
+        model.put("user", user);
+        model.put("cards", user.getCreditCards());
+        return new ModelAndView("template.html" , model);
+    }
+
+    @PostMapping("/feed-account")
+    public ModelAndView postFeedAccount(HttpSession session, @RequestParam(required = true) Map<String, Object> requestParams) throws SQLException {
+        User user = userService.getUser(session);
+        accountService.feedAccount(session, requestParams, user);
+        return controllerUtils.doRedirect("/account");
     }
 
     @GetMapping("/manage-card")
@@ -71,6 +90,12 @@ public class AccountController {
         return new ModelAndView("template.html" , model);
     }
 
+    @PostMapping("/manage-card/card/edit/{id}")
+    public ModelAndView postCard(HttpSession session, @PathVariable(value="id") Integer cardId, @RequestParam(required = true) Map<String, Object> requestParams){
+        creditCardService.updateCard(session, cardId, requestParams);
+        return controllerUtils.doRedirect("/manage-card/card/edit/" + cardId);
+    }
+
     @GetMapping("/manage-card/card/remove/{id}")
     public ModelAndView getRemoveCard(HttpSession session, @PathVariable(value="id") Integer cardId){
         if (!securityService.isLog(session)) return controllerUtils.rootRedirect();
@@ -89,4 +114,9 @@ public class AccountController {
         return new ModelAndView("template.html" , model);
     }
 
+    @PostMapping("/manage-card/card/new")
+    public ModelAndView postNewCard(HttpSession session, @RequestParam(required = true) Map<String, Object> requestParams){
+        creditCardService.addNewCard(session, requestParams);
+        return controllerUtils.doRedirect("/manage-card");
+    }
 }
