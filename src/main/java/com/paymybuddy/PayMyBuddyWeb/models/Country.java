@@ -13,7 +13,7 @@ import java.util.Map;
 public class Country {
     private String code;
     private String wording;
-    private final CountryServiceInterface countryServiceInterface = new CountryService();
+    private final CountryServiceInterface countryService;
 
     /**
      * Constructor
@@ -21,24 +21,20 @@ public class Country {
      * @throws IOException
      */
     public Country(String code) throws IOException {
-        this.code = code.toUpperCase();
-        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
+        this.countryService = new CountryService();
+        this.setCountry(code);
     }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) throws IOException {
-        this.code = code.toUpperCase();
-        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
-    }
-
     public String getWording() {
         return wording;
     }
 
-    public void setWording(String code) throws IOException {
-        this.wording = countryServiceInterface.getNameOfCountry(code.toUpperCase());
+    public void setCountry(String code) throws IOException {
+        this.code = code.toUpperCase();
+        this.wording = countryService.getNameOfCountry(code.toUpperCase());
     }
 }

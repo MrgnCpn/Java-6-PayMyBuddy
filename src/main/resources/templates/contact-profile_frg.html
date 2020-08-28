@@ -38,7 +38,7 @@
             <div class="input_ctn btns">
                 <a th:if="${friendship}" th:href="@{/contact/friends/remove?id={id}&from={from} (id=${user.id}, from='/contact/profile/')}" class="input_btn btn btn_label btn_anim round b_red c_white">Remove from friends</a>
                 <a th:unless="${friendship}" th:href="@{/contact/friends/add?id={id}&from={from} (id=${user.id}, from='/contact/profile/')}" class="input_btn btn btn_label btn_anim round b_green c_white">Add to friends</a>
-                <a th:href="@{/transfer?to={friend_id} (friend_id=${user.id})}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
+                <a th:href="@{/transfer}" class="input_btn btn btn_label btn_anim round b_blue c_white">Do transfer</a>
             </div>
         </section>
     </main>

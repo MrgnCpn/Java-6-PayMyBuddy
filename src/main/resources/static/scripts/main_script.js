@@ -125,7 +125,15 @@ class Template {
 	}
 }
 
+class FormValidator {
+	validateEmail(sEmail) {
+		const filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		return filter.test(sEmail)
+	}
+}
+
 const template = new Template();
+const formValidator = new FormValidator();
 
 $(() => {
 	template.initTemplate();

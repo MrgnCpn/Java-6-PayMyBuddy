@@ -48,7 +48,11 @@ public class Currency {
         Integer status = data.getInt("status");
         if (status < 299) {
             JSONObject rates = (JSONObject) ((JSONObject) data.get("content")).get("rates");
-            this.setRateBasedUSD(rates.getDouble(code));
+            if (!rates.isNull(code)) this.setRateBasedUSD(rates.getDouble(code));
+            else {
+                this.code = null;
+                this.rateBasedUSD = null;
+            }
         }
     }
 

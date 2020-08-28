@@ -51,6 +51,6 @@ public class TransferController {
     @PostMapping("/transfer")
     public ModelAndView postCard(HttpSession session, @RequestParam(required = true) Map<String, Object> requestParams) throws IOException, SQLException {
         transactionService.doTransfer(session, requestParams);
-        return controllerUtils.doRedirect("/transfer");
+        return controllerUtils.doRedirect("/account");
     }
 }
