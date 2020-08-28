@@ -9,7 +9,8 @@ public class MSStringUtils {
      * @return
      */
     public static boolean isEmpty(String str) {
-        return (str != null) && StringUtils.isEmpty(str);
+        if (str == null) return true;
+        else return StringUtils.isEmpty(str);
     }
 
     /**

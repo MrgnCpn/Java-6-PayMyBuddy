@@ -5,7 +5,7 @@ import java.util.*;
 public class MSArrayUtils {
 
     /**
-     * Sort map by kay
+     * Sort map by key
      * @param map
      * @param <K>
      * @param <V>
