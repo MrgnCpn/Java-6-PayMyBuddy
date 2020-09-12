@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class AppConfiguration {
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-    private DatabaseConfigurationInterface databaseConfiguration = new DatabaseConfiguration();
+    private DatabaseConfigurationInterface databaseConfiguration = new DatabaseConfiguration("src/main/resources/static/database/databaseConfiguration_prod.properties");
 
     @Bean
     public AccountDAOInterface accountDAO(){
@@ -38,7 +38,7 @@ public class AppConfiguration {
 
     @Bean
     public TransactionDAOInterface transactionDAO(){
-        return new TransactionDAO(databaseConfiguration, creditCardDAO(), userDAO());
+        return new TransactionDAO(databaseConfiguration, creditCardDAO());
     }
 
     @Bean

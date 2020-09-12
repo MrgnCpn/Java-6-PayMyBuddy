@@ -1,16 +1,13 @@
+DROP DATABASE IF EXISTS paymybuddy_prod_oc_mc;
+
+/** PRODUCTION DB **/
+
 -- CREATE Database
-    DROP DATABASE IF EXISTS PayMyBuddy_OC_MC;
-    CREATE DATABASE IF NOT EXISTS PayMyBuddy_OC_MC;
-    USE PayMyBuddy_OC_MC;
+    CREATE DATABASE IF NOT EXISTS paymybuddy_prod_oc_mc;
+    USE paymybuddy_prod_oc_mc;
     SET autocommit=1;
 
 -- CREATE Tables
-    DROP TABLE IF EXISTS CREDIT_CARDS;
-    DROP TABLE IF EXISTS ACCOUNTS;
-    DROP TABLE IF EXISTS TRANSACTIONS;
-    DROP TABLE IF EXISTS FRIENDS;
-    DROP TABLE IF EXISTS USERS;
-
     -- Users Table
         CREATE TABLE USERS (
             id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

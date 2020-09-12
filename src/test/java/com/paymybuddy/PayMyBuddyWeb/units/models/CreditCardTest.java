@@ -12,7 +12,7 @@ class CreditCardTest {
     private CreditCard creditCard;
 
     @BeforeEach
-    void init(){
+    void init_each(){
         creditCard = new CreditCard(
                 1,
                 1,

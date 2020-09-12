@@ -26,7 +26,7 @@ class UserTest {
     private static Account account;
 
     @BeforeEach
-    void init() {
+    void init_each() {
         List<Integer> friendsList = new ArrayList<>();
         friendsList.add(1);
         friendsList.add(2);

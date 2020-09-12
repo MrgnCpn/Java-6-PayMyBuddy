@@ -29,7 +29,7 @@ class CountryServiceTest {
     private static HTTPRequestServiceInterface httpRequestService;
 
     @BeforeEach
-    void init() {
+    void init_each() {
         countryService = new CountryService(httpRequestService);
     }
 

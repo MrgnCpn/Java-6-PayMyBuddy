@@ -48,8 +48,8 @@ class TransactionServiceTest {
 
     private TransactionServiceInterface transactionService;
 
-    @BeforeEach
-    void init() {
+     @BeforeEach
+    void init_each() {
         transactionService = new TransactionService(securityService, transactionDAO, userService);
 
         userInfo = new HashMap<>();

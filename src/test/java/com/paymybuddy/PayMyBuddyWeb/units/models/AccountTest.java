@@ -28,7 +28,7 @@ class AccountTest {
     private static Currency currencySet;
 
     @BeforeEach
-    void init() {
+    void init_each() {
         account = new Account(
                 1,
                 1234.56,

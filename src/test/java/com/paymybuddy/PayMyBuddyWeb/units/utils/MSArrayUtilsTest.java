@@ -18,7 +18,7 @@ class MSArrayUtilsTest {
     private Map<String, String> map;
 
     @BeforeEach
-    void init() {
+    void init_each() {
         map = new HashMap<>();
         map.put("3", "E"); // 1
         map.put("1", "U"); // 5

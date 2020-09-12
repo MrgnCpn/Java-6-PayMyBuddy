@@ -24,31 +24,47 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
      * Database host
      */
     private String host;
+
     /**
      * Database port
      */
     private String port;
+
     /**
      * Database database name
      */
     private String database;
+
     /**
      * Database username
      */
     private String user;
+
     /**
      * Database password
      */
     private String password;
 
     /**
+     * Database configuration File
+     */
+    private String configurationFilePath;
+
+    /**
+     * Constructor
+     * @param configurationFilePath
+     */
+    public DatabaseConfiguration(String configurationFilePath) {
+        this.configurationFilePath = configurationFilePath;
+    }
+
+    /**
      * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #getConnection()}
      */
     @Override
     public Connection getConnection() throws ClassNotFoundException, SQLException {
-        //logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
-        try (InputStream inputStream = new FileInputStream("src/main/resources/static/database/databaseConfiguration.properties")){
+        try (InputStream inputStream = new FileInputStream(configurationFilePath)){
             Properties properties = new Properties();
             properties.load(inputStream);
             host = properties.getProperty("host");
@@ -73,7 +89,6 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
         if (con != null) {
             try {
                 con.close();
-                //logger.info("Closing DB connection");
             } catch (SQLException e) {
                 logger.error("Error while closing connection", e);
             }
@@ -88,7 +103,6 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
         if (ps != null) {
             try {
                 ps.close();
-                //logger.info("Closing Prepared Statement");
             } catch (SQLException e) {
                 logger.error("Error while closing prepared statement", e);
             }
@@ -104,7 +118,6 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
         if (rs != null) {
             try {
                 rs.close();
-                //logger.info("Closing Result Set");
             } catch (SQLException e) {
                 logger.error("Error while closing result set", e);
             }

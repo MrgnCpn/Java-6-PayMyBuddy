@@ -13,7 +13,7 @@ class CurrencyTest {
     private Currency currency;
 
     @BeforeEach
-    void init() throws IOException {
+    void init_each() throws IOException {
         currency = new Currency("USD");
     }
 

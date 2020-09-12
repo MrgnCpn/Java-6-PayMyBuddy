@@ -34,20 +34,13 @@ public class TransactionDAO implements TransactionDAOInterface {
     private CreditCardDAOInterface creditCardDAO;
 
     /**
-     * User DAO
-     */
-    private UserDAOInterface userDAO;
-
-    /**
      * Constructor
      * @param databaseConfiguration
      * @param creditCardDAO
-     * @param userDAO
      */
-    public TransactionDAO(DatabaseConfigurationInterface databaseConfiguration, CreditCardDAOInterface creditCardDAO, UserDAOInterface userDAO) {
+    public TransactionDAO(DatabaseConfigurationInterface databaseConfiguration, CreditCardDAOInterface creditCardDAO) {
         this.databaseConfiguration = databaseConfiguration;
         this.creditCardDAO = creditCardDAO;
-        this.userDAO = userDAO;
     }
 
     /**
@@ -92,7 +85,6 @@ public class TransactionDAO implements TransactionDAOInterface {
             rs = ps.executeQuery();
             while (rs.next()){
                 User user_from = null;
-                User user_to = null;
                 CreditCard creditCard = null;
 
                 if (!rs.getBoolean("transactions.from_iscard")) {
@@ -105,7 +97,7 @@ public class TransactionDAO implements TransactionDAOInterface {
                     creditCard = creditCardDAO.getCardById(rs.getInt("u_from.id"), userId);
                 }
 
-                user_to = new User();
+                User user_to = new User();
                 user_to.setId(rs.getInt("u_to.id"));
                 user_to.setFirstName(rs.getString("u_to.firstname"));
                 user_to.setLastName(rs.getString("u_to.lastname"));
