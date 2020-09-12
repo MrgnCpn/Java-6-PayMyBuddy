@@ -20,6 +20,16 @@ public class CountryService implements CountryServiceInterface {
      */
     private static final Logger logger = LogManager.getLogger("CountryService");
 
+    private static HTTPRequestServiceInterface httpRequestService;
+
+    /**
+     * Constructor
+     * @param httpRequestService
+     */
+    public CountryService(HTTPRequestServiceInterface httpRequestService) {
+        this.httpRequestService = httpRequestService;
+    }
+
     /**
      * @see CountryServiceInterface {@link #getNameOfCountry(String)}
      */
@@ -27,7 +37,6 @@ public class CountryService implements CountryServiceInterface {
     public String getNameOfCountry(String code) throws IOException {
         String name = null;
         Map<String, String> params = new HashMap<>();
-        HTTPRequestServiceInterface httpRequestService = new HTTPRequestService();
         params.put("fields", "name");
         JSONObject data = httpRequestService.getReq("https://restcountries.eu/rest/v2/alpha/" + code, params);
         Integer status = data.getInt("status");
@@ -45,8 +54,6 @@ public class CountryService implements CountryServiceInterface {
     @Override
     public Map<String, String> getAllCountries() throws IOException {
         Map<String, String> countries = null;
-        Map<String, String> params = new HashMap<>();
-        HTTPRequestServiceInterface httpRequestService = new HTTPRequestService();
         JSONObject data = httpRequestService.getReq("https://restcountries.eu/rest/v2/all?fields=name;alpha3Code;", null);
         Integer status = data.getInt("status");
         if (status < 299) {

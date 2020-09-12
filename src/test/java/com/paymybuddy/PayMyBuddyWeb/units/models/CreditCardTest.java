@@ -2,6 +2,7 @@ package com.paymybuddy.PayMyBuddyWeb.units.models;
 
 import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +24,7 @@ class CreditCardTest {
         );
     }
 
+    @Tag("CreditCardTest")
     @Test
     void get_test() {
         assertThat(creditCard.getId()).isEqualTo(1);
@@ -34,6 +36,7 @@ class CreditCardTest {
         assertThat(creditCard.getWording()).isEqualTo("My Card");
     }
 
+    @Tag("CreditCardTest")
     @Test
     void set_test() {
         creditCard.setId(2);
@@ -53,6 +56,7 @@ class CreditCardTest {
         assertThat(creditCard.getWording()).isEqualTo("My New Card");
     }
 
+    @Tag("CreditCardTest")
     @Test
     void setAsNull_test() {
         creditCard.setId(0);
@@ -72,6 +76,7 @@ class CreditCardTest {
         assertThat(creditCard.getWording()).isEmpty();
     }
 
+    @Tag("CreditCardTest")
     @Test
     void getNumberSplited_test(){
         assertThat(creditCard.getNumberSplited().get(0)).isEqualTo("0123");
@@ -83,6 +88,7 @@ class CreditCardTest {
         assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> creditCard.getNumberSplited().get(4));
     }
 
+    @Tag("CreditCardTest")
     @Test
     void getNumberHide_test(){
         assertThat(creditCard.getNumberHide().get(0)).isEqualTo("****");
@@ -94,6 +100,7 @@ class CreditCardTest {
         assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> creditCard.getNumberSplited().get(4));
     }
 
+    @Tag("CreditCardTest")
     @Test
     void getWordingLib_test(){
         creditCard.setWording("This is a very long credit dard wording");

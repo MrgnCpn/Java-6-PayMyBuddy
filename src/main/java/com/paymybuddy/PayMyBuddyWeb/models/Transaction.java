@@ -120,8 +120,10 @@ public class Transaction {
     public String getTransactionLib(Integer userId){
         if (this.getUserTo().getId().equals(userId)){
             return "+ " + MSNumberUtils.getDouble_2_digits(this.getFinalAmount() * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
-        } else {
+        } else if (this.getUserFrom().getId().equals(userId)) {
             return "- " + MSNumberUtils.getDouble_2_digits((this.getAmount() + this.getFee()) * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
+        } else {
+            return null;
         }
     }
 
@@ -129,8 +131,10 @@ public class Transaction {
         if (this.getUserTo() != null) {
             if (this.getUserTo().getId().equals(userId)){
                 return this.getUserFrom();
-            } else {
+            } else if (this.getUserFrom().getId().equals(userId)) {
                 return this.getUserTo();
+            } else {
+                return null;
             }
         }
         return null;

@@ -2,6 +2,7 @@ package com.paymybuddy.PayMyBuddyWeb.units.models;
 
 import com.paymybuddy.PayMyBuddyWeb.models.Currency;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ class CurrencyTest {
         currency = new Currency("USD");
     }
 
+    @Tag("CurrencyTest")
     @Test
     void get_test() {
         assertThat(currency.getCode()).isEqualTo("USD");
@@ -24,6 +26,7 @@ class CurrencyTest {
         assertThat(currency.getRateBasedUSD()).isEqualTo(1);
     }
 
+    @Tag("CurrencyTest")
     @Test
     void set_test() throws IOException {
         currency.setCode("EUR");
@@ -37,6 +40,7 @@ class CurrencyTest {
         assertThat(currency.getRateBasedUSD()).isPositive();
     }
 
+    @Tag("CurrencyTest")
     @Test
     void getSymbol_test() throws IOException {
         assertThat(currency.getSymbol()).isEqualTo("$");
@@ -48,6 +52,7 @@ class CurrencyTest {
         assertThat(currency.getSymbol()).isEqualTo("¥");
     }
 
+    @Tag("CurrencyTest")
     @Test
     void unknownCurrency_test() throws IOException {
         currency.setCode("ZZZ");

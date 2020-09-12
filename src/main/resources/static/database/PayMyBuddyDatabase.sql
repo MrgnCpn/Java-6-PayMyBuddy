@@ -320,9 +320,3 @@
         (22, 10), (22, 16), (22, 12);
 
     UNLOCK TABLES;
-
--- Procedures
-
-
--- Triggers
-

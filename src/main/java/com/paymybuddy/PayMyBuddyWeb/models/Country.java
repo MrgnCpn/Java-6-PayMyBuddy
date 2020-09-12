@@ -1,19 +1,15 @@
 package com.paymybuddy.PayMyBuddyWeb.models;
 
 import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Country {
     private String code;
     private String wording;
-    private final CountryServiceInterface countryService;
+    private CountryServiceInterface countryService;
 
     /**
      * Constructor
@@ -21,7 +17,18 @@ public class Country {
      * @throws IOException
      */
     public Country(String code) throws IOException {
-        this.countryService = new CountryService();
+        this.countryService = new CountryService(new HTTPRequestService());
+        this.setCountry(code);
+    }
+
+    /**
+     * Constructor
+     * @param code
+     * @param countryService
+     * @throws IOException
+     */
+    public Country(String code, CountryServiceInterface countryService) throws IOException {
+        this.countryService = countryService;
         this.setCountry(code);
     }
 

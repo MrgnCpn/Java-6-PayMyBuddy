@@ -52,8 +52,13 @@ public class AppConfiguration {
     }
 
     @Bean
+    public HTTPRequestServiceInterface httpRequestService() {
+        return new HTTPRequestService();
+    }
+
+    @Bean
     public CountryServiceInterface countryService(){
-        return new CountryService();
+        return new CountryService(httpRequestService());
     }
 
     @Bean
