@@ -33,7 +33,7 @@ class AccountDAOTest {
 
     @Tag("AccountDAOTest")
     @Test
-    void getAccount() {
+    void getAccount_test() {
         Account account = accountDAO.getAccount(1);
 
         assertThat(account.getUserId()).isEqualTo(1);
@@ -44,7 +44,7 @@ class AccountDAOTest {
 
     @Tag("AccountDAOTest")
     @Test
-    void updateAccount() throws SQLException, IOException {
+    void updateAccount_test() throws SQLException, IOException {
         Account account = accountDAO.getAccount(1);
 
         assertThat(account.getUserId()).isEqualTo(1);
@@ -70,7 +70,7 @@ class AccountDAOTest {
 
     @Tag("AccountDAOTest")
     @Test
-    void createAccount() throws SQLException {
+    void createAccount_test() throws SQLException {
         accountDAO.createAccount(3, "EUR");
         Account account = accountDAO.getAccount(3);
 

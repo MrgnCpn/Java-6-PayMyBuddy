@@ -30,7 +30,7 @@ class SecurityDAOTest {
 
     @Tag("SecurityDAOTest")
     @Test
-    void getUserPassword() {
+    void getUserPassword_test() {
         String password = securityDAO.getUserPassword("juanita.emard@email.com");
 
         assertThat(password).isNotNull();
@@ -40,7 +40,7 @@ class SecurityDAOTest {
 
     @Tag("SecurityDAOTest")
     @Test
-    void updatePassword() throws SQLException {
+    void updatePassword_test() throws SQLException {
         String password = securityDAO.getUserPassword("juanita.emard@email.com");
 
         assertThat(password).isNotNull();

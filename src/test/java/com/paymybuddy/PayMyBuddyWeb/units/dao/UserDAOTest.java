@@ -40,27 +40,27 @@ class UserDAOTest {
 
     @Tag("UserDAOTest")
     @Test
-    void getUserById() {
+    void getUserById_test() {
 
     }
 
     @Tag("UserDAOTest")
     @Test
-    void getUserByUsername() {
+    void getUserByUsername_test() {
     }
 
     @Tag("UserDAOTest")
     @Test
-    void updateUser() {
+    void updateUser_test() {
     }
 
     @Tag("UserDAOTest")
     @Test
-    void createUser() {
+    void createUser_test() {
     }
 
     @Tag("UserDAOTest")
     @Test
-    void searchUsers() {
+    void searchUsers_test() {
     }
 }

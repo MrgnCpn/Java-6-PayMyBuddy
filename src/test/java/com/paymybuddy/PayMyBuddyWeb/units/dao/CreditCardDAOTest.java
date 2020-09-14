@@ -32,7 +32,7 @@ class CreditCardDAOTest {
 
     @Tag("CreditCardDAOTest")
     @Test
-    void getUserCreditCards() {
+    void getUserCreditCards_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(2);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("1447560945069489");
@@ -41,14 +41,14 @@ class CreditCardDAOTest {
 
     @Tag("CreditCardDAOTest")
     @Test
-    void getCardById() {
+    void getCardById_test() {
         assertThat(creditCardDAO.getCardById(1, 1).getNumber()).isEqualTo("1447560945069489");
         assertThat(creditCardDAO.getCardById(1, 2)).isNull();
     }
 
     @Tag("CreditCardDAOTest")
     @Test
-    void addCreditCard() throws SQLException {
+    void addCreditCard_test() throws SQLException {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
@@ -64,7 +64,7 @@ class CreditCardDAOTest {
 
     @Tag("CreditCardDAOTest")
     @Test
-    void removeCreditCard() throws SQLException {
+    void removeCreditCard_test() throws SQLException {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(2);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("1447560945069489");
@@ -81,7 +81,7 @@ class CreditCardDAOTest {
 
     @Tag("CreditCardDAOTest")
     @Test
-    void updateCreditCard() throws SQLException {
+    void updateCreditCard_test() throws SQLException {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
