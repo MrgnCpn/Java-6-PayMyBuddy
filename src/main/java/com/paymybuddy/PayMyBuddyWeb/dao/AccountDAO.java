@@ -1,6 +1,5 @@
 package com.paymybuddy.PayMyBuddyWeb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.models.Account;

@@ -3,13 +3,17 @@ package com.paymybuddy.PayMyBuddyWeb.units.dao;
 import com.paymybuddy.PayMyBuddyWeb.DatabaseTestDAO;
 import com.paymybuddy.PayMyBuddyWeb.dao.AccountDAO;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.paymybuddy.PayMyBuddyWeb.models.Account;
+import com.paymybuddy.PayMyBuddyWeb.models.Currency;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class AccountDAOTest {
@@ -27,15 +31,54 @@ class AccountDAOTest {
         accountDAO = new AccountDAO(databaseTestDAO.getDatabaseConfiguration());
     }
 
+    @Tag("AccountDAOTest")
     @Test
     void getAccount() {
+        Account account = accountDAO.getAccount(1);
+
+        assertThat(account.getUserId()).isEqualTo(1);
+        assertThat(account.getAmount()).isEqualTo(895.00);
+        assertThat(account.getCurrency().getCode()).isEqualTo("USD");
+        assertThat(account.getDate()).isEqualTo(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
     }
 
+    @Tag("AccountDAOTest")
     @Test
-    void updateAccount() {
+    void updateAccount() throws SQLException, IOException {
+        Account account = accountDAO.getAccount(1);
+
+        assertThat(account.getUserId()).isEqualTo(1);
+        assertThat(account.getAmount()).isEqualTo(895.00);
+        assertThat(account.getCurrency().getCode()).isEqualTo("USD");
+        assertThat(account.getDate()).isEqualTo(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
+
+        account.setCurrency(new Currency("EUR"));
+        account.setAmount(8000.00);
+        account.setDate(LocalDate.of(1990, 10, 11));
+
+        accountDAO.updateAccount(account);
+
+        account = accountDAO.getAccount(1);
+
+        assertThat(account.getUserId()).isEqualTo(1);
+        assertThat(account.getAmount()).isEqualTo(8000.00);
+        assertThat(account.getCurrency().getCode()).isEqualTo("EUR");
+        assertThat(account.getDate()).isEqualTo(LocalDate.of(1990, 10, 11));
+
+        databaseTestDAO.resetDatabase();
     }
 
+    @Tag("AccountDAOTest")
     @Test
-    void createAccount() {
+    void createAccount() throws SQLException {
+        accountDAO.createAccount(3, "EUR");
+        Account account = accountDAO.getAccount(3);
+
+        assertThat(account.getUserId()).isEqualTo(3);
+        assertThat(account.getAmount()).isZero();
+        assertThat(account.getCurrency().getCode()).isEqualTo("EUR");
+        assertThat(account.getDate()).isEqualTo(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
+
+        databaseTestDAO.resetDatabase();
     }
 }

@@ -11,10 +11,7 @@ import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
 import com.paymybuddy.PayMyBuddyWeb.models.Currency;
 import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -48,6 +45,7 @@ class TransactionDAOTest {
         transactionDAO = new TransactionDAO(databaseTestDAO.getDatabaseConfiguration(), creditCardDAO);
     }
 
+    @Tag("TransactionDAOTest")
     @Test
     void getUserTransactions() {
         when(creditCardDAO.getCardById(anyInt(), anyInt())).thenReturn(null);
@@ -60,6 +58,7 @@ class TransactionDAOTest {
         verify(creditCardDAO, times(1)).getCardById(anyInt(), anyInt());
     }
 
+    @Tag("TransactionDAOTest")
     @Test
     void newTransaction() throws IOException, SQLException {
         User userFrom = new User();
@@ -85,10 +84,6 @@ class TransactionDAOTest {
         assertThat(transactionList.get(1).getAmount()).isEqualTo(100.00);
         assertThat(transactionList.get(2).getAmount()).isEqualTo(1000.00);
 
-    }
-
-    @AfterEach
-    void reset_each() throws SQLException {
         databaseTestDAO.resetDatabase();
     }
 }

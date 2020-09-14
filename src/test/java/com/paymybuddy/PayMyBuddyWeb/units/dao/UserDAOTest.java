@@ -6,14 +6,12 @@ import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.sql.SQLException;
 
 @ExtendWith(MockitoExtension.class)
 class UserDAOTest {
@@ -40,22 +38,28 @@ class UserDAOTest {
         userDAO = new UserDAO(databaseTestDAO.getDatabaseConfiguration(), creditCardDAO, friendDAO, accountDAO);
     }
 
+    @Tag("UserDAOTest")
     @Test
     void getUserById() {
+
     }
 
+    @Tag("UserDAOTest")
     @Test
     void getUserByUsername() {
     }
 
+    @Tag("UserDAOTest")
     @Test
     void updateUser() {
     }
 
+    @Tag("UserDAOTest")
     @Test
     void createUser() {
     }
 
+    @Tag("UserDAOTest")
     @Test
     void searchUsers() {
     }

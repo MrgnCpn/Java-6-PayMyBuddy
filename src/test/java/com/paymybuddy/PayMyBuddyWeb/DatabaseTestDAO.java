@@ -47,18 +47,21 @@ public class DatabaseTestDAO {
             con.setAutoCommit(false);
 
             con.prepareStatement("SET FOREIGN_KEY_CHECKS = 0;").execute();
+
             con.prepareStatement("TRUNCATE TABLE ACCOUNTS").execute();
             con.prepareStatement("TRUNCATE TABLE TRANSACTIONS").execute();
             con.prepareStatement("TRUNCATE TABLE CREDIT_CARDS").execute();
             con.prepareStatement("TRUNCATE TABLE FRIENDS").execute();
             con.prepareStatement("TRUNCATE TABLE USERS").execute();
+
             con.prepareStatement("SET FOREIGN_KEY_CHECKS = 1;").execute();
 
             sql = new StringBuffer();
             sql.append("INSERT INTO USERS(firstname, lastname, birthday, email, password, country_code)");
             sql.append(" VALUES");
             sql.append(" ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '$2a$10$w4YKpuluFDrfomqaBzy1w./GTA57TtnAX6PngUtMhpk6KUGQBbe2e', 'FRA'),");
-            sql.append(" ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR');");
+            sql.append(" ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR'),");
+            sql.append(" ('ford', 'bashirian', '1997-09-13', 'ford.bashirian@email.com', '$2a$10$KOAKk39lx.QsbuXTeuDPzOdDYZbS4k50HMH/KQJPlttLKlf0w4pO.', 'USA');");
 
             con.prepareStatement(sql.toString()).execute();
 
@@ -74,7 +77,8 @@ public class DatabaseTestDAO {
             sql.delete(0, sql.length());
             sql.append("INSERT INTO CREDIT_CARDS (user_id, card_type, card_number, card_cvv, card_date, wording) VALUES");
             sql.append(" (1, 'MAST', '1447560945069489', '565', '01/20', 'My Card - Boursorama'),");
-            sql.append(" (2, 'VISA', '2049648612159233', '079', '01/20', 'My Card - BforBank');");
+            sql.append(" (1, 'VISA', '2049648612159233', '079', '01/20', 'My Card - HSBC'),");
+            sql.append(" (2, 'MAST', '4251056551139390', '071', '01/20', 'My Card - Bank of America');");
 
             con.prepareStatement(sql.toString()).execute();
 

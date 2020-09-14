@@ -73,7 +73,8 @@ LOCK TABLES USERS WRITE;
 INSERT INTO USERS(firstname, lastname, birthday, email, password, country_code)
 VALUES
     ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '$2a$10$w4YKpuluFDrfomqaBzy1w./GTA57TtnAX6PngUtMhpk6KUGQBbe2e', 'FRA'),
-    ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR');
+    ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR'),
+    ('ford', 'bashirian', '1997-09-13', 'ford.bashirian@email.com', '$2a$10$KOAKk39lx.QsbuXTeuDPzOdDYZbS4k50HMH/KQJPlttLKlf0w4pO.', 'USA');
 
 LOCK TABLES TRANSACTIONS WRITE;
 
@@ -88,7 +89,8 @@ LOCK TABLES CREDIT_CARDS WRITE;
 INSERT INTO CREDIT_CARDS (user_id, card_type, card_number, card_cvv, card_date, wording)
 VALUES
     (1, 'MAST', '1447560945069489', '565', '01/20', 'My Card - Boursorama'),
-    (2, 'VISA', '2049648612159233', '079', '01/20', 'My Card - BforBank');
+    (1, 'VISA', '2049648612159233', '079', '01/20', 'My Card - HSBC'),
+    (2, 'MAST', '4251056551139390', '071', '01/20', 'My Card - Bank of America');
 
 LOCK TABLES ACCOUNTS WRITE;
 

@@ -99,9 +99,8 @@ class TransactionTest {
         assertThat(transaction.getContactUser(111)).isInstanceOf(User.class);
         assertThat(transaction.getContactUser(222)).isInstanceOf(User.class);
         assertThat(transaction.getContactUser(333)).isNull();
-        assertThat(transaction.getTransactionLib(111)).isEqualTo("- 1884.03 €");
-        assertThat(transaction.getTransactionLib(222)).isEqualTo("+ 1865.29 €");
+        assertThat(transaction.getTransactionLib(111)).isEqualTo("- 1880.54 €");
+        assertThat(transaction.getTransactionLib(222)).isEqualTo("+ 1861.83 €");
         assertThat(transaction.getTransactionLib(333)).isNull();
     }
-
 }
