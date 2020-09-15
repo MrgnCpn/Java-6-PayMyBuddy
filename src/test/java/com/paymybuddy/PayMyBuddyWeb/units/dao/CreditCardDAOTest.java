@@ -48,7 +48,7 @@ class CreditCardDAOTest {
 
     @Tag("CreditCardDAOTest")
     @Test
-    void addCreditCard_test() throws SQLException {
+    void addCreditCard_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
@@ -58,13 +58,11 @@ class CreditCardDAOTest {
         assertThat(creditCardList.size()).isEqualTo(2);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
         assertThat(creditCardList.get(1).getNumber()).isEqualTo("7036205304409556");
-
-        databaseTestDAO.resetDatabase();
     }
 
     @Tag("CreditCardDAOTest")
     @Test
-    void removeCreditCard_test() throws SQLException {
+    void removeCreditCard_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(2);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("1447560945069489");
@@ -75,13 +73,11 @@ class CreditCardDAOTest {
         creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("2049648612159233");
-
-        databaseTestDAO.resetDatabase();
     }
 
     @Tag("CreditCardDAOTest")
     @Test
-    void updateCreditCard_test() throws SQLException {
+    void updateCreditCard_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
@@ -99,7 +95,10 @@ class CreditCardDAOTest {
         assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
         assertThat(creditCardList.get(0).getCvv()).isEqualTo("479");
         assertThat(creditCardList.get(0).getType()).isEqualTo("VISA");
+    }
 
+    @AfterEach
+    void reset_each() throws SQLException {
         databaseTestDAO.resetDatabase();
     }
 }

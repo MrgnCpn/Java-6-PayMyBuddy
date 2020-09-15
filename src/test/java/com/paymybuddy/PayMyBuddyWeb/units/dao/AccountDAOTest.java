@@ -44,7 +44,7 @@ class AccountDAOTest {
 
     @Tag("AccountDAOTest")
     @Test
-    void updateAccount_test() throws SQLException, IOException {
+    void updateAccount_test() throws IOException {
         Account account = accountDAO.getAccount(1);
 
         assertThat(account.getUserId()).isEqualTo(1);
@@ -64,13 +64,11 @@ class AccountDAOTest {
         assertThat(account.getAmount()).isEqualTo(8000.00);
         assertThat(account.getCurrency().getCode()).isEqualTo("EUR");
         assertThat(account.getDate()).isEqualTo(LocalDate.of(1990, 10, 11));
-
-        databaseTestDAO.resetDatabase();
     }
 
     @Tag("AccountDAOTest")
     @Test
-    void createAccount_test() throws SQLException {
+    void createAccount_test() {
         accountDAO.createAccount(3, "EUR");
         Account account = accountDAO.getAccount(3);
 
@@ -78,7 +76,10 @@ class AccountDAOTest {
         assertThat(account.getAmount()).isZero();
         assertThat(account.getCurrency().getCode()).isEqualTo("EUR");
         assertThat(account.getDate()).isEqualTo(LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()));
+    }
 
+    @AfterEach
+    void reset_each() throws SQLException {
         databaseTestDAO.resetDatabase();
     }
 }

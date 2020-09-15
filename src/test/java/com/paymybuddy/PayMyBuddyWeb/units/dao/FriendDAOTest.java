@@ -51,20 +51,16 @@ class FriendDAOTest {
 
     @Tag("FriendDAOTest")
     @Test
-    void removeFriendFromUser_friendsListEmpty_test() throws SQLException {
+    void removeFriendFromUser_friendsListEmpty_test() {
         friendDAO.removeFriendFromUser(1, 2);
 
         List<Integer> friendsList = friendDAO.getUserFriends(1);
         assertThat(friendsList).isNull();
-
-        databaseTestDAO.resetDatabase();
     }
 
     @Tag("FriendDAOTest")
     @Test
-    void removeFriendFromUser_friendsListNotEmpty_test() throws SQLException {
-        databaseTestDAO.resetDatabase();
-
+    void removeFriendFromUser_friendsListNotEmpty_test() {
         friendDAO.addNewFriendToUser(1, 3);
 
         List<Integer> friendsList = friendDAO.getUserFriends(1);
@@ -77,8 +73,6 @@ class FriendDAOTest {
         friendsList = friendDAO.getUserFriends(1);
         assertThat(friendsList.size()).isEqualTo(1);
         assertThat(friendsList.get(0)).isEqualTo(3);
-
-        databaseTestDAO.resetDatabase();
     }
 
     @Tag("FriendDAOTest")
@@ -86,5 +80,10 @@ class FriendDAOTest {
     void areFriends_test() {
         assertThat(friendDAO.areFriends(1, 2)).isTrue();
         assertThat(friendDAO.areFriends(1, 3)).isFalse();
+    }
+
+    @AfterEach
+    void reset_each() throws SQLException {
+        databaseTestDAO.resetDatabase();
     }
 }

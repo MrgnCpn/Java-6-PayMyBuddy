@@ -83,7 +83,10 @@ class TransactionDAOTest {
         assertThat(transactionList.get(0).getAmount()).isEqualTo(2222.22);
         assertThat(transactionList.get(1).getAmount()).isEqualTo(100.00);
         assertThat(transactionList.get(2).getAmount()).isEqualTo(1000.00);
+    }
 
+    @AfterEach
+    void reset_each() throws SQLException {
         databaseTestDAO.resetDatabase();
     }
 }
