@@ -35,14 +35,30 @@ class CreditCardDAOTest {
     void getUserCreditCards_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(2);
+        assertThat(creditCardList.get(0).getId()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("1447560945069489");
+        assertThat(creditCardList.get(0).getCvv()).isEqualTo("565");
+        assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(0).getWording()).isEqualTo("My Card - Boursorama");
+
+        assertThat(creditCardList.get(1).getId()).isEqualTo(2);
         assertThat(creditCardList.get(1).getNumber()).isEqualTo("2049648612159233");
+        assertThat(creditCardList.get(1).getCvv()).isEqualTo("079");
+        assertThat(creditCardList.get(1).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(1).getWording()).isEqualTo("My Card - HSBC");
+
     }
 
     @Tag("CreditCardDAOTest")
     @Test
     void getCardById_test() {
-        assertThat(creditCardDAO.getCardById(1, 1).getNumber()).isEqualTo("1447560945069489");
+        CreditCard creditCard = creditCardDAO.getCardById(1, 1);
+        assertThat(creditCard.getId()).isEqualTo(1);
+        assertThat(creditCard.getNumber()).isEqualTo("1447560945069489");
+        assertThat(creditCard.getCvv()).isEqualTo("565");
+        assertThat(creditCard.getDate()).isEqualTo("01/20");
+        assertThat(creditCard.getWording()).isEqualTo("My Card - Boursorama");
+
         assertThat(creditCardDAO.getCardById(1, 2)).isNull();
     }
 
@@ -51,13 +67,26 @@ class CreditCardDAOTest {
     void addCreditCard_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(1);
+        assertThat(creditCardList.get(0).getId()).isEqualTo(3);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
+        assertThat(creditCardList.get(0).getCvv()).isEqualTo("071");
+        assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(0).getWording()).isEqualTo("My Card - Bank of America");
 
         creditCardDAO.addCreditCard(new CreditCard(null, 2, "VISA", "7036205304409556", "479", "01/20", "My Card - ING"));
         creditCardList = creditCardDAO.getUserCreditCards(2);
         assertThat(creditCardList.size()).isEqualTo(2);
+        assertThat(creditCardList.get(0).getId()).isEqualTo(3);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("4251056551139390");
+        assertThat(creditCardList.get(0).getCvv()).isEqualTo("071");
+        assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(0).getWording()).isEqualTo("My Card - Bank of America");
+
+        assertThat(creditCardList.get(1).getId()).isEqualTo(4);
         assertThat(creditCardList.get(1).getNumber()).isEqualTo("7036205304409556");
+        assertThat(creditCardList.get(1).getCvv()).isEqualTo("479");
+        assertThat(creditCardList.get(1).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(1).getWording()).isEqualTo("My Card - ING");
     }
 
     @Tag("CreditCardDAOTest")
@@ -65,14 +94,28 @@ class CreditCardDAOTest {
     void removeCreditCard_test() {
         List<CreditCard> creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(2);
+        assertThat(creditCardList.get(0).getId()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("1447560945069489");
+        assertThat(creditCardList.get(0).getCvv()).isEqualTo("565");
+        assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(0).getWording()).isEqualTo("My Card - Boursorama");
+
+        assertThat(creditCardList.get(1).getId()).isEqualTo(2);
         assertThat(creditCardList.get(1).getNumber()).isEqualTo("2049648612159233");
+        assertThat(creditCardList.get(1).getCvv()).isEqualTo("079");
+        assertThat(creditCardList.get(1).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(1).getWording()).isEqualTo("My Card - HSBC");
 
         creditCardDAO.removeCreditCard(1, 1);
 
         creditCardList = creditCardDAO.getUserCreditCards(1);
         assertThat(creditCardList.size()).isEqualTo(1);
         assertThat(creditCardList.get(0).getNumber()).isEqualTo("2049648612159233");
+        assertThat(creditCardList.get(0).getId()).isEqualTo(2);
+        assertThat(creditCardList.get(0).getNumber()).isEqualTo("2049648612159233");
+        assertThat(creditCardList.get(0).getCvv()).isEqualTo("079");
+        assertThat(creditCardList.get(0).getDate()).isEqualTo("01/20");
+        assertThat(creditCardList.get(0).getWording()).isEqualTo("My Card - HSBC");
     }
 
     @Tag("CreditCardDAOTest")

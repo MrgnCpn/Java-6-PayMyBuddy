@@ -1,6 +1,7 @@
 package com.paymybuddy.PayMyBuddyWeb.units.dao;
 
 import com.paymybuddy.PayMyBuddyWeb.DatabaseTestDAO;
+import com.paymybuddy.PayMyBuddyWeb.Utils.MSNumberUtils;
 import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
 import com.paymybuddy.PayMyBuddyWeb.dao.TransactionDAO;
 import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
@@ -52,6 +53,7 @@ class TransactionDAOTest {
 
         List<Transaction> transactionList = transactionDAO.getUserTransactions(1);
         assertThat(transactionList.size()).isEqualTo(2);
+
         assertThat(transactionList.get(0).getAmount()).isEqualTo(100.00);
         assertThat(transactionList.get(1).getAmount()).isEqualTo(1000.00);
 
