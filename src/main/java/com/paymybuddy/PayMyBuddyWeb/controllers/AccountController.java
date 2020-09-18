@@ -43,7 +43,7 @@ public class AccountController {
         model.put("page", "account");
         model.put("isLogin", securityService.isLog(session));
         model.put("user", user);
-        model.put("transactions", transactionService.getUserTransaction(session));
+        model.put("transactions", transactionService.getUserTransactions(session));
         return new ModelAndView("template.html" , model);
     }
 

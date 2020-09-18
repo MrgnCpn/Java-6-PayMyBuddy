@@ -86,7 +86,7 @@ class TransactionServiceTest {
         when(securityService.getUserInfoFromJWT(session)).thenReturn(userInfo);
         when(transactionDAO.getUserTransactions(anyInt())).thenReturn(transactionList);
 
-        List<Transaction> transactionListReturn = transactionService.getUserTransaction(session);
+        List<Transaction> transactionListReturn = transactionService.getUserTransactions(session);
 
         verify(securityService, times(1)).getUserInfoFromJWT(session);
         verify(transactionDAO, times(1)).getUserTransactions(anyInt());

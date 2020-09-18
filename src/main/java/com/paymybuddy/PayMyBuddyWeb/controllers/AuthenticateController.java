@@ -28,6 +28,7 @@ public class AuthenticateController {
     @Autowired
     private ControllerUtilsInterface controllerUtils;
 
+
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session){
         if (securityService.isLog(session)) return controllerUtils.rootRedirect();

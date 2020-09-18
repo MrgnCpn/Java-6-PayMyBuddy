@@ -15,7 +15,7 @@ public interface TransactionServiceInterface {
      * @param session
      * @return
      */
-    List<Transaction> getUserTransaction(HttpSession session);
+    List<Transaction> getUserTransactions(HttpSession session);
 
     /**
      * Create Transaction

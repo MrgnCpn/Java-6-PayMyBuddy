@@ -52,10 +52,10 @@ public class TransactionService implements TransactionServiceInterface {
     }
 
     /**
-     * @see TransactionServiceInterface {@link #getUserTransaction(HttpSession)}
+     * @see TransactionServiceInterface {@link #getUserTransactions(HttpSession)}
      */
     @Override
-    public List<Transaction> getUserTransaction(HttpSession session) {
+    public List<Transaction> getUserTransactions(HttpSession session) {
         List<Transaction> transactionList = null;
         Map<String, Object> userInfo = securityService.getUserInfoFromJWT(session);
         if (userInfo != null) {

@@ -72,7 +72,7 @@ class TransactionTest {
     @Tag("TransactionTest")
     @Test
     void set_test() throws IOException {
-        Currency setCurrency = new Currency("EUR");
+        Currency setCurrency = new Currency("USD");
         User userFrom = new User();
         userFrom.setId(111);
         User userTo = new User();
@@ -99,8 +99,8 @@ class TransactionTest {
         assertThat(transaction.getContactUser(111)).isInstanceOf(User.class);
         assertThat(transaction.getContactUser(222)).isInstanceOf(User.class);
         assertThat(transaction.getContactUser(333)).isNull();
-        assertThat(transaction.getTransactionLib(111)).isEqualTo("- 1880.54 €");
-        assertThat(transaction.getTransactionLib(222)).isEqualTo("+ 1861.83 €");
+        assertThat(transaction.getTransactionLib(111)).isEqualTo("- 2233.33 $");
+        assertThat(transaction.getTransactionLib(222)).isEqualTo("+ 2211.11 $");
         assertThat(transaction.getTransactionLib(333)).isNull();
     }
 }
