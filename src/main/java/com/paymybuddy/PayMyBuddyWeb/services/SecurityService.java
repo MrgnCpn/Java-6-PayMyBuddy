@@ -112,10 +112,11 @@ public class SecurityService implements SecurityServiceInterface {
             claims.put("userID", user.getId());
             claims.put("username", user.getEmail());
             claims.put("name", user.getFirstName() + " " + user.getLastName());
+            Long time = (long) 60 * 60 * 24;
             if (rememberUser) {
-                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 60 * 60 * 24 * 90));
+                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, time * 90));
             } else {
-                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, 60 * 60 * 24));
+                loginInformations.put("token", createJWT(user.getId(), "Login", "PayMyBuddy", claims, time));
             }
         }
         return loginInformations;

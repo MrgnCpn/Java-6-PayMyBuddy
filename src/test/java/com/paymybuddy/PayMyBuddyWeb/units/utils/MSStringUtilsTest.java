@@ -21,7 +21,6 @@ class MSStringUtilsTest {
     @Tag("MSStringUtilsTest")
     @Test
     void firstUpperCase_test() {
-        assertThat("string").isEqualTo("string");
         assertThat(MSStringUtils.firstUpperCase("string")).isEqualTo("String");
     }
 }
