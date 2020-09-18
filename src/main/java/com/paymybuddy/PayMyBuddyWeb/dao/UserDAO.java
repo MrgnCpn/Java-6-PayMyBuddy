@@ -201,18 +201,23 @@ public class UserDAO implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
+        search += "%";
+
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT id, firstname, lastname, email");
         sql.append(" FROM users");
-        sql.append(" WHERE (firstname LIKE('" + search + "%')");
-        sql.append(" OR lastname LIKE ('" + search + "%')");
-        sql.append(" OR email LIKE('" + search + "%'))");
+        sql.append(" WHERE (firstname LIKE(?)");
+        sql.append(" OR lastname LIKE (?)");
+        sql.append(" OR email LIKE(?))");
         sql.append(" AND id <> ?");
 
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
-            ps.setInt(1, userID);
+            ps.setString(1, search);
+            ps.setString(2, search);
+            ps.setString(3, search);
+            ps.setInt(4, userID);
             rs = ps.executeQuery();
             result = new ArrayList<>();
             while (rs.next()) {
@@ -223,11 +228,8 @@ public class UserDAO implements UserDAOInterface {
                 user.setEmail(rs.getString("email"));
                 result.add(user);
             }
-            if(result.size() > 0) {
-                logger.info("UserDAO.searchUser() -> Users get for search : " + search);
-            } else {
+            if(result.size() <= 0) {
                 result = null;
-                logger.info("UserDAO.searchUser() -> No users for search : " + search);
             }
         } catch (Exception e){
             logger.error("UserDAO.searchUser() -> Error fetching users", e);

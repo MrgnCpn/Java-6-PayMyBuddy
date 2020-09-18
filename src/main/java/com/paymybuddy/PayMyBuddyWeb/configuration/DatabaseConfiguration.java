@@ -129,8 +129,8 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
      */
     @Override
     public void closeSQLTransaction(Connection con, Statement ps, ResultSet rs){
-        if (con != null) closeConnection(con);
-        if (ps != null) closePreparedStatement(ps);
-        if (rs != null) closeResultSet(rs);
+        closeConnection(con);
+        closePreparedStatement(ps);
+        closeResultSet(rs);
     }
 }

@@ -11,26 +11,6 @@ class SecurityServiceTest {
     }
 
     @Test
-    void logUser() {
-    }
-
-    @Test
-    void createJWT() {
-    }
-
-    @Test
-    void parseJWT() {
-    }
-
-    @Test
-    void isLog() {
-    }
-
-    @Test
     void updateUserPassword() {
-    }
-
-    @Test
-    void getUserInfoFromJWT() {
     }
 }

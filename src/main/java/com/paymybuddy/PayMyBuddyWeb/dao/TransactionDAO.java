@@ -161,9 +161,9 @@ public class TransactionDAO implements TransactionDAOInterface {
             con.commit();
         } catch (Exception ex){
             logger.error("TransactionDAO.newTransaction() -> Error new transaction", ex);
-            con.rollback();
+            if (con != null) con.rollback();
         } finally {
-            con.setAutoCommit(true);
+            if (con != null) con.setAutoCommit(true);
             databaseConfiguration.closeSQLTransaction(con, ps, null);
         }
     }
