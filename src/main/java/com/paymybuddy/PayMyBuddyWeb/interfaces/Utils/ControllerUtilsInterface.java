@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.Utils;
+package com.paymybuddy.paymybuddyweb.interfaces.Utils;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;

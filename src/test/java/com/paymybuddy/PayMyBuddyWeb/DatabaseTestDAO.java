@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb;
+package com.paymybuddy.paymybuddyweb;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.DatabaseConfiguration;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.configuration.DatabaseConfiguration;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +40,7 @@ public class DatabaseTestDAO {
      */
     public void resetDatabase() throws SQLException {
         Connection con = null;
-        StringBuffer sql;
+        StringBuilder sql;
 
         try {
             con = databaseConfiguration.getConnection();
@@ -56,7 +56,7 @@ public class DatabaseTestDAO {
 
             con.prepareStatement("SET FOREIGN_KEY_CHECKS = 1;").execute();
 
-            sql = new StringBuffer();
+            sql = new StringBuilder();
             sql.append("INSERT INTO USERS(firstname, lastname, birthday, email, password, country_code)");
             sql.append(" VALUES");
             sql.append(" ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '$2a$10$w4YKpuluFDrfomqaBzy1w./GTA57TtnAX6PngUtMhpk6KUGQBbe2e', 'FRA'),");

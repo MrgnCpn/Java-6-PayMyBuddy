@@ -1,9 +1,9 @@
-package com.paymybuddy.PayMyBuddyWeb.controllers;
+package com.paymybuddy.paymybuddyweb.controllers;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +42,7 @@ public class ContactController {
     }
 
     @GetMapping("/contact/profile/{id}")
-    public ModelAndView getUserProfile(HttpSession session, @PathVariable(value="id") Integer friendId) throws IOException {
+    public ModelAndView getUserProfile(HttpSession session, @PathVariable(value="id") Integer friendId) {
         if (!securityService.isLog(session)) return controllerUtils.rootRedirect();
 
         User user = userService.getUser(friendId);

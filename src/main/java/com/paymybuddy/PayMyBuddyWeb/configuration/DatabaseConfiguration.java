@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.configuration;
+package com.paymybuddy.paymybuddyweb.configuration;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,7 +59,7 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
     }
 
     /**
-     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #getConnection()}
+     * @see com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface {@link #getConnection()}
      */
     @Override
     public Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -82,7 +82,7 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
     }
 
     /**
-     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeConnection(Connection)}
+     * @see com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface {@link #closeConnection(Connection)}
      */
     @Override
     public void closeConnection(Connection con) {
@@ -96,7 +96,7 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
     }
 
     /**
-     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closePreparedStatement(Statement)}
+     * @see com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface {@link #closePreparedStatement(Statement)}
      */
     @Override
     public void closePreparedStatement(Statement ps) {
@@ -111,7 +111,7 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
 
 
     /**
-     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeResultSet(ResultSet)}
+     * @see com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface {@link #closeResultSet(ResultSet)}
      */
     @Override
     public void closeResultSet(ResultSet rs) {
@@ -125,7 +125,7 @@ public class DatabaseConfiguration implements DatabaseConfigurationInterface {
     }
 
     /**
-     * @see com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface {@link #closeSQLTransaction(Connection, Statement, ResultSet)}
+     * @see com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface {@link #closeSQLTransaction(Connection, Statement, ResultSet)}
      */
     @Override
     public void closeSQLTransaction(Connection con, Statement ps, ResultSet rs){

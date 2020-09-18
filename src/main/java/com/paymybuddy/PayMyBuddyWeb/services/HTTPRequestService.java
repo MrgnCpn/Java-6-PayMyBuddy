@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.HTTPRequestServiceInterface;
 import org.json.JSONObject;
 
 import javax.inject.Singleton;
@@ -23,7 +23,7 @@ public class HTTPRequestService implements HTTPRequestServiceInterface {
      */
     @Override
     public JSONObject getReq(String url, Map<String, String> params) throws IOException {
-        StringBuffer urlWithParams = new StringBuffer();
+        StringBuilder urlWithParams = new StringBuilder();
         urlWithParams.append(url).append(this.getURLParamsString(params));
         URL reqUrl = new URL(urlWithParams.toString());
         HttpURLConnection con = (HttpURLConnection) reqUrl.openConnection();
@@ -69,7 +69,7 @@ public class HTTPRequestService implements HTTPRequestServiceInterface {
      * @throws IOException
      */
     private static String getResponse(HttpURLConnection con) throws IOException {
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         res.append("{");
         res.append("\"status\" :").append("\"").append(con.getResponseCode()).append("\",");
         res.append("\"message\" :").append("\"").append(con.getResponseMessage()).append("\",");

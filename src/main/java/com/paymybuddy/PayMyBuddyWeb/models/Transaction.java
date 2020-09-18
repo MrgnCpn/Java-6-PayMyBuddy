@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.models;
+package com.paymybuddy.paymybuddyweb.models;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSNumberUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSNumberUtils;
 
 import java.time.LocalDate;
 
@@ -47,8 +47,8 @@ public class Transaction {
         return userFrom;
     }
 
-    public void setUserFrom(User user_from) {
-        this.userFrom = user_from;
+    public void setUserFrom(User userFrom) {
+        this.userFrom = userFrom;
     }
 
     public User getUserTo() {
@@ -85,21 +85,21 @@ public class Transaction {
 
     public Double getFee() {
         this.setFee();
-        return MSNumberUtils.getDouble_2_digits(fee);
+        return MSNumberUtils.getDoubleTwoDigits(fee);
     }
 
     public void setFee() {
-        this.fee = MSNumberUtils.getDouble_2_digits(this.amount * 0.005);
+        this.fee = MSNumberUtils.getDoubleTwoDigits(this.amount * 0.005);
     }
 
     public Double getFinalAmount() {
         this.setFinalAmount();
-        return MSNumberUtils.getDouble_2_digits(finalAmount);
+        return MSNumberUtils.getDoubleTwoDigits(finalAmount);
     }
 
     public void setFinalAmount() {
         this.setFee();
-        this.finalAmount = MSNumberUtils.getDouble_2_digits(this.amount - this.fee);
+        this.finalAmount = MSNumberUtils.getDoubleTwoDigits(this.amount - this.fee);
     }
 
     public Currency getCurrency() {
@@ -119,9 +119,9 @@ public class Transaction {
 
     public String getTransactionLib(Integer userId){
         if (this.getUserTo().getId().equals(userId)){
-            return "+ " + MSNumberUtils.getDouble_2_digits(this.getFinalAmount() * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
+            return "+ " + MSNumberUtils.getDoubleTwoDigits(this.getFinalAmount() * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
         } else if (this.getUserFrom().getId().equals(userId)) {
-            return "- " + MSNumberUtils.getDouble_2_digits((this.getAmount() + this.getFee()) * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
+            return "- " + MSNumberUtils.getDoubleTwoDigits((this.getAmount() + this.getFee()) * this.getCurrency().getRateBasedUSD()) + " " + this.getCurrency().getSymbol();
         } else {
             return null;
         }

@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.models;
+package com.paymybuddy.paymybuddyweb.models;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
-import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CountryServiceInterface;
+import com.paymybuddy.paymybuddyweb.services.CountryService;
+import com.paymybuddy.paymybuddyweb.services.HTTPRequestService;
 
 import java.io.IOException;
 

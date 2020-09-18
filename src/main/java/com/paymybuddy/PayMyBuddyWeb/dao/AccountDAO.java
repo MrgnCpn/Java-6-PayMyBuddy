@@ -1,9 +1,9 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Account;
-import com.paymybuddy.PayMyBuddyWeb.models.Currency;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.Account;
+import com.paymybuddy.paymybuddyweb.models.Currency;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +23,7 @@ public class AccountDAO implements AccountDAOInterface {
     /**
      * Database configuration
      */
-    private static DatabaseConfigurationInterface databaseConfiguration;
+    private DatabaseConfigurationInterface databaseConfiguration;
 
     /**
      * Constructor
@@ -43,7 +43,7 @@ public class AccountDAO implements AccountDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT amount, currency, balance_date");
         sql.append(" FROM accounts");
         sql.append(" WHERE user_id = ?");
@@ -62,7 +62,7 @@ public class AccountDAO implements AccountDAOInterface {
                         new Currency(rs.getString("currency")),
                         rs.getDate("balance_date").toLocalDate());
             }
-            logger.info("AccountDAO.getAccount() -> Account get for user : " + userId);
+            logger.info("AccountDAO.getAccount() -> Account get for user : {0}", userId);
         } catch (Exception e){
             logger.error("AccountDAO.getAccount() -> Error fetching user account", e);
         } finally {
@@ -80,7 +80,7 @@ public class AccountDAO implements AccountDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("UPDATE accounts");
         sql.append(" SET amount = ?, currency = ?, balance_date = ?");
         sql.append(" WHERE user_id = ?");
@@ -93,7 +93,7 @@ public class AccountDAO implements AccountDAOInterface {
             ps.setDate(3, Date.valueOf(account.getDate()));
             ps.setInt(4, account.getUserId());
             ps.execute();
-            logger.info("AccountDAO.updateAccount() -> Account updated for user : " + account.getUserId());
+            logger.info("AccountDAO.updateAccount() -> Account updated for user : {0}", account.getUserId());
         } catch (Exception ex){
             logger.error("AccountDAO.updateAccount() -> Error update user account", ex);
         } finally {
@@ -109,7 +109,7 @@ public class AccountDAO implements AccountDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO accounts (user_id, amount, currency, balance_date)");
         sql.append(" VALUES (?, 0, ?, NOW())");
 
@@ -119,7 +119,7 @@ public class AccountDAO implements AccountDAOInterface {
             ps.setInt(1, userId);
             ps.setString(2, currency);
             ps.execute();
-            logger.info("AccountDAO.createAccount() -> Account created for user : " + userId);
+            logger.info("AccountDAO.createAccount() -> Account created for user : {0}", userId);
         } catch (Exception ex){
             logger.error("AccountDAO.createAccount() -> Error create user account", ex);
         } finally {

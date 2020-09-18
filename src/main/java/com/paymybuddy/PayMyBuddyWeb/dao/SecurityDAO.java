@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.SecurityDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.SecurityDAOInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +20,7 @@ public class SecurityDAO implements SecurityDAOInterface {
     /**
      * Database configuration
      */
-    private static DatabaseConfigurationInterface databaseConfiguration;
+    private DatabaseConfigurationInterface databaseConfiguration;
 
     /**
      * Constructor
@@ -40,7 +40,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT password FROM users WHERE email = ?");
         try {
             con = databaseConfiguration.getConnection();
@@ -50,7 +50,7 @@ public class SecurityDAO implements SecurityDAOInterface {
             if(rs.next()){
                 result = rs.getString("password");
             }
-            logger.info("SecurityDAO.getUserPassword() -> Password get for user : " + username);
+            logger.info("SecurityDAO.getUserPassword() -> Password get for user : {0}", username);
         } catch (Exception e){
             logger.error("SecurityDAO.getUserPassword() -> Error fetching user password", e);
         } finally {
@@ -67,7 +67,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("UPDATE users SET password = ? WHERE id = ?");
 
         try {
@@ -76,7 +76,7 @@ public class SecurityDAO implements SecurityDAOInterface {
             ps.setString(1, userPassword);
             ps.setInt(2, userId);
             ps.execute();
-            logger.info("SecurityDAO.updatePassword() -> Password updated for user : " + userId);
+            logger.info("SecurityDAO.updatePassword() -> Password updated for user : {0}", userId);
         } catch (Exception ex){
             logger.error("SecurityDAO.updatePassword() -> Error update user password", ex);
         } finally {

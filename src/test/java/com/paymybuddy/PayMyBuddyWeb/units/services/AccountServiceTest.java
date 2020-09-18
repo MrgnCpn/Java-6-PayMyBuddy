@@ -1,13 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.units.services;
+package com.paymybuddy.paymybuddyweb.units.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.TransactionDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.AccountServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CreditCardServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.TransactionServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.*;
-import com.paymybuddy.PayMyBuddyWeb.services.AccountService;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.AccountServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CreditCardServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.TransactionServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.*;
+import com.paymybuddy.paymybuddyweb.services.AccountService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)

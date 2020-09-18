@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb.units.models;
+package com.paymybuddy.paymybuddyweb.units.models;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CountryServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

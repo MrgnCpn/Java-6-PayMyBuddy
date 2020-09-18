@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
+package com.paymybuddy.paymybuddyweb.interfaces.service;
 
 import io.jsonwebtoken.Claims;
 
@@ -46,7 +46,7 @@ public interface SecurityServiceInterface {
      * @param session
      * @return
      */
-    Boolean isLog(HttpSession session);
+    boolean isLog(HttpSession session);
 
     /**
      * Update user password

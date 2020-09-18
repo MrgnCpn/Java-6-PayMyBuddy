@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
+package com.paymybuddy.paymybuddyweb.interfaces.service;
 
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;

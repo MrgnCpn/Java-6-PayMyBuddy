@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.units.models;
+package com.paymybuddy.paymybuddyweb.units.models;
 
-import com.paymybuddy.PayMyBuddyWeb.models.*;
+import com.paymybuddy.paymybuddyweb.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserTest {

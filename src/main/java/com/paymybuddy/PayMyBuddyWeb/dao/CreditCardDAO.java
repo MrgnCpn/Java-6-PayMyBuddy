@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.CreditCardDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +23,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
     /**
      * Database configuration
      */
-    private static DatabaseConfigurationInterface databaseConfiguration;
+    private DatabaseConfigurationInterface databaseConfiguration;
 
     /**
      * Constructor
@@ -43,7 +43,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, card_type, card_number, card_cvv, card_date, wording");
         sql.append(" FROM credit_cards");
         sql.append(" WHERE user_id = ?");
@@ -66,7 +66,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
                         )
                 );
             }
-            logger.info("CreditCardDAO.getUserCreditCards() -> cards get for user : " + userId);
+            logger.info("CreditCardDAO.getUserCreditCards() -> cards get for user : {0}", userId);
         } catch (Exception e){
             logger.error("CreditCardDAO.getUserCreditCards() -> Error fetching user credit cards", e);
         } finally {
@@ -85,7 +85,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT card_type, card_number, card_cvv, card_date, wording");
         sql.append(" FROM credit_cards");
         sql.append(" WHERE id = ? AND user_id = ?");
@@ -107,7 +107,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
                     rs.getString("wording")
                 );
             }
-            logger.info("CreditCardDAO.getCardById() -> card get by id : " + cardId);
+            logger.info("CreditCardDAO.getCardById() -> card get by id : {0}", cardId);
         } catch (Exception e){
             logger.error("CreditCardDAO.getCardById() -> Error fetching credit card", e);
         } finally {
@@ -124,7 +124,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO credit_cards (user_id, card_type, card_number, card_cvv, card_date, wording)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 
@@ -138,7 +138,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setString(5, creditCard.getDate());
             ps.setString(6, creditCard.getWording());
             ps.execute();
-            logger.info("CreditCardDAO.addCreditCard() -> Credit cards added for user : " + creditCard.getUserId());
+            logger.info("CreditCardDAO.addCreditCard() -> Credit cards added for user : {0}", creditCard.getUserId());
         } catch (Exception ex){
             logger.error("CreditCardDAO.addCreditCard() -> Error add user card", ex);
         } finally {
@@ -154,7 +154,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("DELETE FROM credit_cards");
         sql.append(" WHERE id = ? AND user_id = ?");
 
@@ -164,7 +164,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setInt(1, cardId);
             ps.setInt(2, userId);
             ps.execute();
-            logger.info("CreditCardDAO.removeCreditCard() -> Credit cards removed for user : " + userId);
+            logger.info("CreditCardDAO.removeCreditCard() -> Credit cards removed for user : {0}", userId);
         } catch (Exception ex){
             logger.error("CreditCardDAO.removeCreditCard() -> Error remove user card", ex);
         } finally {
@@ -180,7 +180,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("UPDATE credit_cards");
         sql.append(" SET card_type = ?, card_number = ?, card_cvv = ?, card_date = ?, wording = ?");
         sql.append(" WHERE id = ? AND user_id = ?");
@@ -196,7 +196,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
             ps.setInt(6, creditCard.getId());
             ps.setInt(7, creditCard.getUserId());
             ps.execute();
-            logger.info("CreditCardDAO.updateCreditCard() -> Credit cards updated for user : " + creditCard.getUserId());
+            logger.info("CreditCardDAO.updateCreditCard() -> Credit cards updated for user : {0}", creditCard.getUserId());
         } catch (Exception ex){
             logger.error("CreditCardDAO.updateCreditCard() -> Error update user card", ex);
         } finally {

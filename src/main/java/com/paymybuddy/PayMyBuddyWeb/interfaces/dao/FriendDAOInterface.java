@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.dao;
+package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
 import java.util.List;
 

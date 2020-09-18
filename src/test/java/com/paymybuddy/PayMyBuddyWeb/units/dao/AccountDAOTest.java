@@ -1,10 +1,10 @@
-package com.paymybuddy.PayMyBuddyWeb.units.dao;
+package com.paymybuddy.paymybuddyweb.units.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.DatabaseTestDAO;
-import com.paymybuddy.PayMyBuddyWeb.dao.AccountDAO;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Account;
-import com.paymybuddy.PayMyBuddyWeb.models.Currency;
+import com.paymybuddy.paymybuddyweb.DatabaseTestDAO;
+import com.paymybuddy.paymybuddyweb.dao.AccountDAO;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.Account;
+import com.paymybuddy.paymybuddyweb.models.Currency;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

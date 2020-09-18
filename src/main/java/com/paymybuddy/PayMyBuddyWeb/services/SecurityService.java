@@ -1,12 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.SecurityDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.SecurityDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.UserDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.User;
 import io.jsonwebtoken.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -178,7 +178,7 @@ public class SecurityService implements SecurityServiceInterface {
      * @see SecurityServiceInterface {@link #isLog(HttpSession)}
      */
     @Override
-    public Boolean isLog(HttpSession session) {
+    public boolean isLog(HttpSession session) {
         String token = (String) session.getAttribute("token");
         return ((token != null) && (parseJWT(token) != null));
     }

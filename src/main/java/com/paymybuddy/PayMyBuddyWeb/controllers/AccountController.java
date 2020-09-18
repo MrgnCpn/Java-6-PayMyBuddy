@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.controllers;
+package com.paymybuddy.paymybuddyweb.controllers;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.*;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.*;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;

@@ -1,15 +1,15 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSNumberUtils;
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.AccountServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CreditCardServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.TransactionServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
-import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.utils.MSNumberUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.AccountServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CreditCardServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.TransactionServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.models.Transaction;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -82,12 +82,12 @@ public class AccountService implements AccountServiceInterface {
                         user,
                         LocalDate.now(),
                         "Feed Account",
-                        MSNumberUtils.getDouble_2_digits(amount),
+                        MSNumberUtils.getDoubleTwoDigits(amount),
                         user.getAccount().getCurrency()
                 );
 
                 transactionService.feedAccountTransaction(transaction);
-                user.getAccount().setAmount(MSNumberUtils.getDouble_2_digits(user.getAccount().getAmount() + amount));
+                user.getAccount().setAmount(MSNumberUtils.getDoubleTwoDigits(user.getAccount().getAmount() + amount));
                 accountDAO.updateAccount(user.getAccount());
             } else {
                 logger.error("AccountService.feedAccount : Unknown user card");

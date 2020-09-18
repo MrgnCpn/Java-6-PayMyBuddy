@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.dao;
+package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.models.User;
 
 import java.util.List;
 

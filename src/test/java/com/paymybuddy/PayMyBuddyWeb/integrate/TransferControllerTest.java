@@ -1,10 +1,10 @@
-package com.paymybuddy.PayMyBuddyWeb.integrate;
+package com.paymybuddy.paymybuddyweb.integrate;
 
-import com.paymybuddy.PayMyBuddyWeb.configuration.AppConfiguration;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.configuration.AppConfiguration;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -20,13 +20,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -34,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @RunWith(SpringRunner.class)
-@ComponentScan({"com.paymybuddy.PayMyBuddyWeb"})
+@ComponentScan({"com.paymybuddy.paymybuddyweb" })
 @ContextConfiguration(classes = {AppConfiguration.class})
 @WebMvcTest
 class TransferControllerTest {

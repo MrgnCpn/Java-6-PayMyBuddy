@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb.models;
+package com.paymybuddy.paymybuddyweb.models;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSFileUtils;
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSFileUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
 
 import java.time.LocalDate;
 import java.time.Period;

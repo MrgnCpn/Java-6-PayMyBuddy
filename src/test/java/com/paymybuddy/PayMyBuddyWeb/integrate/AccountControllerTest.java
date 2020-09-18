@@ -1,9 +1,9 @@
-package com.paymybuddy.PayMyBuddyWeb.integrate;
+package com.paymybuddy.paymybuddyweb.integrate;
 
-import com.paymybuddy.PayMyBuddyWeb.MSTestUtils;
-import com.paymybuddy.PayMyBuddyWeb.configuration.AppConfiguration;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.*;
-import com.paymybuddy.PayMyBuddyWeb.models.*;
+import com.paymybuddy.paymybuddyweb.MSTestUtils;
+import com.paymybuddy.paymybuddyweb.configuration.AppConfiguration;
+import com.paymybuddy.paymybuddyweb.interfaces.service.*;
+import com.paymybuddy.paymybuddyweb.models.*;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@ComponentScan({"com.paymybuddy.PayMyBuddyWeb"})
+@ComponentScan({"com.paymybuddy.paymybuddyweb" })
 @ContextConfiguration(classes = {AppConfiguration.class})
 @WebMvcTest
 class AccountControllerTest {

@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSArrayUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
+import com.paymybuddy.paymybuddyweb.utils.MSArrayUtils;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CountryServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.HTTPRequestServiceInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;

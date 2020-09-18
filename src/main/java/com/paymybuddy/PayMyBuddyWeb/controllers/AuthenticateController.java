@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.controllers;
+package com.paymybuddy.paymybuddyweb.controllers;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CountryServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

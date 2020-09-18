@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.dao;
+package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
+import com.paymybuddy.paymybuddyweb.models.Transaction;
 
 import java.sql.SQLException;
 import java.util.List;

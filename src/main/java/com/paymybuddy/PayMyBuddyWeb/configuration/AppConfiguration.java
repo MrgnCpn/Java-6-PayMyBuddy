@@ -1,12 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.configuration;
+package com.paymybuddy.paymybuddyweb.configuration;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSControllerUtils;
-import com.paymybuddy.PayMyBuddyWeb.dao.*;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.*;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.*;
-import com.paymybuddy.PayMyBuddyWeb.services.*;
+import com.paymybuddy.paymybuddyweb.utils.MSControllerUtils;
+import com.paymybuddy.paymybuddyweb.dao.*;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.*;
+import com.paymybuddy.paymybuddyweb.interfaces.service.*;
+import com.paymybuddy.paymybuddyweb.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

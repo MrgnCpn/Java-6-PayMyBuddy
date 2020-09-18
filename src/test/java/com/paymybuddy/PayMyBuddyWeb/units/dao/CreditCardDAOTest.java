@@ -1,9 +1,9 @@
-package com.paymybuddy.PayMyBuddyWeb.units.dao;
+package com.paymybuddy.paymybuddyweb.units.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.DatabaseTestDAO;
-import com.paymybuddy.PayMyBuddyWeb.dao.CreditCardDAO;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.DatabaseTestDAO;
+import com.paymybuddy.paymybuddyweb.dao.CreditCardDAO;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.CreditCardDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class CreditCardDAOTest {

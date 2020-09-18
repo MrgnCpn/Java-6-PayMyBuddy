@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.actuator;
+package com.paymybuddy.paymybuddyweb.actuator;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;

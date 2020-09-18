@@ -1,8 +1,8 @@
-package com.paymybuddy.PayMyBuddyWeb.units.services;
+package com.paymybuddy.paymybuddyweb.units.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CountryServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CountryServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.HTTPRequestServiceInterface;
+import com.paymybuddy.paymybuddyweb.services.CountryService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
@@ -57,7 +57,7 @@ class CountryServiceTest {
     @Tag("CountryServiceTest")
     @Test
     void getAllCountries_200_test() throws JSONException, IOException {
-        StringBuffer responseData_listCountry = new StringBuffer();
+        StringBuilder responseData_listCountry = new StringBuilder();
         responseData_listCountry.append("{\"content\": [{\"name\":\"Afghanistan\",\"alpha3Code\":\"AFG\"},");
         responseData_listCountry.append("{\"name\":\"Åland Islands\",\"alpha3Code\":\"ALA\"},");
         responseData_listCountry.append("{\"name\":\"Albania\",\"alpha3Code\":\"ALB\"},");
@@ -81,7 +81,7 @@ class CountryServiceTest {
     @Tag("CountryServiceTest")
     @Test
     void getAllCountries_400_test() throws JSONException, IOException {
-        StringBuffer responseData_listCountry = new StringBuffer();
+        StringBuilder responseData_listCountry = new StringBuilder();
         responseData_listCountry.append("{\"content\": [{\"name\":\"Afghanistan\",\"alpha3Code\":\"AFG\"},");
         responseData_listCountry.append("{\"name\":\"Åland Islands\",\"alpha3Code\":\"ALA\"},");
         responseData_listCountry.append("{\"name\":\"Albania\",\"alpha3Code\":\"ALB\"},");

@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.units.utils;
+package com.paymybuddy.paymybuddyweb.units.utils;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSFileUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSFileUtils;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

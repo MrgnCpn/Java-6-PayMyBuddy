@@ -1,8 +1,10 @@
-package com.paymybuddy.PayMyBuddyWeb.Utils;
+package com.paymybuddy.paymybuddyweb.utils;
 
 import java.util.*;
 
 public class MSArrayUtils {
+
+    private MSArrayUtils() { }
 
     /**
      * Sort map by key

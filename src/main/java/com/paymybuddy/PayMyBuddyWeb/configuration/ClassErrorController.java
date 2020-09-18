@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.configuration;
+package com.paymybuddy.paymybuddyweb.configuration;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

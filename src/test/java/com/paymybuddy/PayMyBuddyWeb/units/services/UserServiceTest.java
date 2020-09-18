@@ -1,14 +1,14 @@
-package com.paymybuddy.PayMyBuddyWeb.units.services;
+package com.paymybuddy.paymybuddyweb.units.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Account;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.Currency;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
-import com.paymybuddy.PayMyBuddyWeb.services.UserService;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.FriendDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.UserDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Account;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.Currency;
+import com.paymybuddy.paymybuddyweb.models.User;
+import com.paymybuddy.paymybuddyweb.services.UserService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

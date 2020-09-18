@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.FriendDAOInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +22,7 @@ public class FriendDAO implements FriendDAOInterface {
     /**
      * Database configuration
      */
-    private static DatabaseConfigurationInterface databaseConfiguration;
+    private DatabaseConfigurationInterface databaseConfiguration;
 
     /**
      * Constructor
@@ -42,7 +42,7 @@ public class FriendDAO implements FriendDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT friend_id FROM friends WHERE user_id = ?");
 
         try {
@@ -55,10 +55,10 @@ public class FriendDAO implements FriendDAOInterface {
                 result.add(rs.getInt("friend_id"));
             }
             if (result.size() > 0) {
-                logger.info("FriendDAO.getUserFriends() -> Friends get for user : " + userId);
+                logger.info("FriendDAO.getUserFriends() -> Friends get for user : {0}", userId);
             } else {
                 result = null;
-                logger.info("FriendDAO.getUserFriends() -> No friends for user : " + userId);
+                logger.info("FriendDAO.getUserFriends() -> No friends for user : {0}", userId);
             }
         } catch (Exception e){
             logger.error("FriendDAO.getUserFriends() -> Error fetching friends", e);
@@ -76,7 +76,7 @@ public class FriendDAO implements FriendDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO friends (user_id, friend_id)");
         sql.append(" VALUES (?, ?)");
 
@@ -93,7 +93,7 @@ public class FriendDAO implements FriendDAOInterface {
             ps.setInt(2, userId);
             ps.execute();
 
-            logger.info("FriendDAO.addNewFriendToUser() -> Friendship added between " + userId + " and " + friendId);
+            logger.info("FriendDAO.addNewFriendToUser() -> Friendship added between {0} and {1}", userId, friendId);
         } catch (Exception ex){
             logger.error("FriendDAO.addNewFriendToUser() -> Error add user friend", ex);
         } finally {
@@ -109,7 +109,7 @@ public class FriendDAO implements FriendDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("DELETE FROM friends");
         sql.append(" WHERE user_id = ? AND friend_id = ?");
 
@@ -126,7 +126,7 @@ public class FriendDAO implements FriendDAOInterface {
             ps.setInt(2, userId);
             ps.execute();
 
-            logger.info("FriendDAO.removeFriendFromUser() -> Friendship removed between " + userId + " and " + friendId);
+            logger.info("FriendDAO.removeFriendFromUser() -> Friendship removed between {0} and {1}", userId, friendId);
         } catch (Exception ex){
             logger.error("FriendDAO.removeFriendFromUser() -> Error remove user friend", ex);
         } finally {
@@ -144,7 +144,7 @@ public class FriendDAO implements FriendDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT friend_id FROM friends WHERE user_id = ? and friend_id = ?");
 
         try {
@@ -154,7 +154,7 @@ public class FriendDAO implements FriendDAOInterface {
             ps.setInt(2, friendId);
             rs = ps.executeQuery();
             result =  rs.next();
-            logger.info("FriendDAO.removeFriendFromUser() -> Friendship get between " + userId + " and " + friendId);
+            logger.info("FriendDAO.removeFriendFromUser() -> Friendship get between {0} and {1}", userId, friendId);
         } catch (Exception e){
             logger.error("FriendDAO.getUserFriends() -> Error fetching friendship", e);
         } finally {

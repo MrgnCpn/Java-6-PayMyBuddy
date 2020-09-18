@@ -1,10 +1,13 @@
-package com.paymybuddy.PayMyBuddyWeb.Utils;
+package com.paymybuddy.paymybuddyweb.utils;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.Utils.ControllerUtilsInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 public class MSControllerUtils implements ControllerUtilsInterface {
+
+    public MSControllerUtils(){}
+
     /**
      * @see ControllerUtilsInterface {@link #redirect(String)}
      */
@@ -31,7 +34,7 @@ public class MSControllerUtils implements ControllerUtilsInterface {
     /**
      * @see ControllerUtilsInterface {@link #doRedirect(String)}
      */
-    public ModelAndView doRedirect(String path) throws NullPointerException {
+    public ModelAndView doRedirect(String path) {
         if (!MSStringUtils.isEmpty(path)) {
             return new ModelAndView(redirect(path));
         } else {

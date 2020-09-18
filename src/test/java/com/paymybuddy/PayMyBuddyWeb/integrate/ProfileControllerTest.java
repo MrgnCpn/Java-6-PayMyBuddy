@@ -1,11 +1,11 @@
-package com.paymybuddy.PayMyBuddyWeb.integrate;
+package com.paymybuddy.paymybuddyweb.integrate;
 
-import com.paymybuddy.PayMyBuddyWeb.MSTestUtils;
-import com.paymybuddy.PayMyBuddyWeb.configuration.AppConfiguration;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.MSTestUtils;
+import com.paymybuddy.paymybuddyweb.configuration.AppConfiguration;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @RunWith(SpringRunner.class)
-@ComponentScan({"com.paymybuddy.PayMyBuddyWeb"})
+@ComponentScan({"com.paymybuddy.paymybuddyweb" })
 @ContextConfiguration(classes = {AppConfiguration.class})
 @WebMvcTest
 class ProfileControllerTest {

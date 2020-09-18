@@ -1,10 +1,10 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.CreditCardServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.CreditCardDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.CreditCardServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,8 +1,11 @@
-package com.paymybuddy.PayMyBuddyWeb.Utils;
+package com.paymybuddy.paymybuddyweb.utils;
 
 import java.io.File;
 
 public class MSFileUtils {
+
+    public MSFileUtils() {
+    }
 
     /**
      * Check is file exist

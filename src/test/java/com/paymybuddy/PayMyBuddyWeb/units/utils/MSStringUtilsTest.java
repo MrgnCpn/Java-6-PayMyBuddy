@@ -1,11 +1,10 @@
-package com.paymybuddy.PayMyBuddyWeb.units.utils;
+package com.paymybuddy.paymybuddyweb.units.utils;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MSStringUtilsTest {
 

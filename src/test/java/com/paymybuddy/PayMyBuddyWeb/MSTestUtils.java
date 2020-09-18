@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb;
+package com.paymybuddy.paymybuddyweb;
 
 import org.springframework.test.web.servlet.MockMvc;
 

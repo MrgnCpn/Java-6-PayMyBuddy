@@ -1,12 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.units.services;
+package com.paymybuddy.paymybuddyweb.units.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.TransactionDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.TransactionServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
-import com.paymybuddy.PayMyBuddyWeb.services.TransactionService;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.TransactionDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.TransactionServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Transaction;
+import com.paymybuddy.paymybuddyweb.models.User;
+import com.paymybuddy.paymybuddyweb.services.TransactionService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

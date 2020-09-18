@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces;
+package com.paymybuddy.paymybuddyweb.interfaces;
 
 import java.sql.*;
 

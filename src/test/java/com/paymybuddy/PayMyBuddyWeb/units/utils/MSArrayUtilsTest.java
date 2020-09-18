@@ -1,7 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.units.utils;
+package com.paymybuddy.paymybuddyweb.units.utils;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSArrayUtils;
-import org.junit.Before;
+import com.paymybuddy.paymybuddyweb.utils.MSArrayUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MSArrayUtilsTest {
     private Map<String, String> map;

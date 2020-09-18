@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
+package com.paymybuddy.paymybuddyweb.interfaces.service;
 
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.models.User;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;

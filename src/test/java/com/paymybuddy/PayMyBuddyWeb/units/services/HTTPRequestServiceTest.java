@@ -1,7 +1,7 @@
-package com.paymybuddy.PayMyBuddyWeb.units.services;
+package com.paymybuddy.paymybuddyweb.units.services;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.services.HTTPRequestService;
+import com.paymybuddy.paymybuddyweb.interfaces.service.HTTPRequestServiceInterface;
+import com.paymybuddy.paymybuddyweb.services.HTTPRequestService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Tag;

@@ -19,7 +19,7 @@
 		<sonar.projectKey>MrgnCpn_OC-Java-Project-6-PayMyBuddy</sonar.projectKey>
 		<sonar.organization>mrgncpn</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.login>fa04a991b877ea83601ebcd429a2fe165466070d</sonar.login>
+		<sonar.login>2671a83ec20b321478f6cda1f9dc9bd1d39772a6</sonar.login>
 	</properties>
 
 	<dependencies>

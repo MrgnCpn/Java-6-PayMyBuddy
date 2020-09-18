@@ -1,8 +1,11 @@
-package com.paymybuddy.PayMyBuddyWeb.Utils;
+package com.paymybuddy.paymybuddyweb.utils;
 
 import org.springframework.util.StringUtils;
 
 public class MSStringUtils {
+
+    private MSStringUtils() {}
+
     /**
      * Check if String is null and empty
      * @param str

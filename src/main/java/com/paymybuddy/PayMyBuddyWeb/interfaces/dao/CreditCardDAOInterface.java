@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.dao;
+package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 
 import java.util.List;
 

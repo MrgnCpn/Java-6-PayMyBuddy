@@ -1,12 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.AccountDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.AccountDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.CreditCardDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.FriendDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.UserDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,11 +28,11 @@ public class UserDAO implements UserDAOInterface {
     /**
      * Database configuration
      */
-    private static DatabaseConfigurationInterface databaseConfiguration;
+    private DatabaseConfigurationInterface databaseConfiguration;
 
-    private static CreditCardDAOInterface creditCardDAO;
-    private static FriendDAOInterface friendDAO;
-    private static AccountDAOInterface accountDAO;
+    private CreditCardDAOInterface creditCardDAO;
+    private FriendDAOInterface friendDAO;
+    private AccountDAOInterface accountDAO;
 
 
     /**
@@ -59,7 +59,7 @@ public class UserDAO implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT firstname, lastname, birthday, email, country_code");
         sql.append(" FROM users");
         sql.append(" WHERE id = ?");
@@ -81,7 +81,7 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(userId));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(userId));
             }
-            logger.info("UserDAO.getUserById() -> Profile get for user : " + userId);
+            logger.info("UserDAO.getUserById() -> Profile get for user : {0}", userId);
         } catch (Exception e){
             logger.error("UserDAO.getUserById() -> Error fetching user", e);
         } finally {
@@ -97,7 +97,7 @@ public class UserDAO implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, firstname, lastname, birthday, email, country_code");
         sql.append(" FROM users");
         sql.append(" WHERE email = ?");
@@ -119,7 +119,7 @@ public class UserDAO implements UserDAOInterface {
                 result.setAccount(accountDAO.getAccount(rs.getInt("id")));
                 result.setCreditCards(creditCardDAO.getUserCreditCards(rs.getInt("id")));
             }
-            logger.info("UserDAO.getUserByUsername() -> Profile get for user : " + username);
+            logger.info("UserDAO.getUserByUsername() -> Profile get for user : {0}", username);
         } catch (Exception e){
             logger.error("UserDAO.getUserByUsername() -> Error fetching user", e);
         } finally {
@@ -136,7 +136,7 @@ public class UserDAO implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("UPDATE users SET firstname = ?, lastname = ?, birthday = ?, email = ?, country_code = ?");
         sql.append(" WHERE id = ?");
 
@@ -150,7 +150,7 @@ public class UserDAO implements UserDAOInterface {
             ps.setString(5, user.getCountry().getCode());
             ps.setInt(6, user.getId());
             ps.execute();
-            logger.info("UserDAO.updateUser() -> Profile updated for user : " + user.getId());
+            logger.info("UserDAO.updateUser() -> Profile updated for user : {0}", user.getId());
         } catch (Exception ex){
             logger.error("UserDAO.updateUser() -> Error update new user", ex);
         } finally {
@@ -166,7 +166,7 @@ public class UserDAO implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO users (firstname, lastname, birthday, email, password, country_code)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 
@@ -182,7 +182,7 @@ public class UserDAO implements UserDAOInterface {
             ps.execute();
 
             Integer userID = getUserByUsername(user.getEmail()).getId();
-            logger.info("UserDAO.createUser() -> Profile created for user : " + userID);
+            logger.info("UserDAO.createUser() -> Profile created for user : {0}", userID);
             accountDAO.createAccount(userID, currency);
         } catch (Exception ex){
             logger.error("UserDAO.createUser() -> Error create new user", ex);
@@ -203,7 +203,7 @@ public class UserDAO implements UserDAOInterface {
 
         search += "%";
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, firstname, lastname, email");
         sql.append(" FROM users");
         sql.append(" WHERE (firstname LIKE(?)");

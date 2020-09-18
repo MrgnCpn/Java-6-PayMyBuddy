@@ -1,12 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.services;
+package com.paymybuddy.paymybuddyweb.services;
 
-import com.paymybuddy.PayMyBuddyWeb.Utils.MSStringUtils;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.FriendDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.SecurityServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.Country;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.utils.MSStringUtils;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.FriendDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.UserDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.SecurityServiceInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.service.UserServiceInterface;
+import com.paymybuddy.paymybuddyweb.models.Country;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONValue;
@@ -160,7 +160,7 @@ public class UserService implements UserServiceInterface {
      */
     @Override
     public String searchContactUsers(HttpSession session, String search) {
-        StringBuffer data = new StringBuffer();
+        StringBuilder data = new StringBuilder();
         Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
         if (userInfo != null && !MSStringUtils.isEmpty(search)) {
             List<User> userList = userDAO.searchUsers((Integer) userInfo.get("userID"), search);

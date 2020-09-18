@@ -1,13 +1,12 @@
-package com.paymybuddy.PayMyBuddyWeb.dao;
+package com.paymybuddy.paymybuddyweb.dao;
 
-import com.paymybuddy.PayMyBuddyWeb.interfaces.DatabaseConfigurationInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.CreditCardDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.TransactionDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.interfaces.dao.UserDAOInterface;
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
-import com.paymybuddy.PayMyBuddyWeb.models.Currency;
-import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
-import com.paymybuddy.PayMyBuddyWeb.models.User;
+import com.paymybuddy.paymybuddyweb.interfaces.DatabaseConfigurationInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.CreditCardDAOInterface;
+import com.paymybuddy.paymybuddyweb.interfaces.dao.TransactionDAOInterface;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.models.Currency;
+import com.paymybuddy.paymybuddyweb.models.Transaction;
+import com.paymybuddy.paymybuddyweb.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,7 +52,7 @@ public class TransactionDAO implements TransactionDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT DISTINCT");
         sql.append(" u_from.id,");
         sql.append(" u_from.firstname,");
@@ -84,30 +83,30 @@ public class TransactionDAO implements TransactionDAOInterface {
             ps.setInt(2, userId);
             rs = ps.executeQuery();
             while (rs.next()){
-                User user_from = null;
+                User userFrom = null;
                 CreditCard creditCard = null;
 
                 if (!rs.getBoolean("transactions.from_iscard")) {
-                    user_from = new User();
-                    user_from.setId(rs.getInt("u_from.id"));
-                    user_from.setFirstName(rs.getString("u_from.firstname"));
-                    user_from.setLastName(rs.getString("u_from.lastname"));
-                    user_from.setEmail(rs.getString("u_from.email"));
+                    userFrom = new User();
+                    userFrom.setId(rs.getInt("u_from.id"));
+                    userFrom.setFirstName(rs.getString("u_from.firstname"));
+                    userFrom.setLastName(rs.getString("u_from.lastname"));
+                    userFrom.setEmail(rs.getString("u_from.email"));
                 } else {
                     creditCard = creditCardDAO.getCardById(rs.getInt("u_from.id"), userId);
                 }
 
-                User user_to = new User();
-                user_to.setId(rs.getInt("u_to.id"));
-                user_to.setFirstName(rs.getString("u_to.firstname"));
-                user_to.setLastName(rs.getString("u_to.lastname"));
-                user_to.setEmail(rs.getString("u_to.email"));
+                User userTo = new User();
+                userTo.setId(rs.getInt("u_to.id"));
+                userTo.setFirstName(rs.getString("u_to.firstname"));
+                userTo.setLastName(rs.getString("u_to.lastname"));
+                userTo.setEmail(rs.getString("u_to.email"));
 
                 result.add(
                     new Transaction(
                         creditCard,
-                        user_from,
-                        user_to,
+                        userFrom,
+                        userTo,
                         rs.getDate("date").toLocalDate(),
                         rs.getString("description"),
                         rs.getDouble("amount"),
@@ -115,7 +114,7 @@ public class TransactionDAO implements TransactionDAOInterface {
                     )
                 );
             }
-            logger.info("TransactionDAO.getUserTransactions() -> Transactions get for user : " + userId);
+            logger.info("TransactionDAO.getUserTransactions() -> Transactions get for user : {0}", userId);
         } catch (Exception e){
             logger.error("TransactionDAO.getUserTransactions() -> Error fetching user", e);
         } finally {
@@ -133,7 +132,7 @@ public class TransactionDAO implements TransactionDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
 
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO transactions (from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

@@ -1,4 +1,4 @@
-package com.paymybuddy.PayMyBuddyWeb.interfaces.service;
+package com.paymybuddy.paymybuddyweb.interfaces.service;
 
 import org.json.JSONObject;
 

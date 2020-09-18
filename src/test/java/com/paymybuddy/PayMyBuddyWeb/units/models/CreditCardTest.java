@@ -1,6 +1,6 @@
-package com.paymybuddy.PayMyBuddyWeb.units.models;
+package com.paymybuddy.paymybuddyweb.units.models;
 
-import com.paymybuddy.PayMyBuddyWeb.models.CreditCard;
+import com.paymybuddy.paymybuddyweb.models.CreditCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

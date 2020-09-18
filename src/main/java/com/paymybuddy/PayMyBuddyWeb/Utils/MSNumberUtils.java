@@ -1,15 +1,17 @@
-package com.paymybuddy.PayMyBuddyWeb.Utils;
+package com.paymybuddy.paymybuddyweb.utils;
 
 import java.text.DecimalFormat;
 
 public class MSNumberUtils {
+
+    private MSNumberUtils(){}
 
     /**
      * Return casted Double with 2 digits
      * @param value
      * @return
      */
-    public static Double getDouble_2_digits(Double value){
+    public static Double getDoubleTwoDigits(Double value){
         return Double.valueOf(new DecimalFormat("0.00").format(value));
     }
 }
