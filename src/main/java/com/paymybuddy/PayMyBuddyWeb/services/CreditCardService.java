@@ -82,7 +82,7 @@ public class CreditCardService implements CreditCardServiceInterface {
                 !MSStringUtils.isEmpty((String) requestParams.get("card_type"))
         ) {
             card = new CreditCard(
-                    null,
+                    cardId,
                     (Integer) userInfo.get("userID"),
                     (String) requestParams.get("card_type"),
                     (String) requestParams.get("cardNumber_1") +

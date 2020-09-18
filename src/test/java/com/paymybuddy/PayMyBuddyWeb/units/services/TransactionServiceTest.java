@@ -7,9 +7,7 @@ import com.paymybuddy.PayMyBuddyWeb.interfaces.service.UserServiceInterface;
 import com.paymybuddy.PayMyBuddyWeb.models.Transaction;
 import com.paymybuddy.PayMyBuddyWeb.models.User;
 import com.paymybuddy.PayMyBuddyWeb.services.TransactionService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -30,28 +28,26 @@ import static org.mockito.Mockito.*;
 class TransactionServiceTest {
 
     @Mock
-    private static SecurityServiceInterface securityService;
+    private SecurityServiceInterface securityService;
 
     @Mock
-    private static TransactionDAOInterface transactionDAO;
+    private TransactionDAOInterface transactionDAO;
 
     @Mock
-    private static UserServiceInterface userService;
+    private UserServiceInterface userService;
 
     @Mock
-    private static HttpSession session;
+    private HttpSession session;
 
-    private Map<String, Object> userInfo;
-    private Map<String, Object> requestParam;
-    private List<Transaction> transactionList;
-    private Transaction transaction;
+    private static Map<String, Object> userInfo;
+    private static Map<String, Object> requestParam;
+    private static List<Transaction> transactionList;
+    private static Transaction transaction;
 
     private TransactionServiceInterface transactionService;
 
-     @BeforeEach
-    void init_each() {
-        transactionService = new TransactionService(securityService, transactionDAO, userService);
-
+    @BeforeAll
+    static void init_all(){
         userInfo = new HashMap<>();
         userInfo.put("userID", 1);
 
@@ -78,6 +74,11 @@ class TransactionServiceTest {
 
         transactionList = new ArrayList<>();
         transactionList.add(transaction);
+    }
+
+    @BeforeEach
+    void init_each() {
+        transactionService = new TransactionService(securityService, transactionDAO, userService);
     }
 
     @Tag("TransactionServiceTest")
@@ -130,5 +131,18 @@ class TransactionServiceTest {
         verify(userService, times(1)).getIfAreFriends(eq(session), anyInt());
         verify(userService, never()).getUser(anyInt());
         verify(transactionDAO, never()).newTransaction(any(Transaction.class));
+    }
+
+    @AfterEach
+    void reset_each(){
+        transactionService = null;
+    }
+
+    @AfterAll
+    static void reset_All(){
+        userInfo = null;
+        requestParam = null;
+        transaction = null;
+        transactionList = null;
     }
 }

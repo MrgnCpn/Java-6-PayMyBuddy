@@ -5,6 +5,7 @@ import com.paymybuddy.PayMyBuddyWeb.interfaces.service.HTTPRequestServiceInterfa
 import com.paymybuddy.PayMyBuddyWeb.services.CountryService;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -92,6 +93,11 @@ class CountryServiceTest {
         assertThat(countryService.getAllCountries()).isNull();
 
         verify(httpRequestService, times(1)).getReq(anyString(), eq(null));
+    }
+
+    @AfterEach
+    void reset_each(){
+        countryService = null;
     }
 }
 

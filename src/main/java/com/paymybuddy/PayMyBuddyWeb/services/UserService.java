@@ -36,8 +36,6 @@ public class UserService implements UserServiceInterface {
      */
     private final UserDAOInterface userDAO;
 
-
-
     /**
      * Friends DAO
      */
@@ -129,7 +127,7 @@ public class UserService implements UserServiceInterface {
     public Boolean getIfAreFriends(HttpSession session, Integer friendId) {
         Boolean result = false;
         Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
-        if (userInfo != null) {
+        if (userInfo != null && friendId != null && friendId > 0) {
             result = friendDAO.areFriends((Integer) userInfo.get("userID"), friendId);
         }
         return result;
@@ -141,7 +139,7 @@ public class UserService implements UserServiceInterface {
     @Override
     public void removeFriend(HttpSession session, Integer friendId) {
         Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
-        if (userInfo != null) {
+        if (userInfo != null && friendId != null && friendId > 0) {
             friendDAO.removeFriendFromUser((Integer) userInfo.get("userID"), friendId);
         }
     }
@@ -152,7 +150,7 @@ public class UserService implements UserServiceInterface {
     @Override
     public void addFriend(HttpSession session, Integer friendId) {
         Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
-        if (userInfo != null) {
+        if (userInfo != null && friendId != null && friendId > 0) {
             friendDAO.addNewFriendToUser((Integer) userInfo.get("userID"), friendId);
         }
     }
@@ -164,7 +162,7 @@ public class UserService implements UserServiceInterface {
     public String searchContactUsers(HttpSession session, String search) {
         StringBuffer data = new StringBuffer();
         Map <String, Object> userInfo = securityService.getUserInfoFromJWT(session);
-        if (userInfo != null) {
+        if (userInfo != null && !MSStringUtils.isEmpty(search)) {
             List<User> userList = userDAO.searchUsers((Integer) userInfo.get("userID"), search);
             if (userList != null) {
                 data.append("[");
