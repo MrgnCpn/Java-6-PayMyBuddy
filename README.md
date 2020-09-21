@@ -2,7 +2,7 @@
 ##### Author : **_MorganCpn_**
 
 ## Description
-Backend REST API server for SafetyNet Alert apps
+Money Exchange app
 
 ## Configuration
 
@@ -32,8 +32,8 @@ Backend REST API server for SafetyNet Alert apps
 
 ## Connect to App
 
-> Go to : `http://localhost:[your port]`
-> Create you an account or connect you with the demo account `user : juanita.emard@gemail.com / pwd : juanita` 
+Go to : `http://localhost:[your port]`
+Create you an account or connect you with the demo account `user : juanita.emard@gemail.com / pwd : juanita` 
 
 ## Testing
 
