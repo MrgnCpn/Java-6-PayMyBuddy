@@ -4,6 +4,9 @@ import com.paymybuddy.paymybuddyweb.utils.MSNumberUtils;
 
 import java.time.LocalDate;
 
+/**
+ * @author MorganCpn
+ */
 public class Account {
     private Integer userId;
     private Double amount;

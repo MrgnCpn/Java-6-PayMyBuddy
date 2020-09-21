@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public class User {
     private Integer id;
     private String firstName;

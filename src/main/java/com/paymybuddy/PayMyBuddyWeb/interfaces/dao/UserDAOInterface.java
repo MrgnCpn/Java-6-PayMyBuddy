@@ -4,6 +4,9 @@ import com.paymybuddy.paymybuddyweb.models.User;
 
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public interface UserDAOInterface {
     /**
      * Get user with id

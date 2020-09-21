@@ -5,6 +5,9 @@ import com.paymybuddy.paymybuddyweb.models.CreditCard;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 public interface CreditCardServiceInterface {
     /**
      * Get user card by id

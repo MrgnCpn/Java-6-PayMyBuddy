@@ -1,5 +1,8 @@
 package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
+/**
+ * @author MorganCpn
+ */
 public interface SecurityDAOInterface {
 
     /**

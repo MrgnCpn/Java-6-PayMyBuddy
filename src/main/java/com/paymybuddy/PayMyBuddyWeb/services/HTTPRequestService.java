@@ -13,6 +13,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class HTTPRequestService implements HTTPRequestServiceInterface {
 

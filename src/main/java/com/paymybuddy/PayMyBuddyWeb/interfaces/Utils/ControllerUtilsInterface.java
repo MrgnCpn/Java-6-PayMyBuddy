@@ -3,6 +3,9 @@ package com.paymybuddy.paymybuddyweb.interfaces.Utils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * @author MorganCpn
+ */
 public interface ControllerUtilsInterface {
     /**
      * Return RedirectVien

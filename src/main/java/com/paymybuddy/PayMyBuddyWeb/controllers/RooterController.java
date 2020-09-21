@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @RestController
 @Singleton
 public class RooterController {

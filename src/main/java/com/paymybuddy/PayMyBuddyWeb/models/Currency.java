@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+/**
+ * @author MorganCpn
+ */
 public class Currency {
     private String code;
     private Double rateBasedUSD;

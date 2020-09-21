@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.utils;
 
 import java.text.DecimalFormat;
 
+/**
+ * @author MorganCpn
+ */
 public class MSNumberUtils {
 
     private MSNumberUtils(){}

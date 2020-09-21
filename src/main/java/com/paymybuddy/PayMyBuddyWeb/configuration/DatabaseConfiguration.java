@@ -12,6 +12,10 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
+/**
+ * Database configuration
+ * @author MorganCpn
+ */
 @Singleton
 public class DatabaseConfiguration implements DatabaseConfigurationInterface {
 

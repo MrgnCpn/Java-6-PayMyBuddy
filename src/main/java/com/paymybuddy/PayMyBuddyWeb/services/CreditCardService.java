@@ -12,6 +12,9 @@ import javax.inject.Singleton;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class CreditCardService implements CreditCardServiceInterface {
     /**

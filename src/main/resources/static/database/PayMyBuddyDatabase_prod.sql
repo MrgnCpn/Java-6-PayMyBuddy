@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS paymybuddy_prod_oc_mc;
-
 /** PRODUCTION DB **/
 
 -- CREATE Database

@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.utils;
 
 import java.util.*;
 
+/**
+ * @author MorganCpn
+ */
 public class MSArrayUtils {
 
     private MSArrayUtils() { }

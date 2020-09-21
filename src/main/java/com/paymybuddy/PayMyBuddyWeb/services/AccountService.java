@@ -21,6 +21,9 @@ import java.util.Map;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class AccountService implements AccountServiceInterface {
     /**

@@ -5,6 +5,9 @@ import com.paymybuddy.paymybuddyweb.models.Transaction;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public interface TransactionDAOInterface {
     /**
      * Get all user transaction

@@ -3,6 +3,9 @@ package com.paymybuddy.paymybuddyweb.models;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public class CreditCard {
     private Integer id;
     private Integer userId;

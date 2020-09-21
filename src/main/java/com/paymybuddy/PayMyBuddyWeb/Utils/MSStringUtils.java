@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.utils;
 
 import org.springframework.util.StringUtils;
 
+/**
+ * @author MorganCpn
+ */
 public class MSStringUtils {
 
     private MSStringUtils() {}

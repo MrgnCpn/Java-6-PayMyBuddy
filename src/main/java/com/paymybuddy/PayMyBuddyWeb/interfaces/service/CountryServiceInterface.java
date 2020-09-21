@@ -3,6 +3,9 @@ package com.paymybuddy.paymybuddyweb.interfaces.service;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 public interface CountryServiceInterface {
 
     /**

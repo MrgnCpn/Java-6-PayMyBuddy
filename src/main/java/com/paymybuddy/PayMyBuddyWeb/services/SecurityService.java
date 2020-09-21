@@ -24,6 +24,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class SecurityService implements SecurityServiceInterface {
     /**

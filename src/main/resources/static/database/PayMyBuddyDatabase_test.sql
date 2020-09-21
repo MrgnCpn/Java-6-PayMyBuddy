@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS paymybuddy_test_oc_mc;
+/** TEST DB **/
 
 CREATE DATABASE IF NOT EXISTS paymybuddy_test_oc_mc;
 USE paymybuddy_test_oc_mc;

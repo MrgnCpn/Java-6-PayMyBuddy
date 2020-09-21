@@ -6,6 +6,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 public interface SecurityServiceInterface {
 
     /**

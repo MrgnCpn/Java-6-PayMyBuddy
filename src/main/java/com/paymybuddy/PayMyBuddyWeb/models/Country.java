@@ -6,6 +6,9 @@ import com.paymybuddy.paymybuddyweb.services.HTTPRequestService;
 
 import java.io.IOException;
 
+/**
+ * @author MorganCpn
+ */
 public class Country {
     private String code;
     private String wording;

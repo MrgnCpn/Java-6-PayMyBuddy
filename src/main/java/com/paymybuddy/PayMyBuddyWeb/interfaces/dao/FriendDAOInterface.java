@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public interface FriendDAOInterface {
 
     /**

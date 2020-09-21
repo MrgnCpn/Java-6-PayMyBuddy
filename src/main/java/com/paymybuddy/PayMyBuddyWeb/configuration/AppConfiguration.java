@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * Spring Application configuration
+ * @author MorganCpn
+ */
 @Configuration
 public class AppConfiguration {
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

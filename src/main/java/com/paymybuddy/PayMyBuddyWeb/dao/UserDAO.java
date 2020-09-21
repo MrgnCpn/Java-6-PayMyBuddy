@@ -18,6 +18,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class UserDAO implements UserDAOInterface {
     /**

@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Error management class
+ * @author MorganCpn
+ */
 @Controller
 public class ClassErrorController implements ErrorController {
 

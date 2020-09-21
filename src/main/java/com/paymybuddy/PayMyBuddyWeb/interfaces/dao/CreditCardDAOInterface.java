@@ -4,6 +4,9 @@ import com.paymybuddy.paymybuddyweb.models.CreditCard;
 
 import java.util.List;
 
+/**
+ * @author MorganCpn
+ */
 public interface CreditCardDAOInterface {
 
     /**

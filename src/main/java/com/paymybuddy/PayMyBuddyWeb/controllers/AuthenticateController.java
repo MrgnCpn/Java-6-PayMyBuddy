@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @RestController
 @Singleton
 public class AuthenticateController {

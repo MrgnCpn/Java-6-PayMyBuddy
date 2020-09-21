@@ -4,6 +4,9 @@ import com.paymybuddy.paymybuddyweb.interfaces.Utils.ControllerUtilsInterface;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * @author MorganCpn
+ */
 public class MSControllerUtils implements ControllerUtilsInterface {
 
     public MSControllerUtils(){}

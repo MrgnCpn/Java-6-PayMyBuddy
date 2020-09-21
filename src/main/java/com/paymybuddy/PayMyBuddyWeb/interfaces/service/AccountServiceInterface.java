@@ -6,6 +6,9 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 public interface AccountServiceInterface {
 
     /**

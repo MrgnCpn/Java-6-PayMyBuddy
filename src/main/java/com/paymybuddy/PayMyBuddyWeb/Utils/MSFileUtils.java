@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.utils;
 
 import java.io.File;
 
+/**
+ * @author MorganCpn
+ */
 public class MSFileUtils {
 
     public MSFileUtils() {

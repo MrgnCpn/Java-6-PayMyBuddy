@@ -2,6 +2,9 @@ package com.paymybuddy.paymybuddyweb.interfaces.dao;
 
 import com.paymybuddy.paymybuddyweb.models.Account;
 
+/**
+ * @author MorganCpn
+ */
 public interface AccountDAOInterface {
 
     /**

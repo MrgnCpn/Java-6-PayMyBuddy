@@ -18,6 +18,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class TransactionService implements TransactionServiceInterface {
     /**

@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class CountryService implements CountryServiceInterface {
     /**

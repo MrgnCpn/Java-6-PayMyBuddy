@@ -13,6 +13,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * @author MorganCpn
+ */
 @Singleton
 public class AccountDAO implements AccountDAOInterface {
     /**

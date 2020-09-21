@@ -19,6 +19,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author MorganCpn
+ */
 @RestController
 @Singleton
 public class TransferController {
