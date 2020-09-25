@@ -57,4 +57,4 @@ You may access to :
 - ...
 
 ## Database structure (UML)
-![alt text](https://github.com/MrgnCpn/OC-Java-Project-6-PayMyBuddy/blob/master/Diagrams%20Database%20UML.jpg)
+![alt text](https://github.com/MrgnCpn/OC-Java-Project-6-PayMyBuddy/blob/master/MDP.pdf)
