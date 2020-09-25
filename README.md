@@ -56,5 +56,8 @@ You may access to :
 - Surefire  test report
 - ...
 
-## Database structure (UML)
-![alt text](https://github.com/MrgnCpn/OC-Java-Project-6-PayMyBuddy/blob/master/MDP.pdf)
+## Database structure (MDP)
+![alt text](https://github.com/MrgnCpn/OC-Java-Project-6-PayMyBuddy/blob/master/MDP.png)
+
+## Diagram Class (UML)
+![alt text](https://github.com/MrgnCpn/OC-Java-Project-6-PayMyBuddy/blob/master/UML.png)
