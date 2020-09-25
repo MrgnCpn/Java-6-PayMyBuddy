@@ -46,7 +46,7 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT friend_id FROM friends WHERE user_id = ?");
+        sql.append("SELECT friend_id FROM friend WHERE user_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -80,7 +80,7 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO friends (user_id, friend_id)");
+        sql.append("INSERT INTO friend (user_id, friend_id)");
         sql.append(" VALUES (?, ?)");
 
         try {
@@ -113,7 +113,7 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("DELETE FROM friends");
+        sql.append("DELETE FROM friend");
         sql.append(" WHERE user_id = ? AND friend_id = ?");
 
         try {
@@ -148,7 +148,7 @@ public class FriendDAO implements FriendDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT friend_id FROM friends WHERE user_id = ? and friend_id = ?");
+        sql.append("SELECT friend_id FROM friend WHERE user_id = ? and friend_id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

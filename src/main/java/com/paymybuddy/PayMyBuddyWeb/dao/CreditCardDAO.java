@@ -48,7 +48,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, card_type, card_number, card_cvv, card_date, wording");
-        sql.append(" FROM credit_cards");
+        sql.append(" FROM credit_card");
         sql.append(" WHERE user_id = ?");
 
         try {
@@ -90,7 +90,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT card_type, card_number, card_cvv, card_date, wording");
-        sql.append(" FROM credit_cards");
+        sql.append(" FROM credit_card");
         sql.append(" WHERE id = ? AND user_id = ?");
 
         try {
@@ -128,7 +128,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO credit_cards (user_id, card_type, card_number, card_cvv, card_date, wording)");
+        sql.append("INSERT INTO credit_card (user_id, card_type, card_number, card_cvv, card_date, wording)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 
         try {
@@ -158,7 +158,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("DELETE FROM credit_cards");
+        sql.append("DELETE FROM credit_card");
         sql.append(" WHERE id = ? AND user_id = ?");
 
         try {
@@ -184,7 +184,7 @@ public class CreditCardDAO implements CreditCardDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE credit_cards");
+        sql.append("UPDATE credit_card");
         sql.append(" SET card_type = ?, card_number = ?, card_cvv = ?, card_date = ?, wording = ?");
         sql.append(" WHERE id = ? AND user_id = ?");
 

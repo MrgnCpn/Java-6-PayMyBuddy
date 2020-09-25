@@ -65,19 +65,19 @@ public class TransactionDAO implements TransactionDAOInterface {
         sql.append(" u_to.firstname,");
         sql.append(" u_to.lastname,");
         sql.append(" u_to.email,");
-        sql.append(" transactions.from_iscard,");
-        sql.append(" transactions.from_id,");
-        sql.append(" transactions.to_id,");
-        sql.append(" transactions.date,");
-        sql.append(" transactions.description,");
-        sql.append(" transactions.amount,");
-        sql.append(" transactions.currency");
-        sql.append(" FROM transactions");
-        sql.append(" INNER JOIN users u_from ON transactions.from_id = u_from.ID");
-        sql.append(" INNER JOIN users u_to ON transactions.to_id = u_to.ID");
-        sql.append(" WHERE from_id = ?");
-        sql.append(" OR to_id = ?");
-        sql.append(" ORDER BY transactions.date DESC");
+        sql.append(" transaction.from_iscard,");
+        sql.append(" transaction.from_userId,");
+        sql.append(" transaction.to_userId,");
+        sql.append(" transaction.date,");
+        sql.append(" transaction.description,");
+        sql.append(" transaction.amount,");
+        sql.append(" transaction.currency");
+        sql.append(" FROM transaction");
+        sql.append(" INNER JOIN user u_from ON transaction.from_userId = u_from.ID");
+        sql.append(" INNER JOIN user u_to ON transaction.to_userId = u_to.ID");
+        sql.append(" WHERE from_userId = ?");
+        sql.append(" OR to_userId = ?");
+        sql.append(" ORDER BY transaction.date DESC");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -89,7 +89,7 @@ public class TransactionDAO implements TransactionDAOInterface {
                 User userFrom = null;
                 CreditCard creditCard = null;
 
-                if (!rs.getBoolean("transactions.from_iscard")) {
+                if (!rs.getBoolean("transaction.from_iscard")) {
                     userFrom = new User();
                     userFrom.setId(rs.getInt("u_from.id"));
                     userFrom.setFirstName(rs.getString("u_from.firstname"));
@@ -136,7 +136,7 @@ public class TransactionDAO implements TransactionDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO transactions (from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency)");
+        sql.append("INSERT INTO transaction (from_isCard, from_userId, to_userId, date, description, amount, fee, final_amount, currency)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         try {

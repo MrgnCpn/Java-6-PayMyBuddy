@@ -64,7 +64,7 @@ public class UserDAO implements UserDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT firstname, lastname, birthday, email, country_code");
-        sql.append(" FROM users");
+        sql.append(" FROM user");
         sql.append(" WHERE id = ?");
 
         try {
@@ -102,7 +102,7 @@ public class UserDAO implements UserDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, firstname, lastname, birthday, email, country_code");
-        sql.append(" FROM users");
+        sql.append(" FROM user");
         sql.append(" WHERE email = ?");
 
         try {
@@ -140,7 +140,7 @@ public class UserDAO implements UserDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE users SET firstname = ?, lastname = ?, birthday = ?, email = ?, country_code = ?");
+        sql.append("UPDATE user SET firstname = ?, lastname = ?, birthday = ?, email = ?, country_code = ?");
         sql.append(" WHERE id = ?");
 
         try {
@@ -170,7 +170,7 @@ public class UserDAO implements UserDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO users (firstname, lastname, birthday, email, password, country_code)");
+        sql.append("INSERT INTO user (firstname, lastname, birthday, email, password, country_code)");
         sql.append(" VALUES (?, ?, ?, ?, ?, ?)");
 
         try {
@@ -208,7 +208,7 @@ public class UserDAO implements UserDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT id, firstname, lastname, email");
-        sql.append(" FROM users");
+        sql.append(" FROM user");
         sql.append(" WHERE (firstname LIKE(?)");
         sql.append(" OR lastname LIKE (?)");
         sql.append(" OR email LIKE(?))");

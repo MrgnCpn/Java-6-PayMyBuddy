@@ -48,16 +48,16 @@ public class DatabaseTestDAO {
 
             con.prepareStatement("SET FOREIGN_KEY_CHECKS = 0;").execute();
 
-            con.prepareStatement("TRUNCATE TABLE ACCOUNTS").execute();
-            con.prepareStatement("TRUNCATE TABLE TRANSACTIONS").execute();
-            con.prepareStatement("TRUNCATE TABLE CREDIT_CARDS").execute();
-            con.prepareStatement("TRUNCATE TABLE FRIENDS").execute();
-            con.prepareStatement("TRUNCATE TABLE USERS").execute();
+            con.prepareStatement("TRUNCATE TABLE ACCOUNT").execute();
+            con.prepareStatement("TRUNCATE TABLE TRANSACTION").execute();
+            con.prepareStatement("TRUNCATE TABLE CREDIT_CARD").execute();
+            con.prepareStatement("TRUNCATE TABLE FRIEND").execute();
+            con.prepareStatement("TRUNCATE TABLE USER").execute();
 
             con.prepareStatement("SET FOREIGN_KEY_CHECKS = 1;").execute();
 
             sql = new StringBuilder();
-            sql.append("INSERT INTO USERS(firstname, lastname, birthday, email, password, country_code)");
+            sql.append("INSERT INTO USER(firstname, lastname, birthday, email, password, country_code)");
             sql.append(" VALUES");
             sql.append(" ('juanita', 'emard', '1995-01-06', 'juanita.emard@email.com', '$2a$10$w4YKpuluFDrfomqaBzy1w./GTA57TtnAX6PngUtMhpk6KUGQBbe2e', 'FRA'),");
             sql.append(" ('alexane', 'collins', '1989-11-22', 'alexane.collins@email.com', '$2a$10$Qp96gr3vEtUHlFFAnfPGVOnnaTgPOgKDpbo5f1X76UKteqprzmQma', 'GBR'),");
@@ -66,7 +66,7 @@ public class DatabaseTestDAO {
             con.prepareStatement(sql.toString()).execute();
 
             sql.delete(0, sql.length());
-            sql.append("INSERT INTO TRANSACTIONS (from_isCard, from_id, to_id, date, description, amount, fee, final_amount, currency)");
+            sql.append("INSERT INTO TRANSACTION (from_isCard, from_userId, to_userId, date, description, amount, fee, final_amount, currency)");
             sql.append(" VALUES");
             sql.append(" (true, 1, 1, '2019-1-25 17:0:38', 'Feed Account', 1000.00, 5.00, 995.00, 'USD'),");
             sql.append(" (false, 1, 2, '2019-6-7 16:58:25', 'Eu consequat ac felis donec et odio pellentesque.', 100.00, 0.50, 99.50, 'USD'),");
@@ -75,7 +75,7 @@ public class DatabaseTestDAO {
             con.prepareStatement(sql.toString()).execute();
 
             sql.delete(0, sql.length());
-            sql.append("INSERT INTO CREDIT_CARDS (user_id, card_type, card_number, card_cvv, card_date, wording) VALUES");
+            sql.append("INSERT INTO CREDIT_CARD (user_id, card_type, card_number, card_cvv, card_date, wording) VALUES");
             sql.append(" (1, 'MAST', '1447560945069489', '565', '01/20', 'My Card - Boursorama'),");
             sql.append(" (1, 'VISA', '2049648612159233', '079', '01/20', 'My Card - HSBC'),");
             sql.append(" (2, 'MAST', '4251056551139390', '071', '01/20', 'My Card - Bank of America');");
@@ -83,7 +83,7 @@ public class DatabaseTestDAO {
             con.prepareStatement(sql.toString()).execute();
 
             sql.delete(0, sql.length());
-            sql.append("INSERT INTO ACCOUNTS (user_id, amount, currency, balance_date)");
+            sql.append("INSERT INTO ACCOUNT (user_id, amount, currency, balance_date)");
             sql.append(" VALUES");
             sql.append(" (1, 895.00, 'USD', NOW()),");
             sql.append(" (2, 199.50, 'USD', NOW());");
@@ -91,7 +91,7 @@ public class DatabaseTestDAO {
             con.prepareStatement(sql.toString()).execute();
 
             sql.delete(0, sql.length());
-            sql.append("INSERT INTO  FRIENDS (user_id, friend_id)");
+            sql.append("INSERT INTO  FRIEND (user_id, friend_id)");
             sql.append(" VALUES (1, 2), (2, 1);");
 
             con.prepareStatement(sql.toString()).execute();

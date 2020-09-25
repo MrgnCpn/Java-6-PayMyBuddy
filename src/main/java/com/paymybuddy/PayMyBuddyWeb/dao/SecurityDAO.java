@@ -44,7 +44,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT password FROM users WHERE email = ?");
+        sql.append("SELECT password FROM user WHERE email = ?");
         try {
             con = databaseConfiguration.getConnection();
             ps = con.prepareStatement(sql.toString());
@@ -71,7 +71,7 @@ public class SecurityDAO implements SecurityDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE users SET password = ? WHERE id = ?");
+        sql.append("UPDATE user SET password = ? WHERE id = ?");
 
         try {
             con = databaseConfiguration.getConnection();

@@ -48,9 +48,9 @@ public class AccountDAO implements AccountDAOInterface {
 
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT amount, currency, balance_date");
-        sql.append(" FROM accounts");
+        sql.append(" FROM account");
         sql.append(" WHERE user_id = ?");
-        sql.append(" AND balance_date = (SELECT MAX(balance_date) FROM accounts WHERE user_id = ?)");
+        sql.append(" AND balance_date = (SELECT MAX(balance_date) FROM account WHERE user_id = ?)");
 
         try {
             con = databaseConfiguration.getConnection();
@@ -84,7 +84,7 @@ public class AccountDAO implements AccountDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE accounts");
+        sql.append("UPDATE account");
         sql.append(" SET amount = ?, currency = ?, balance_date = ?");
         sql.append(" WHERE user_id = ?");
 
@@ -113,7 +113,7 @@ public class AccountDAO implements AccountDAOInterface {
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
-        sql.append("INSERT INTO accounts (user_id, amount, currency, balance_date)");
+        sql.append("INSERT INTO account (user_id, amount, currency, balance_date)");
         sql.append(" VALUES (?, 0, ?, NOW())");
 
         try {
